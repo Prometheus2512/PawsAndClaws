@@ -1,0 +1,29 @@
+.homepage .affix, .contentpage .affix {
+	background: #fff;
+}
+
+.navbar-nav {
+	text-align: right;
+	float: right !important;
+	padding-top: 20px;
+}
+
+.homepage .affix .btn, .contentpage .affix .btn {
+	margin-top: 8px;
+}
+
+.prices .costs div img {
+	position: absolute;
+	top: 10px;
+	margin-left: -25px;
+	left: 50%;
+}
+
+.staff .member div span {
+	background: none;
+	border: none;
+}
+
+#contact_form label {
+	display: block;
+}

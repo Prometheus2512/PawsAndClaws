@@ -2,12 +2,145 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <title>{% block title %}Paws and Claws{% endblock %}</title>
+        {% block stylesheets %}
+            <meta charset="utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>PetCare Kennels - Responsive html template</title>
+
+            <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+            <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+            {# <link href="css/style.css" rel="stylesheet">#}
+            <link href='http://fonts.googleapis.com/css?family=Cabin:400,500,600,700,400italic,500italic,600italic,700italic' rel='stylesheet' type='text/css'>
+            <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+            <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+            <![endif]-->
+            <!--[if IE 8]><link rel="stylesheet" type="text/css" href="css/ie8.css" /><![endif]-->
+        {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+    {% block nav %}
+        <!-- Navigation -->
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <h1><a class="navbar-brand" href="index.html"><strong>Pet</strong>Care<br />
+                            <span data-hover="Kennels">Kennels</span>
+                        </a></h1>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a href="index.html" title="Home"><span data-hover="Home">Home</span></a>
+                        </li>
+                        <li>
+                            <a href="prices.html" title="Prices"><span data-hover="Prices">Prices</span></a>
+                        </li>
+                        <li>
+                            <a href="about.html" title="About us"><span data-hover="About us">About us</span></a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="services.html" class="dropdown-toggle" data-toggle="dropdown"><span data-hover="Services">Services</span> <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="adoption.html" title="Adoption centre">Adoption centre</a>
+                                </li>
+                                <li>
+                                    <a href="services.html" title="Dog boarding kennels">Dog boarding kennels</a>
+                                </li>
+                                <li>
+                                    <a href="services-single.html" title="Dog walking">Dog walking</a>
+                                </li>
+                                <li>
+                                    <a href="services.html" title="Home boarding">Home boarding</a>
+                                </li>
+                                <li>
+                                    <a href="services.html" title="Puppy crèche">Puppy crèche</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="contact.html" title="Contact us"><span data-hover="Contact us">Contact us</span></a>
+                        </li>
+                        <li class="purchase-btn">
+                            <form method="get" action="index.html">
+                                <button type="submit" class="btn btn-default">Purchase theme</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Navigation end -->
+    {% endblock %}
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+    {% block footer  %}
+        <!-- Footer -->
+        <div class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h6>A little about us</h6>
+                        <p><strong>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat.</strong></p>
+                        <p>Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam.</p>
+                    </div>
+                    <div class="col-md-3 blog">
+                        <h6>Freshly blogged</h6>
+                        <p class="title"><a href="#" title="">Eodem modo typi, qui nunc nobis</a></p>
+                        <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram.</p>
+                        <p><a href="#" title="">Read this post&hellip;</a></p>
+                    </div>
+                    <div class="col-md-3">
+                        <h6>You may need this</h6>
+                        <ul>
+                            <li><a href="#" title="">Home</a></li>
+                            <li><a href="#" title="">Contact us</a></li>
+                            <li><a href="#" title="">FAQ</a></li>
+                            <li><a href="#" title="">Terms &amp; conditions</a></li>
+                            <li><a href="#" title="">Privacy policy</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 contact-info">
+                        <h6>Keep in touch</h6>
+                        <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum.</p>
+                        <p class="social">
+                            <a href="#" class="facebook"></a> <a href="#" class="pinterest"></a> <a href="#" class="twitter"></a>
+                        </p>
+                        <p class="c-details">
+                            <span>Mail</span> <a href="#" title="">info@petcare.com</a><br >
+                            <span>Tel</span> 0203 000 444
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 copyright">
+                        <p>&copy; Copyright 2014. All rights reserved. <a href="#" title="PetCare wordpress theme">PetCare wordpress theme</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer end -->
+    {% endblock %}
+
+        {% block javascripts %}
+
+            <!-- Javascript plugins -->
+            <script src="https://code.jquery.com/jquery.js"></script>
+            <script src="js/bootstrap.min.js"></script>
+            <script src="js/carouFredSel.js"></script>
+            <script src="js/jquery.stellar.min.js"></script>
+            <script src="js/ekkoLightbox.js"></script>
+            <script src="js/custom.js"></script>
+        {% endblock %}
     </body>
 </html>
