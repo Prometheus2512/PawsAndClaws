@@ -11,7 +11,7 @@ parameters:
 
 framework:
     #esi: ~
-    #translator: { fallbacks: ['%locale%'] }
+    translator: { fallbacks: ['%locale%'] }
     secret: '%secret%'
     router:
         resource: '%kernel.project_dir%/app/config/routing.yml'
@@ -33,7 +33,13 @@ framework:
     assets: ~
     php_errors:
         log: true
-
+fos_user:
+    db_driver: orm # other valid values are 'mongodb' and 'couchdb'
+    firewall_name: main
+    user_class: MainBundle\Entity\User
+    from_email:
+        address: "mohamedridha.mejri@esprit.tn"
+        sender_name: "mohamedridha.mejri@esprit.tn"
 # Twig Configuration
 twig:
     debug: '%kernel.debug%'
