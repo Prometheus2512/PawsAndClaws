@@ -10,6 +10,8 @@
             <title>PetCare Kennels - Responsive html template</title>
 
             <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+
+            <link href="{{ asset('css/navdropdown.css') }}" rel="stylesheet">
             <link href="{{ asset('css/style.css') }}" rel="stylesheet">
             {# <link href="css/style.css" rel="stylesheet">#}
 
@@ -38,7 +40,7 @@
                     </button>
                     <h1>
 
-                        <a class="navbar-brand" href="index.html">
+                        <a class="navbar-brand" href="{{ path('main_homepage') }}"  title="Home" >
                             <img src="{{ asset('images/logo1.png')}}" style="width:60px;height:50px;">
                             {#<strong>Pet</strong>Care<br />
                             <span data-hover="Kennels">Kennels</span#}
@@ -49,7 +51,7 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li class="active">
-                            <a href="index.html" title="Home"><span data-hover="Home">Home</span></a>
+                            <a  href="{{ path('main_homepage') }}"  title="Home"><span data-hover="Home">Home</span></a>
                         </li>
                         <li>
                             <a href="prices.html" title="Prices"><span data-hover="Prices">Prices</span></a>
@@ -83,22 +85,40 @@
                         </li>
                         </li>
                         <li>
+                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                            <a> {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}
+                            </a>
+                        </li>
+<li>
 
-                            {% block loginlogout %}
                                 <div style="text-align:right;display:block;">
-                                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                                       <a> {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}
-                                       </a><br>
-                                           <a  href="{{ path('fos_user_security_logout') }}">
-                                            {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                                        </a>
+
+                                        <div class="dropdown2">
+                                            <button onclick="myFunction()" class="dropbtn">  <img src="{{ asset('images/my-profile.png')}}" style="width:30px;height: 30px;">
+                                            </button>
+                                            <div id="myDropdown" class="dropdown-content">
+                                                <a  href="{{ path('fos_user_profile_show') }}">
+                                                    {{ 'layout.show'|trans({}, 'FOSUserBundle') }}
+                                                </a>
+                                                <a  href="{{ path('fos_user_profile_edit') }}">
+                                                    {{ 'layout.edit'|trans({}, 'FOSUserBundle') }}
+                                                </a>
+                                                <a  href="{{ path('fos_user_security_logout') }}">
+                                                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                                                </a>
+                                            </div>
+                                        </div>
+
                                     {% else %}
                                         <a  href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
-                                    {% endif %}
-                                </div>
-                            {% endblock %}
-                        </li>
 
+                                        <a  href="{{ path('fos_user_registration_register') }}">{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</a>
+
+                                    {% endif %}
+                                    </div>
+                        </li>
+{#
+                        </li>#}
                     </ul>
                 </div>
             </div>
@@ -165,6 +185,9 @@
             <script src="js/bootstrap.min.js"></script>
             <script src="js/carouFredSel.js"></script>
             <script src="js/jquery.stellar.min.js"></script>
+            <script src="{{ asset('js/navdropdown.js') }}"></script>
+
+
             <script src="js/ekkoLightbox.js"></script>
             <script src="js/custom.js"></script>
         {% endblock %}

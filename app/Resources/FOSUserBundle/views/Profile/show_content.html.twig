@@ -1,6 +1,21 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
+<link href="{{ asset('css/myformulaire.css') }}" rel="stylesheet">
+
+
+<div class="login-page">
+
+    <div class="form">
+
+        <div class="login-form" >
+
+
 <div class="fos_user_user_show">
     <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
     <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
 </div>
+
+        </div>
+    </div>
+</div>
+
