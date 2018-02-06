@@ -113,7 +113,7 @@ img {
 }
 
 .navbar-default .navbar-nav li a {
-	color: #fff;
+	color: #585858;
 }
 
 .nav li a {
@@ -1779,6 +1779,7 @@ img {
 	}
 	
 	.purchase p {
+
 		line-height: 1.3em;
 	}
 	
