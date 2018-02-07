@@ -14,4 +14,16 @@ class DefaultController extends Controller
     {
         return $this->render('MainBundle:Default:services.html.twig');
     }
+    public function petsAction()
+    {
+        return $this->render('MainBundle:Default:pets.html.twig');
+    }
+    public function contactAction()
+    {
+        return $this->render('MainBundle:Default:contact.html.twig');
+    }
+    public function leisureAction()
+    {
+        return $this->render('MainBundle:Default:leisure.html.twig');
+    }
 }

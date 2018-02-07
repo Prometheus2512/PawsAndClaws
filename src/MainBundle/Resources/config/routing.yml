@@ -4,3 +4,12 @@ main_homepage:
 services_multi:
     path:     /services
     defaults: { _controller: MainBundle:Default:services}
+pets_multi:
+    path:     /pets
+    defaults: { _controller: MainBundle:Default:pets}
+contact:
+    path:     /contact
+    defaults: { _controller: MainBundle:Default:contact}
+leisure:
+    path:     /leisure
+    defaults: { _controller: MainBundle:Default:leisure}

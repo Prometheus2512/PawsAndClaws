@@ -27,7 +27,7 @@
     </head>
     <body>
     {% block nav %}
-        <!-- Navigation -->
+       {# <!-- Navigation -->
 
         <div style="background-color:#f5f5f5 ;opacity: 0.8;" class="navbar navbar-default navbar-fixed-top" role="navigation">
             <h1>
@@ -55,7 +55,7 @@
                             <a  href="{{ path('main_homepage') }}"  title="Home"><span data-hover="Home">Home</span></a>
                         </li>
                         <li>
-                            <a href="Pets.html" title="Pets"><span data-hover="Pets">Pets</span></a>
+                            <a href="{{ path('pets_multi') }}" title="Pets"><span data-hover="Pets">Pets</span></a>
                         </li>
                         <li>
                             <a href="Products.html" title="Products"><span data-hover="Products">Products</span></a>
@@ -67,7 +67,7 @@
                             <a  href="{{ path('services_multi') }}"  title="Services"><span data-hover="Services">Services</span></a>
                         </li>
 
-                        {#<li class="dropdown">
+                        <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown"><span data-hover="Services">Services</span> <b class="caret"></b></a>
                             <ul class="dropdown-menu">
 
@@ -82,7 +82,7 @@
                                 </li>
 
                             </ul>
-                        </li>#}
+                        </li>
                         <li>
                             <a href="Blog.html" title="Blog"><span data-hover="Blog">Blog</span></a>
                         </li>
@@ -120,8 +120,95 @@
                                     {% endif %}
                                     </div>
                         </li>
-{#
-                        </li>#}
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Navigation end -->
+#}
+
+        <!-- Navigation -->
+        <div style="background-color:#f5f5f5 ;opacity: 0.8;"  class="navbar navbar-default navbar-fixed-top affix inner-pages" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <h1><a class="navbar-brand" href="index.html"><strong>Pet</strong>Care<br />
+                            <span data-hover="Kennels">Kennels</span>
+                        </a></h1>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a  href="{{ path('main_homepage') }}"  title="Home"><span data-hover="Home">Home</span></a>
+                        </li>
+                        <li>
+                            <a href="{{ path('pets_multi') }}" title="Pets"><span data-hover="Pets">Pets</span></a>
+                        </li>
+                        <li>
+                            <a href="Products.html" title="Products"><span data-hover="Products">Products</span></a>
+                        </li>
+                        <li>
+                            <a href="{{ path('leisure') }}" title="Leisure"><span data-hover="Leisure">Leisure</span></a>
+                        </li>
+                        <li >
+                            <a  href="{{ path('services_multi') }}"  title="Services"><span data-hover="Services">Services</span></a>
+                        </li>
+                        <li>
+                            <a  {#href="{{ path('contact') }}" #} title="Blog"><span data-hover="Blog">Blog</span></a>
+                        </li>
+                        <li>
+                            <a  href="{{ path('contact') }}"  title="Contact"><span data-hover="Contact">Contact</span></a>
+                        </li>
+
+                        <li>
+                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                           {# <a> {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}
+                            </a>#}
+                        </li>
+                        <li>
+
+                            <div style="text-align:right;display:block;">
+
+                                <div class="dropdown2">
+                                    <button onclick="myFunction()" class="dropbtn btn btn-default {#btn-green#}"> {#My account#}  <img src="{{ asset('images/my-profile.png')}}" style="width:15px;height: 15px;">
+                                    </button>
+                                    <div id="myDropdown" class="dropdown-content">
+                                        <a  href="{{ path('fos_user_profile_show') }}">
+                                            {{ 'layout.show'|trans({}, 'FOSUserBundle') }}
+                                        </a>
+                                        <a  href="{{ path('fos_user_profile_edit') }}">
+                                            {{ 'layout.edit'|trans({}, 'FOSUserBundle') }}
+                                        </a>
+                                        <a  href="{{ path('fos_user_security_logout') }}">
+                                            {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="dropdown2">
+
+                                    <a  href="{{ path('main_homepage') }}"  title="Home"><button  class="dropbtn btn btn-default {#btn-green#}"> {#My account#}  <img src="{{ asset('images/notif.png')}}" style="width:15px;height: 15px;">
+                                        </button></a>
+
+                                </div>
+
+                                {% else %}
+                                    <li>
+                                    <a  href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                                     </li>
+                        <li>
+                                    <a  href="{{ path('fos_user_registration_register') }}">{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</a>
+                        </li>
+                                {% endif %}
+                            </div>
+                        </li>
+
                     </ul>
                 </div>
             </div>
