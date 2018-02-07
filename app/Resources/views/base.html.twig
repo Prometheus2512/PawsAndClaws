@@ -30,6 +30,15 @@
         <!-- Navigation -->
 
         <div style="background-color:#f5f5f5 ;opacity: 0.8;" class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <h1>
+
+                <a class="navbar-brand" href="{{ path('main_homepage') }}"  title="Home"   >
+                    <img src="{{ asset('images/logo1.png')}}" style="width:100px;height:80px;">
+
+                    <strong>Paws</strong>and<strong>Claws</strong>
+                </a>
+
+            </h1>
             <div class="container">
                 <div class="navbar-header" >
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -38,15 +47,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <h1>
 
-                        <a class="navbar-brand" href="{{ path('main_homepage') }}"  title="Home" >
-                            <img src="{{ asset('images/logo1.png')}}" style="width:60px;height:50px;">
-                            {#<strong>Pet</strong>Care<br />
-                            <span data-hover="Kennels">Kennels</span#}
-                        </a>
-
-                    </h1>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
@@ -54,34 +55,36 @@
                             <a  href="{{ path('main_homepage') }}"  title="Home"><span data-hover="Home">Home</span></a>
                         </li>
                         <li>
-                            <a href="prices.html" title="Prices"><span data-hover="Prices">Prices</span></a>
+                            <a href="Pets.html" title="Pets"><span data-hover="Pets">Pets</span></a>
                         </li>
                         <li>
-                            <a href="about.html" title="About us"><span data-hover="About us">About us</span></a>
+                            <a href="Products.html" title="Products"><span data-hover="Products">Products</span></a>
+                        </li>
+                        <li>
+                            <a href="Events.html" title="Events"><span data-hover="Events">Events</span></a>
+                        </li>
+                        <li >
+                            <a  href="{{ path('services_multi') }}"  title="Services"><span data-hover="Services">Services</span></a>
                         </li>
 
-                        <li class="dropdown">
-                            <a href="services.html" class="dropdown-toggle" data-toggle="dropdown"><span data-hover="Services">Services</span> <b class="caret"></b></a>
+                        {#<li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown"><span data-hover="Services">Services</span> <b class="caret"></b></a>
                             <ul class="dropdown-menu">
+
                                 <li>
-                                    <a href="adoption.html" title="Adoption centre">Adoption centre</a>
+                                    <a href="DogWalking.html" title="Dog Walking">Dog Walking</a>
                                 </li>
                                 <li>
-                                    <a href="services.html" title="Dog boarding kennels">Dog boarding kennels</a>
+                                    <a href="Veterinary.html" title="Veterinary">Veterinary </a>
                                 </li>
                                 <li>
-                                    <a href="services-single.html" title="Dog walking">Dog walking</a>
+                                    <a href="CareAdvice.html" title="Care Advice">Care Advice</a>
                                 </li>
-                                <li>
-                                    <a href="services.html" title="Home boarding">Home boarding</a>
-                                </li>
-                                <li>
-                                    <a href="services.html" title="Puppy crèche">Puppy crèche</a>
-                                </li>
+
                             </ul>
-                        </li>
+                        </li>#}
                         <li>
-                            <a href="contact.html" title="Contact us"><span data-hover="Contact us">Contact us</span></a>
+                            <a href="Blog.html" title="Blog"><span data-hover="Blog">Blog</span></a>
                         </li>
                         </li>
                         <li>

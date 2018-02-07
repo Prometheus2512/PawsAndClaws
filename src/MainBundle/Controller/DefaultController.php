@@ -10,4 +10,8 @@ class DefaultController extends Controller
     {
         return $this->render('MainBundle:Default:index.html.twig');
     }
+    public function servicesAction()
+    {
+        return $this->render('MainBundle:Default:services.html.twig');
+    }
 }

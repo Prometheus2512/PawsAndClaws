@@ -1,3 +1,6 @@
 main_homepage:
     path:     /
     defaults: { _controller: MainBundle:Default:index }
+services_multi:
+    path:     /services
+    defaults: { _controller: MainBundle:Default:services}
