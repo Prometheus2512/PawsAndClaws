@@ -1,7 +1,7 @@
 {%  extends 'base.html.twig' %}
 {% block content %}
     <div style="
-    padding-top: 80px;
+    padding-top: 40px;
     padding-right: 30px;
     padding-bottom: 50px;
     padding-left: 80px;
@@ -26,7 +26,7 @@
             </div>
             <div class="row adoption">
                 <div class="col-md-4">
-                    <a href="adoption-single.html" title=""><img src="images/dog-4.png" alt="Saint Bernard" /></a>
+                    <a href="{{ path('singlepet') }}" title=""><img src="images/dog-4.png" alt="Saint Bernard" /></a>
                     <div class="title">
                         <h5>
                             <span data-hover="Gerard">Gerard</span>
@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <a href="adoption-single.html" title="Beagle"><img src="images/dog-5.png" alt="Beagle" /></a>
+                    <a href="{{ path('singlepet') }}"  title="Beagle"><img src="images/dog-5.png" alt="Beagle" /></a>
                     <div class="title">
                         <h5>
                             <span data-hover="Rex">Rex</span>

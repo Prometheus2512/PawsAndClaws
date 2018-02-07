@@ -26,4 +26,12 @@ class DefaultController extends Controller
     {
         return $this->render('MainBundle:Default:leisure.html.twig');
     }
+    public function productsAction()
+    {
+        return $this->render('MainBundle:Default:products.html.twig');
+    }
+    public function singlepetAction()
+    {
+        return $this->render('MainBundle:Default:singlepet.html.twig');
+    }
 }

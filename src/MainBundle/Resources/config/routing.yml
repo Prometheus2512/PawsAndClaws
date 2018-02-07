@@ -13,3 +13,10 @@ contact:
 leisure:
     path:     /leisure
     defaults: { _controller: MainBundle:Default:leisure}
+products:
+    path:     /products
+    defaults: { _controller: MainBundle:Default:products}
+singlepet:
+    path:     /singlepet
+    defaults: { _controller: MainBundle:Default:singlepet}
+
