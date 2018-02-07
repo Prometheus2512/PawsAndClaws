@@ -38,8 +38,11 @@ fos_user:
     firewall_name: main
     user_class: MainBundle\Entity\User
     from_email:
-        address: "mohamedridha.mejri@esprit.tn"
-        sender_name: "mohamedridha.mejri@esprit.tn"
+        address: PawsAndClawsnoreply@gmail.com
+        sender_name: Paws and Claws
+    registration:
+            confirmation:
+                enabled: true
 # Twig Configuration
 twig:
     debug: '%kernel.debug%'

@@ -3,5 +3,20 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block fos_user_content %}
-    <p>{{ 'registration.check_email'|trans({'%email%': user.email}) }}</p>
+
+
+    <link href="{{ asset('css/myformulaire.css') }}" rel="stylesheet">
+
+    <div class="login-page">
+
+        <div class="form">
+
+            <div class="login-form" >
+                <p>{{ 'registration.check_email'|trans({'%email%': user.email}) }}</p>
+
+            </div>
+        </div>
+    </div>
+
+
 {% endblock fos_user_content %}
