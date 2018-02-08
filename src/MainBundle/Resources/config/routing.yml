@@ -19,4 +19,11 @@ products:
 singlepet:
     path:     /singlepet
     defaults: { _controller: MainBundle:Default:singlepet}
+admin-index:
+    path:     /a/index
+    defaults: { _controller: MainBundle:Admin:index}
+admin-tables:
+    path:     /a/tables
+    defaults: { _controller: MainBundle:Admin:tables}
+
 
