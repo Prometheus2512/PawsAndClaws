@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="edf68f13-b57a-42d8-9cf9-f0a8d2fdb0ae" name="Default" comment="">
+    <list default="true" id="edf68f13-b57a-42d8-9cf9-f0a8d2fdb0ae" name="Default" comment="Other text modification">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/base.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MainBundle/Resources/views/Default/contact.html.twig" afterPath="$PROJECT_DIR$/src/MainBundle/Resources/views/Default/contact.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MainBundle/Resources/views/Default/index.html.twig" afterPath="$PROJECT_DIR$/src/MainBundle/Resources/views/Default/index.html.twig" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,8 +19,8 @@
       <file leaf-file-name="base.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2788">
-              <caret line="4" column="41" lean-forward="false" selection-start-line="4" selection-start-column="41" selection-end-line="4" selection-end-column="41" />
+            <state relative-caret-position="3604">
+              <caret line="212" column="20" lean-forward="false" selection-start-line="212" selection-start-column="20" selection-end-line="212" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -33,11 +36,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="layout.html.twig" pinned="false" current-in-tab="false">
+      <file leaf-file-name="layout.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Resources/FOSUserBundle/views/layout.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="272">
-              <caret line="16" column="22" lean-forward="false" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
+              <caret line="16" column="29" lean-forward="false" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -46,70 +49,8 @@
       <file leaf-file-name="singlepet.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MainBundle/Resources/views/Default/singlepet.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-34">
+            <state relative-caret-position="-85">
               <caret line="30" column="87" lean-forward="false" selection-start-line="30" selection-start-column="87" selection-end-line="30" selection-end-column="87" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/MainBundle/Resources/views/Default/index.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="271" column="14" lean-forward="false" selection-start-line="271" selection-start-column="14" selection-end-line="271" selection-end-column="14" />
-              <folding>
-                <marker date="1518120341575" expanded="false" signature="13417:13422" ph="&amp;" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="config.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/config/config.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="697">
-              <caret line="41" column="21" lean-forward="false" selection-start-line="41" selection-start-column="21" selection-end-line="41" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="config_dev.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/config/config_dev.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
-              <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="check_email.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Registration/check_email.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="86" lean-forward="false" selection-start-line="14" selection-start-column="86" selection-end-line="14" selection-end-column="86" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="confirmed.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Registration/confirmed.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="2" lean-forward="false" selection-start-line="6" selection-start-column="2" selection-end-line="20" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="email.txt.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Registration/email.txt.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -148,6 +89,7 @@
     </findStrings>
   </component>
   <component name="Git.Settings">
+    <option name="UPDATE_TYPE" value="MERGE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
@@ -173,7 +115,6 @@
         <option value="$PROJECT_DIR$/src/MainBundle/Resources/views/Default/Pets.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Security/login_content.html.twig" />
         <option value="$PROJECT_DIR$/web/css/navdropdown.css" />
-        <option value="$PROJECT_DIR$/src/MainBundle/Resources/views/Default/contact.html.twig" />
         <option value="$PROJECT_DIR$/src/MainBundle/Resources/views/Default/events.html.twig" />
         <option value="$PROJECT_DIR$/src/MainBundle/Resources/views/Default/leisure.html.twig" />
         <option value="$PROJECT_DIR$/src/MainBundle/Resources/views/Default/services.html.twig" />
@@ -185,8 +126,9 @@
         <option value="$PROJECT_DIR$/app/config/config.yml" />
         <option value="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Registration/check_email.html.twig" />
         <option value="$PROJECT_DIR$/app/config/parameters.yml" />
-        <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
         <option value="$PROJECT_DIR$/src/MainBundle/Resources/views/Default/index.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
+        <option value="$PROJECT_DIR$/src/MainBundle/Resources/views/Default/contact.html.twig" />
       </list>
     </option>
   </component>
@@ -218,6 +160,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -287,7 +230,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -302,6 +244,157 @@
       <recent name="$PROJECT_DIR$/web/images" />
       <recent name="$PROJECT_DIR$/app/Resources/FOSUserBundle/views" />
     </key>
+  </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/MainBundle/Resources/config/routing.yml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/MainBundle/Resources/views/Default/leisure.html.twig</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/MainBundle/Resources/views/Default/services.html.twig</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/.htaccess</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/Resources/views/dashbase.html.twig</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/MainBundle/Controller/AdminController.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/MainBundle/Resources/views/admin/charts.html.twig</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/MainBundle/Resources/views/admin/forms.html.twig</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/MainBundle/Resources/views/admin/icons.html.twig</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/MainBundle/Resources/views/admin/index.html.twig</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/MainBundle/Resources/views/admin/login.html.twig</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/MainBundle/Resources/views/admin/panels.html.twig</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/MainBundle/Resources/views/admin/tables.html.twig</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/MainBundle/Resources/views/admin/widgets.html.twig</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/template/css/bootstrap-table.css</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/template/css/bootstrap-theme.css</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/template/css/bootstrap-theme.css.map</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/template/css/bootstrap-theme.min.css</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/template/css/bootstrap.css</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/template/css/bootstrap.css.map</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/template/css/bootstrap.min.css</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/template/css/datepicker.css</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/template/css/datepicker3.css</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/template/css/styles.css</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/template/fonts/glyphicons-halflings-regular.eot</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/template/fonts/glyphicons-halflings-regular.svg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/template/fonts/glyphicons-halflings-regular.ttf</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/template/fonts/glyphicons-halflings-regular.woff</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/template/js/bootstrap-datepicker.js</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/template/js/bootstrap-table.js</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/template/js/bootstrap.js</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/template/js/bootstrap.min.js</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/template/js/chart-data.js</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/template/js/chart.min.js</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/template/js/easypiechart-data.js</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/template/js/easypiechart.js</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/template/js/html5shiv.min.js</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/template/js/jquery-1.11.1.min.js</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/template/js/lumino.glyphs.js</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/template/js/respond.min.js</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/template/tables/data1.json</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/template/tables/data2.json</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -340,7 +433,7 @@
       <workItem from="1518013198565" duration="8228000" />
       <workItem from="1518035304666" duration="3472000" />
       <workItem from="1518083268139" duration="4617000" />
-      <workItem from="1518119395638" duration="1046000" />
+      <workItem from="1518119395638" duration="4390000" />
     </task>
     <task id="LOCAL-00001" summary="A little about us modification">
       <created>1518088153888</created>
@@ -356,28 +449,34 @@
       <option name="project" value="LOCAL" />
       <updated>1518120435498</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Keep in touch modification">
+      <created>1518120456886</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1518120456886</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="84452000" />
+    <option name="totallyTimeSpent" value="87796000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="57" y="-8" width="1317" height="784" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27128083" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27128083" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32973805" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32973805" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32973805" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32973805" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -416,7 +515,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="A little about us modification" />
     <MESSAGE value="Keep in touch modification" />
-    <option name="LAST_COMMIT_MESSAGE" value="Keep in touch modification" />
+    <MESSAGE value="Other text modification" />
+    <option name="LAST_COMMIT_MESSAGE" value="Other text modification" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -660,13 +760,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MainBundle/Resources/views/Default/contact.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="29" column="20" lean-forward="false" selection-start-line="29" selection-start-column="20" selection-end-line="32" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/MainBundle/Resources/views/Default/products.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -678,22 +771,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/config_dev.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/config.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="41" column="21" lean-forward="false" selection-start-line="41" selection-start-column="21" selection-end-line="41" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -723,16 +800,58 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Registration/check_email.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
+        <state relative-caret-position="149">
           <caret line="14" column="86" lean-forward="false" selection-start-line="14" selection-start-column="86" selection-end-line="14" selection-end-column="86" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/config_dev.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="41" column="21" lean-forward="false" selection-start-line="41" selection-start-column="21" selection-end-line="41" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MainBundle/Resources/views/Default/contact.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="14" column="90" lean-forward="false" selection-start-line="14" selection-start-column="90" selection-end-line="14" selection-end-column="90" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MainBundle/Resources/views/Default/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-769">
+          <caret line="151" column="47" lean-forward="false" selection-start-line="151" selection-start-column="47" selection-end-line="151" selection-end-column="47" />
+          <folding>
+            <marker date="1518121136869" expanded="false" signature="13051:13056" ph="&amp;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MainBundle/Resources/views/Default/singlepet.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-85">
+          <caret line="30" column="87" lean-forward="false" selection-start-line="30" selection-start-column="87" selection-end-line="30" selection-end-column="87" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2788">
-          <caret line="4" column="41" lean-forward="false" selection-start-line="4" selection-start-column="41" selection-end-line="4" selection-end-column="41" />
+        <state relative-caret-position="3604">
+          <caret line="212" column="20" lean-forward="false" selection-start-line="212" selection-start-column="20" selection-end-line="212" selection-end-column="20" />
           <folding />
         </state>
       </provider>
@@ -740,26 +859,8 @@
     <entry file="file://$PROJECT_DIR$/app/Resources/FOSUserBundle/views/layout.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
-          <caret line="16" column="22" lean-forward="false" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
+          <caret line="16" column="29" lean-forward="false" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MainBundle/Resources/views/Default/singlepet.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-34">
-          <caret line="30" column="87" lean-forward="false" selection-start-line="30" selection-start-column="87" selection-end-line="30" selection-end-column="87" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MainBundle/Resources/views/Default/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="271" column="14" lean-forward="false" selection-start-line="271" selection-start-column="14" selection-end-line="271" selection-end-column="14" />
-          <folding>
-            <marker date="1518120341575" expanded="false" signature="13417:13422" ph="&amp;" />
-          </folding>
         </state>
       </provider>
     </entry>
