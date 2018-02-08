@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="edf68f13-b57a-42d8-9cf9-f0a8d2fdb0ae" name="Default" comment="A little about us modification">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/PawsAndClaws.iml" afterPath="$PROJECT_DIR$/.idea/PawsAndClaws.iml" />
+    <list default="true" id="edf68f13-b57a-42d8-9cf9-f0a8d2fdb0ae" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/base.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/symfony_requirements" afterPath="$PROJECT_DIR$/bin/symfony_requirements" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.lock" afterPath="$PROJECT_DIR$/composer.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MainBundle/Resources/views/Default/index.html.twig" afterPath="$PROJECT_DIR$/src/MainBundle/Resources/views/Default/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/var/SymfonyRequirements.php" afterPath="$PROJECT_DIR$/var/SymfonyRequirements.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/config.php" afterPath="$PROJECT_DIR$/web/config.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -347,7 +340,7 @@
       <workItem from="1518013198565" duration="8228000" />
       <workItem from="1518035304666" duration="3472000" />
       <workItem from="1518083268139" duration="4617000" />
-      <workItem from="1518119395638" duration="985000" />
+      <workItem from="1518119395638" duration="1046000" />
     </task>
     <task id="LOCAL-00001" summary="A little about us modification">
       <created>1518088153888</created>
@@ -356,11 +349,18 @@
       <option name="project" value="LOCAL" />
       <updated>1518088153888</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Keep in touch modification">
+      <created>1518120435497</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1518120435498</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="84391000" />
+    <option name="totallyTimeSpent" value="84452000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="57" y="-8" width="1317" height="784" extended-state="6" />
@@ -415,7 +415,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="A little about us modification" />
-    <option name="LAST_COMMIT_MESSAGE" value="A little about us modification" />
+    <MESSAGE value="Keep in touch modification" />
+    <option name="LAST_COMMIT_MESSAGE" value="Keep in touch modification" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
