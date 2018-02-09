@@ -20,9 +20,9 @@ singlepet:
     path:     /singlepet
     defaults: { _controller: MainBundle:Default:singlepet}
 admin-index:
-     path:     /a/index
+     path:     /admin/index
      defaults: { _controller: MainBundle:Admin:index}
 
 admin-tables:
-     path:     /a/tables
+     path:     /admin/tables
      defaults: { _controller: MainBundle:Admin:tables}
