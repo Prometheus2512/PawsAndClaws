@@ -43,40 +43,5 @@ class User extends BaseUser
     {
         $this->animals = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
-    /**
-     * Add animal.
-     *
-     * @param \MainBundle\Entity\Animal $animal
-     *
-     * @return User
-     */
-    public function addAnimal(\MainBundle\Entity\Animal $animal)
-    {
-        $this->animals[] = $animal;
-
-        return $this;
-    }
-
-    /**
-     * Remove animal.
-     *
-     * @param \MainBundle\Entity\Animal $animal
-     *
-     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
-     */
-    public function removeAnimal(\MainBundle\Entity\Animal $animal)
-    {
-        return $this->animals->removeElement($animal);
-    }
-
-    /**
-     * Get animals.
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getAnimals()
-    {
-        return $this->animals;
-    }
 }
+
