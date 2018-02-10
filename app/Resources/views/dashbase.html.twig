@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Gestion Stagaires - Dashboard</title>
+    <title>DASHBOARD</title>
     {#	href="{{ asset('css/navdropdown.css') }}"	#}
 
     <link href="{{ asset('template/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -32,8 +32,10 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#"><span>Gestion Stagaires</span>Admin</a>
-            
+            <a class="navbar-brand" href="#"><span>PAWSandCLAWS</span>Admin</a>
+
+
+
 
             <ul class="user-menu">
                 <li class="dropdown pull-right">
@@ -44,6 +46,13 @@
                         <li><a href="{{ path('fos_user_security_logout') }}"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Logout</a></li>
 
                     </ul>
+                </li>
+            </ul>
+
+            <ul class="user-menu">
+                <li class="dropdown pull-right">
+                    <a  href="{{ path('main_homepage') }}" class="dropdown-toggle" ><svg class="glyph stroked m "><use xlink:href="#stroked-home"></use></svg> Home   | </a>
+
                 </li>
             </ul>
         </div>

@@ -1,4 +1,15 @@
+{#
 {% extends 'base.html.twig' %}
+#}
+{% extends is_granted("ROLE_ADMIN")  ? 'dashbase.html.twig' : 'base.html.twig' %}
+{#
+{% if is_granted("ROLE_ADMIN") %}
+{% extends 'dashbase.html.twig' %}
+{% else %}
+    {% extends 'base.html.twig' %}
+{% endif %}
+#}
+
 {% block loginlogout %}
 <div style="text-align:right;display:block;">
     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
