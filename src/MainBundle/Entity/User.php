@@ -44,6 +44,10 @@ class User extends BaseUser
         $this->animals = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+
+
+
+
     /**
      * Add animal.
      *

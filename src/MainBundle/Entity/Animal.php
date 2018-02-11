@@ -37,18 +37,18 @@ class Animal
     private $name;
 
 
-    const SEX_MALE = 'Male';
-    const SEX_FEMALE = 'Female';
+    const GENDER_MALE = 'Male';
+    const GENDER_FEMALE = 'Female';
 
-    /** @ORM\Column(type="string") */
-    private $sex;
+    /** @ORM\Column(type="string", length=20) */
+    private $gender;
 
-    public function setSex($sex)
+    public function setGender($gender)
     {
-        if (!in_array($sex, array(self::SEX_MALE, self::SEX_FEMALE))) {
+        if (!in_array($gender, array(self::GENDER_MALE, self::GENDER_FEMALE))) {
             throw new \InvalidArgumentException("Invalid SEX");
         }
-        $this->sex = $sex;
+        $this->gender = $gender;
     }
 
 
@@ -57,8 +57,15 @@ class Animal
     private $species;
 
     /**
+     * @ORM\Column(type="string", length=100)
+     */
+
+    private $breed;
+
+    /**
      * @ORM\Column(type="integer")
      */
+
     private $age;
 
     /**
@@ -67,10 +74,23 @@ class Animal
     private $size;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="boolean")
      */
-    private $weight;
+    private $spayed;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $liveWcats;
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $homeTest;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $childFriend;
     /*private $photo;*/
 
     const STATUS_ADOPTED = 'Adopted';
@@ -87,7 +107,6 @@ class Animal
         }
         $this->status = $status;
     }
-
 
 
 
@@ -127,13 +146,13 @@ class Animal
     }
 
     /**
-     * Get sex.
+     * Get gender.
      *
      * @return string
      */
-    public function getSex()
+    public function getGender()
     {
-        return $this->sex;
+        return $this->gender;
     }
 
     /**
@@ -158,6 +177,30 @@ class Animal
     public function getSpecies()
     {
         return $this->species;
+    }
+
+    /**
+     * Set breed.
+     *
+     * @param string $breed
+     *
+     * @return Animal
+     */
+    public function setBreed($breed)
+    {
+        $this->breed = $breed;
+
+        return $this;
+    }
+
+    /**
+     * Get breed.
+     *
+     * @return string
+     */
+    public function getBreed()
+    {
+        return $this->breed;
     }
 
     /**
@@ -209,27 +252,99 @@ class Animal
     }
 
     /**
-     * Set weight.
+     * Set spayed.
      *
-     * @param float $weight
+     * @param bool $spayed
      *
      * @return Animal
      */
-    public function setWeight($weight)
+    public function setSpayed($spayed)
     {
-        $this->weight = $weight;
+        $this->spayed = $spayed;
 
         return $this;
     }
 
     /**
-     * Get weight.
+     * Get spayed.
      *
-     * @return float
+     * @return bool
      */
-    public function getWeight()
+    public function getSpayed()
     {
-        return $this->weight;
+        return $this->spayed;
+    }
+
+    /**
+     * Set liveWcats.
+     *
+     * @param bool $liveWcats
+     *
+     * @return Animal
+     */
+    public function setLiveWcats($liveWcats)
+    {
+        $this->liveWcats = $liveWcats;
+
+        return $this;
+    }
+
+    /**
+     * Get liveWcats.
+     *
+     * @return bool
+     */
+    public function getLiveWcats()
+    {
+        return $this->liveWcats;
+    }
+
+    /**
+     * Set homeTest.
+     *
+     * @param bool $homeTest
+     *
+     * @return Animal
+     */
+    public function setHomeTest($homeTest)
+    {
+        $this->homeTest = $homeTest;
+
+        return $this;
+    }
+
+    /**
+     * Get homeTest.
+     *
+     * @return bool
+     */
+    public function getHomeTest()
+    {
+        return $this->homeTest;
+    }
+
+    /**
+     * Set childFriend.
+     *
+     * @param bool $childFriend
+     *
+     * @return Animal
+     */
+    public function setChildFriend($childFriend)
+    {
+        $this->childFriend = $childFriend;
+
+        return $this;
+    }
+
+    /**
+     * Get childFriend.
+     *
+     * @return bool
+     */
+    public function getChildFriend()
+    {
+        return $this->childFriend;
     }
 
     /**
