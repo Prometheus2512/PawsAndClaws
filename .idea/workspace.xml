@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="edf68f13-b57a-42d8-9cf9-f0a8d2fdb0ae" name="Default" comment="Other text modification">
+    <list default="true" id="edf68f13-b57a-42d8-9cf9-f0a8d2fdb0ae" name="Default" comment="Product entity created">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MainBundle/Entity/Animal.php" afterPath="$PROJECT_DIR$/src/MainBundle/Entity/Animal.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MainBundle/Entity/Event.php" afterPath="$PROJECT_DIR$/src/MainBundle/Entity/Event.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MainBundle/Entity/Reservation.php" afterPath="$PROJECT_DIR$/src/MainBundle/Entity/Reservation.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MainBundle/Entity/User.php" afterPath="$PROJECT_DIR$/src/MainBundle/Entity/User.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -102,8 +98,8 @@
       <file leaf-file-name="Product.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/MainBundle/Entity/Product.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="17" lean-forward="false" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
+            <state relative-caret-position="272">
+              <caret line="16" column="6" lean-forward="true" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -414,7 +410,7 @@
       <workItem from="1518083268139" duration="4617000" />
       <workItem from="1518119395638" duration="6108000" />
       <workItem from="1518132208297" duration="255000" />
-      <workItem from="1518478171186" duration="524000" />
+      <workItem from="1518478171186" duration="825000" />
     </task>
     <task id="LOCAL-00001" summary="A little about us modification">
       <created>1518088153888</created>
@@ -444,11 +440,18 @@
       <option name="project" value="LOCAL" />
       <updated>1518124031385</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Other text modification">
+      <created>1518478725759</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1518478725759</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="90293000" />
+    <option name="totallyTimeSpent" value="90594000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="57" y="-8" width="1317" height="784" extended-state="6" />
@@ -910,8 +913,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MainBundle/Entity/Product.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="17" lean-forward="false" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
+        <state relative-caret-position="272">
+          <caret line="16" column="6" lean-forward="true" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
           <folding />
         </state>
       </provider>
