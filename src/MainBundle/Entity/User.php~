@@ -40,6 +40,10 @@ class User extends BaseUser
      * @ORM\Column(type="string", length=100)
      */
     protected $address;
+    /**
+     * @ORM\Column(type="string",length=100)
+     */
+    protected $image;
 
 
     /**
@@ -181,4 +185,28 @@ class User extends BaseUser
 
 
 
+
+    /**
+     * Set phonenumber
+     *
+     * @param string $phonenumber
+     *
+     * @return User
+     */
+    public function setPhonenumber($phonenumber)
+    {
+        $this->phonenumber = $phonenumber;
+
+        return $this;
+    }
+
+    /**
+     * Get phonenumber
+     *
+     * @return string
+     */
+    public function getPhonenumber()
+    {
+        return $this->phonenumber;
+    }
 }

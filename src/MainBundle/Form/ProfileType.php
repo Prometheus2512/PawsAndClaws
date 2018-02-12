@@ -10,6 +10,7 @@
 namespace MainBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 class ProfileType extends AbstractType
@@ -27,12 +28,12 @@ class ProfileType extends AbstractType
     public function getParent()
     {
 
-        return 'FOS\UserBundle\Form\Type\RegistrationFormType';
+        return 'FOS\UserBundle\Form\Type\ProfileFormType';
 
     }
 
     public function getBlockPrefix()
     {
-        return 'main_user_registration';
+        return 'main_user_profile';
     }
 }

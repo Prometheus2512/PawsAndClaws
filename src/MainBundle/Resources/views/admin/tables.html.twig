@@ -14,9 +14,16 @@
                             <th style="text-align:center;">id</th>
                             <th style="text-align:center;">username</th>
                             <th style="text-align:center;">email</th>
+
+                            <th style="text-align:center;">firstname</th>
+                            <th style="text-align:center;" >lastname</th>
+                            <th style="text-align:center;" > phone number</th>
+                            <th style="text-align:center;" > address</th>
                             <th style="text-align:center;">roles</th>
-                            <th style="text-align:center;" >activation</th>
+
                             <th style="text-align:center;" > last login</th>
+                            <th style="text-align:center;" >activation</th>
+                            {#<th>today</th>#}
                         </tr>
 
                         {% for user in users %}
@@ -26,14 +33,30 @@
                                 <td style="text-align:center;">{{ user.email|e }} </td>
 
 
+
+                              {#  <th style="text-align:center;">firstname</th>
+                                <th style="text-align:center;" >lastname</th>
+                                <th style="text-align:center;" > phone number</th>
+                                <th style="text-align:center;" > address</th>#}
+                                <td style="text-align: center;"> {{ user.firstname }}</td>
+
+                                <td style="text-align: center;"> {{ user.lastname }}</td>
+
+                                <td style="text-align: center;"> {{ user.phonenumber }}</td>
+
+                                <td style="text-align: center;"> {{ user.address }}</td>
+
                                 <td style="text-align:center;">
                                     {% for role in user.roles %}
 
-                                                {{ role }} <br>
+                                        {{ role }} <br>
 
-                                        {% endfor %}
+                                    {% endfor %}
 
                                 </td>
+
+                                <td style="text-align:center;"> {{ user.lastLogin|date('Y-m-d') }}</td>
+
                                 <td  style="text-align:center;">
                                     {% if user.enabled == 1 %}
                                         <svg class="glyph stroked checkmark" style="color: green; height: 30px; width: 30px;"><use xlink:href="#stroked-checkmark"/></svg>
@@ -44,10 +67,7 @@
 
 
                                 </td>
-                                <td style="text-align:center;"> {{ user.lastLogin|date('Y-m-d') }}</td>
-
-
-
+                             {#   <td>{{ today }}</td>#}
                             </tr>
 
                         {% endfor %}
