@@ -38,3 +38,12 @@ services:
     authentication.handler.login_success_handler:
         class:  MainBundle\Security\LoginSuccessHandler
         arguments:  ['@router', '@security.authorization_checker']
+    app.form.registration:
+           class: MainBundleFormRegistrationType
+           tags:
+               - { name: form.type, alias: main_user_registration }
+
+    app.form.profile:
+           class: MainBundleFormProfileType
+           tags:
+               - { name: form.type, alias: main_user_profile }

@@ -43,6 +43,11 @@ fos_user:
     registration:
             confirmation:
                 enabled: true
+            form:
+                type: MainBundle\Form\RegistrationType
+    profile:
+            form:
+                type: MainBundle\Form\ProfileType
 # Twig Configuration
 twig:
     debug: '%kernel.debug%'
