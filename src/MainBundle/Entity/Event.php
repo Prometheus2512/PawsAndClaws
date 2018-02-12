@@ -344,4 +344,3 @@ class Event
         return $this->hostid;
     }
 }
-

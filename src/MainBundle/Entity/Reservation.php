@@ -91,4 +91,3 @@ class Reservation
         return $this->eventid;
     }
 }
-
