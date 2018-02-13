@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h1>Event</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ event.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ event.name }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ event.description }}</td>
+            </tr>
+            <tr>
+                <th>Beginningdate</th>
+                <td>{% if event.beginningDate %}{{ event.beginningDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Endingdate</th>
+                <td>{% if event.endingDate %}{{ event.endingDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td>{{ event.address }}</td>
+            </tr>
+            <tr>
+                <th>Posx</th>
+                <td>{{ event.posx }}</td>
+            </tr>
+            <tr>
+                <th>Posy</th>
+                <td>{{ event.posy }}</td>
+            </tr>
+            <tr>
+                <th>Capacity</th>
+                <td>{{ event.capacity }}</td>
+            </tr>
+            <tr>
+                <th>Cost</th>
+                <td>{{ event.cost }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+
+        <li>
+            <a href="{{ path('event_index') }}">Back to the list</a>
+        </li>
+        {% if app.user.id ==  event.hostid.id or is_granted('ROLE_ADMIN')  %}
+        <li>
+            <a href="{{ path('event_edit', { 'id': event.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+        {% endif %}
+    </ul>
+{% endblock %}

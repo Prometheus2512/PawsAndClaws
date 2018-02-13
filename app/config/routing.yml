@@ -1,3 +1,7 @@
+main_event:
+    resource: "@MainBundle/Controller/EventController.php"
+    type:     annotation
+
 main:
     resource: "@MainBundle/Resources/config/routing.yml"
     prefix:   /
