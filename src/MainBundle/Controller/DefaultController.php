@@ -34,4 +34,8 @@ class DefaultController extends Controller
     {
         return $this->render('MainBundle:Default:singlepet.html.twig');
     }
+    public function calendarAction()
+    {
+        return $this->render('MainBundle:Default:calendar.html.twig');
+    }
 }

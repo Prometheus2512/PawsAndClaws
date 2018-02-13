@@ -31,6 +31,19 @@ class EventController extends Controller
         ));
     }
 
+
+    public function myeventsAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user=$this->getUser();
+        $uid=$user->getid();
+
+        $events = $em->getRepository('MainBundle:Event')->findBy(['hostid' => $uid]);
+
+        return $this->render('event/myevents.html.twig', array(
+            'events' => $events,
+        ));
+    }
     /**
      * Creates a new event entity.
      *

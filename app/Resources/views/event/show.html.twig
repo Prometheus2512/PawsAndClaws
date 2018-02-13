@@ -53,7 +53,7 @@
         <li>
             <a href="{{ path('event_index') }}">Back to the list</a>
         </li>
-        {% if app.user.id ==  event.hostid.id or is_granted('ROLE_ADMIN')  %}
+
         <li>
             <a href="{{ path('event_edit', { 'id': event.id }) }}">Edit</a>
         </li>
@@ -62,6 +62,7 @@
                 <input type="submit" value="Delete">
             {{ form_end(delete_form) }}
         </li>
-        {% endif %}
+
     </ul>
+
 {% endblock %}

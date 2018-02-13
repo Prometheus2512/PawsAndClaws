@@ -26,3 +26,9 @@ admin-index:
 admin-tables:
      path:     /admin/tables
      defaults: { _controller: MainBundle:Admin:tables}
+calendar:
+     path:     /calendar
+     defaults: { _controller: MainBundle:Default:calendar}
+myevents:
+     path:     /myevents
+     defaults: { _controller: MainBundle:Event:myevents}

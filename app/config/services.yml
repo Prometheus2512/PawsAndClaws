@@ -47,3 +47,8 @@ services:
            class: MainBundleFormProfileType
            tags:
                - { name: form.type, alias: main_user_profile }
+services:
+   app_bundle.service.listener:
+    class: AppBundle\Listener\LoadDataListener
+   tags:
+   - { name: 'kernel.event_listener', event: 'fullcalendar.set_data', method: loadData }

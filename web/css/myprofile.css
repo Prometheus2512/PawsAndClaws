@@ -9,7 +9,12 @@
 }
 
 body {
-    background: #65c178;
+    background: #95d590 ;
+
+    /*
+    background-image: url(../images/dog_face_wind_glasses_96452_1920x1080.jpg) ;
+    */
+
 
     font-family: 'Open Sans', Arial, Helvetica, Sans-serif, Verdana, Tahoma;
 }
