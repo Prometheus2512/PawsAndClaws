@@ -67,6 +67,10 @@ body {
     -moz-osx-font-smoothing: grayscale;}
 body {
     background-image: url(../images/dog_face_wind_glasses_96452_1920x1080.jpg) ;
+    background-attachment: inherit;
+
+
+
 }
 
 

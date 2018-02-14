@@ -11,12 +11,12 @@ class AdminController extends Controller
         return $this->render('MainBundle:admin:index.html.twig');
     }
 
-    public function tablesAction() {
+    public function usertableAction() {
         //access user manager services
 
         $userManager = $this->get('fos_user.user_manager');
         $users = $userManager->findUsers();
 
-        return $this->render('MainBundle:admin:tables.html.twig', array('users' =>   $users));
+        return $this->render('MainBundle:admin:usertable.html.twig', array('users' =>   $users));
     }
 }

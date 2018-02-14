@@ -20,14 +20,13 @@ thead {
 }
 
 thead th {
-
     font-family: 'Patua One', cursive;
     font-size:16px;
     font-weight:400;
     color:#fff;
     text-shadow:1px 1px 0px rgba(0,0,0,0.5);
-    text-align:left;
-    padding:20px;
+    text-align:center;
+    padding:2px;
     background-color:#65c178;
     linear-gradient:#4a5564;
     border-top:1px solid #858d99;}
@@ -46,7 +45,7 @@ tbody tr td {
     font-weight:400;
     color:#5f6062;
     font-size:13px;
-    padding:20px 20px 20px 20px;
+    padding:2px 2px 2px 2px;
     border-bottom:1px solid #e0e0e0;
 
 }

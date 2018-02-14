@@ -1,7 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-    <h1>Event edit</h1>
+
+{% block content %}
+    <body style="background-size: 180%">
+<link href="{{ asset('css/myformulaire.css') }}" rel="stylesheet">
+
+
+
+
+<div class="login-page">
+
+    <div class="form">
+
+        <div class="login-form" >
+
+        <h1>Event edit</h1>
 
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
@@ -18,4 +31,10 @@
             {{ form_end(delete_form) }}
         </li>
     </ul>
+
+        </div>
+    </div>
+</div>
+
+    </body>
 {% endblock %}
