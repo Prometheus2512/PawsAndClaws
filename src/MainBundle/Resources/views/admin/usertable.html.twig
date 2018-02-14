@@ -1,9 +1,10 @@
 {% extends 'dashbase.html.twig' %}
 {% block content %}
-<style href="{{ asset('template/css/table.css') }}"></style>
 
+{#<style href="{{ asset('template/css/table.css') }}"></style>#}
+    <link href="{{ asset('css/table.css') }}" rel="stylesheet">
 
-    <div class="row">
+   {# <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default" style="text-align: center">
                 <div class="panel-heading" style="text-align: center">ACCOUNTS</div>
@@ -23,7 +24,7 @@
 
                             <th style="text-align:center;" > last login</th>
                             <th style="text-align:center;" >activation</th>
-                            {#<th>today</th>#}
+                            <th>today</th>
                         </tr>
 
                         {% for user in users %}
@@ -34,10 +35,10 @@
 
 
 
-                              {#  <th style="text-align:center;">firstname</th>
+                                <th style="text-align:center;">firstname</th>
                                 <th style="text-align:center;" >lastname</th>
                                 <th style="text-align:center;" > phone number</th>
-                                <th style="text-align:center;" > address</th>#}
+                                <th style="text-align:center;" > address</th>
                                 <td style="text-align: center;"> {{ user.firstname }}</td>
 
                                 <td style="text-align: center;"> {{ user.lastname }}</td>
@@ -67,7 +68,7 @@
 
 
                                 </td>
-                             {#   <td>{{ today }}</td>#}
+                                <td>{{ today }}</td>
                             </tr>
 
                         {% endfor %}
@@ -80,5 +81,90 @@
     </div><!--/.row-->
 
 
-
 {% endblock %}
+{% extends 'base.html.twig' %}
+#}
+{#{% block content %}#}
+
+    <link href="{{ asset('css/admintable.css') }}" rel="stylesheet">
+
+    <div style="padding-top: 12%; padding-bottom: 5%; text-align: center;  ">
+
+
+        <h1>MY EVENTS</h1>
+
+        <table>
+            <thead>
+            <tr>
+
+                <th>id</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th > phone number</th>
+                <th > address</th>
+                <th >roles</th>
+
+                <th  > last login</th>
+                <th >activation</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for user in users %}
+                <tr>
+                    <td style="text-align:center;">{{ user.id|e }}</td>
+                    <td style="text-align:center;">{{ user.username|e }}</td>
+                    <td style="text-align:center;">{{ user.email|e }} </td>
+
+
+
+                    {#  <th style="text-align:center;">firstname</th>
+                      <th style="text-align:center;" >lastname</th>
+                      <th style="text-align:center;" > phone number</th>
+                      <th style="text-align:center;" > address</th>#}
+                    <td style="text-align: center;"> {{ user.firstname }}</td>
+
+                    <td style="text-align: center;"> {{ user.lastname }}</td>
+
+                    <td style="text-align: center;"> {{ user.phonenumber }}</td>
+
+                    <td style="text-align: center;"> {{ user.address }}</td>
+
+                    <td style="text-align:center;">
+                        {% for role in user.roles %}
+
+                            {{ role }} <br>
+
+                        {% endfor %}
+
+                    </td>
+
+                    <td style="text-align:center;"> {{ user.lastLogin|date('Y-m-d') }}</td>
+
+                    <td  style="text-align:center;">
+                        {% if user.enabled == 1 %}
+                            <svg class="glyph stroked checkmark" style="color: green; height: 30px; width: 30px;"><use xlink:href="#stroked-checkmark"/></svg>
+
+                        {% else %}
+                            <svg class="glyph stroked cancel"    style="color: red; height: 30px; width: 30px;" ><use xlink:href="#stroked-cancel"/></svg>
+                        {% endif %}
+
+
+                    </td>
+                    {#   <td>{{ today }}</td>#}
+                </tr>
+
+            {% endfor %}
+
+            </tbody>
+        </table>
+
+        <ul>
+            <li>
+                <a href="{{ path('event_new') }}">Create a new event</a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}
+

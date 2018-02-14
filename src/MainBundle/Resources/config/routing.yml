@@ -23,9 +23,9 @@ admin-index:
      path:     /admin/index
      defaults: { _controller: MainBundle:Admin:index}
 
-admin-tables:
-     path:     /admin/tables
-     defaults: { _controller: MainBundle:Admin:tables}
+admin-user-table:
+     path:     /admin/usertable
+     defaults: { _controller: MainBundle:Admin:usertable}
 calendar:
      path:     /calendar
      defaults: { _controller: MainBundle:Default:calendar}
