@@ -8,7 +8,7 @@
 
     <div style="padding-top: 5%; padding-bottom: 5%; text-align: center;  ">
 
-        <h1>MY EVENTS</h1>
+        <h1>EVENTS TABLE</h1>
 
         <table >
             <thead>
@@ -41,9 +41,10 @@
                     <td>{{ event.capacity }}</td>
                     <td>{{ event.cost }}</td>
                     <td>
-                        <svg class="glyph stroked cancel"  style="color: red; height: 30px; width: 30px;">
-                            <use xlink:href="#stroked-cancel"/>
-                        </svg>
+                        <a href="{{ path('admin-delete-event', { 'id': event.id } )}}">  <svg class="glyph stroked cancel"  style="color: red; height: 30px; width: 30px;">
+                                <use xlink:href="#stroked-cancel"/>
+                            </svg></a>
+
 
                     </td>
                     <td>
@@ -59,8 +60,8 @@
         </table>
 
 
-        <a class="btn btn-default btn-green" href="{{ path('event_new') }}">Host a new Event </a>
-        <a class="btn btn-default btn-green" href="{{ path('myevents') }}">Check my events</a>
+     {#   <a class="btn btn-default btn-green" href="{{ path('event_new') }}">Host a new Event </a>
+        <a class="btn btn-default btn-green" href="{{ path('myevents') }}">Check my events</a>#}
 
     </div>
 {% endblock %}

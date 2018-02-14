@@ -29,6 +29,9 @@ admin-user-table:
 admin-events-table:
      path:     /admin/events
      defaults: { _controller: MainBundle:Admin:eventstable}
+admin-delete-event:
+    path:     admin/eventdelete/{id}
+    defaults: { _controller: MainBundle:Admin:eventsdelete }
 calendar:
      path:     /calendar
      defaults: { _controller: MainBundle:Default:calendar}
