@@ -41,6 +41,11 @@ class User extends BaseUser
      */
     protected $address;
 
+    /**
+     * @ORM\Column(type="integer",options={"default" : 0})
+     */
+    protected $Banned;
+
 
 
     /**
@@ -208,4 +213,29 @@ class User extends BaseUser
     }
 
 
+
+
+    /**
+     * Set banned
+     *
+     * @param integer $banned
+     *
+     * @return User
+     */
+    public function setBanned($banned)
+    {
+        $this->Banned = $banned;
+
+        return $this;
+    }
+
+    /**
+     * Get banned
+     *
+     * @return integer
+     */
+    public function getBanned()
+    {
+        return $this->Banned;
+    }
 }

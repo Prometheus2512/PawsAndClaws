@@ -1,273 +1,297 @@
 {% extends 'base.html.twig' %}
 {% block content %}
 
-<link href="{{ asset('css/myformulaire.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/myformulaire.css') }}" rel="stylesheet">
 
 
-<link href="{{ asset('css/myprofile.css') }}" rel="stylesheet">
-<script src="{{ asset('js/jquery.min.js') }}"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-<div class="container">
-    <div class="row">
+    <link href="{{ asset('css/myprofile.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <div class="container">
+        <div class="row">
 
 
-        <ul style="margin-top: 10%" id="accordion" class="accordion">
-            <li>
-                <div class="col col_4 iamgurdeep-pic">
-                    <img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
-                         src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg">
+            <ul style="margin-top: 10%" id="accordion" class="accordion">
+                <li>
+                    <div class="col col_4 iamgurdeep-pic">
+                        <img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
+                             src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg">
 
-                    <div class="username">
-                        <h2>{{ event.name }}
-                            <small ><i class="fa fa-map-marker"></i>  {{ event.address }}</small>
-                        </h2>
-                        <p><i class="fa fa-user"></i> Hosted by <strong>{{ event.hostid.username }}</strong> </p>
+                        <div class="username">
+                            <h2>{{ event.name }}
+                                <small><i class="fa fa-map-marker"></i> {{ event.address }}</small>
+                            </h2>
+                            <p><i class="fa fa-user"></i> Hosted by <strong>{{ event.hostid.username }}</strong></p>
 
-                        {#
-                                                <a href="{{ path('fos_user_profile_edit') }}"  class="btn-o"> <i class="fa fa-cog"></i> Edit </a>
-                        #}
-                        <a href="{{ path('event_index') }}" class="btn-o"> <i class="fa fa-undo "></i>See all events</a>
-                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-
-
-
-
-                        {% if event.hostid.id==app.user.id %}
-                            {{ form_start(delete_form) }}
-                           {# <input type="submit" value="Delete">#}
-
-                         <input type="submit" value="Delete" class="btn-o"> <a href="{{ path('event_edit', { 'id': event.id }) }}" class="btn-o"><i class="fa fa-cog"></i></a>
-                        {% else %}
-                            <a href="{{ path('event_index') }}" class="btn-o"> <i class="fa fa-ticket "></i>Participate</a>
-
-                        {% endif %} {{ form_end(delete_form) }}
+                            {#
+                                                    <a href="{{ path('fos_user_profile_edit') }}"  class="btn-o"> <i class="fa fa-cog"></i> Edit </a>
+                            #}
+                            <a href="{{ path('event_index') }}" class="btn-o"> <i class="fa fa-undo "></i>See all events</a>
+                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 
 
 
-                        {% endif %}
+
+                                {% if event.hostid.id==app.user.id %}
+                                    {{ form_start(delete_form) }}
+                                    {# <input type="submit" value="Delete">#}
+
+                                    <input type="submit" value="Delete" class="btn-o"> <a
+                                        href="{{ path('event_edit', { 'id': event.id }) }}" class="btn-o"><i
+                                            class="fa fa-cog"></i></a>
+                                    {{ form_end(delete_form) }}
+                                {% else %}
+                                    {% if event.endingDate|date('Y-m-d') > 'now'|date('Y-m-d') %}
+                                        {% if verif==0 %}
+                                            <a href={{ path('addreservation', {'uid': app.user.id, 'eid': event.id}) }} class="btn-o">
+                                                <i class="fa fa-ticket "></i>Participate</a>
+                                        {% else %}
+
+                                            <a style="color: red;"> Already Participating</a>
 
 
-                        {# <ul class="nav navbar-nav">
-                             <li class="dropdown">
-                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-ellipsis-v pull-right"></span></a>
-                                 <ul class="dropdown-menu pull-right">
-                                     <li><a href="#">Video Call <i class="fa fa-video-camera"></i></a></li>
-                                     <li><a href="#">Poke <i class="fa fa-hand-o-right"></i></a></li>
-                                     <li><a href="#">Report <i class="fa fa-bug"></i></a></li>
-                                     <li><a href="#">Block <i class="fa fa-lock"></i></a></li>
-                                 </ul>
-                             </li>
-                         </ul>#}
+                                        {% endif %}
+                                    {% else %}
+                                        <a style="color: red;"> Event Ended</a>
+
+                                    {% endif %}
+                                {% endif %}
+
+
+
+                            {% endif %}
+
+
+                            {# <ul class="nav navbar-nav">
+                                 <li class="dropdown">
+                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-ellipsis-v pull-right"></span></a>
+                                     <ul class="dropdown-menu pull-right">
+                                         <li><a href="#">Video Call <i class="fa fa-video-camera"></i></a></li>
+                                         <li><a href="#">Poke <i class="fa fa-hand-o-right"></i></a></li>
+                                         <li><a href="#">Report <i class="fa fa-bug"></i></a></li>
+                                         <li><a href="#">Block <i class="fa fa-lock"></i></a></li>
+                                     </ul>
+                                 </li>
+                             </ul>#}
+
+                        </div>
 
                     </div>
 
-                </div>
+                </li>
+                <li>
+                    <div class="link"><i class="fa fa-globe"></i>About<i class="fa fa-chevron-down"></i></div>
+                    <ul class="submenu">
+                        {#
+                                            <li><a href="#"><i class="fa fa-calendar left-none"></i> Date of Birth : 03/09/1994</a></li>
+                        #}
+                        <li><a {#href="#"#}>Description: {{ event.description }}</a></li>
+                        <li><a {#href="#"#}> Cost: {{ event.cost }}</a></li>
+                        <li><a {#href="#"#}> Capacity: {{ event.capacity }}</a></li>
+                        <li><a {#href="#"#}> Starting
+                                : {% if event.beginningDate %}{{ event.beginningDate|date('Y-m-d H:i:s') }}{% endif %}</a>
+                        </li>
+                        <li><a {#href="#"#}> Starting
+                                : {% if event.endingDate %}{{ event.endingDate|date('Y-m-d H:i:s') }}{% endif %}</a>
+                        </li>
 
-            </li>
-            <li>
-                <div class="link"><i class="fa fa-globe"></i>About<i class="fa fa-chevron-down"></i></div>
-                <ul class="submenu">
-                    {#
-                                        <li><a href="#"><i class="fa fa-calendar left-none"></i> Date of Birth : 03/09/1994</a></li>
-                    #}
-                    <li><a {#href="#"#}>Description: {{ event.description }}</a></li>
-                    <li><a {#href="#"#}> Cost: {{ event.cost }}</a></li>
-                    <li><a {#href="#"#}> Capacity: {{ event.capacity }}</a></li>
-                    <li><a {#href="#"#}> Starting
-                            : {% if event.beginningDate %}{{ event.beginningDate|date('Y-m-d H:i:s') }}{% endif %}</a></li>
-                    <li><a {#href="#"#}> Starting
-                            : {% if event.endingDate %}{{ event.endingDate|date('Y-m-d H:i:s') }}{% endif %}</a></li>
+                    </ul>
+                </li>
+                {# <li class="default open">
+                     <div class="link"><i class="fa fa-code"></i>Professional Skills<i class="fa fa-chevron-down"></i></div>
+                     <ul class="submenu">
+                         <li><a href="#"><span class="tags">Adobe Photoshop</span> <span class="tags">Corel Draw</span> <span class="tags">CSS</span> <span class="tags">Css 3</span>
+                                 <span class="tags">Graphic Design</span> <span class="tags">HTML</span> <span class="tags">HTML5</span> <span class="tags">JavaScript</span>
+                                 <span class="tags">Twitter bootstrap</span> <span class="tags">bootstrap</span> <span class="tags">User Interface Design</span> <span class="tags">Wordpress</span></a>
+                     </ul>
+                 </li>#}
+                <li>
+                    <div class="link"><i class="fa fa-picture-o"></i>Photos
+                        <small>1,120</small>
+                        <i class="fa fa-chevron-down"></i></div>
+                    <ul class="submenu">
+                        <li class="photosgurdeep"><a href="#"><img class="img-responsive iamgurdeeposahan"
+                                                                   alt="iamgurdeeposahan"
+                                                                   src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
+                            </a>
+                            <a href="#"><img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
+                                             src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
+                            </a>
+                            <a href="#"><img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
+                                             src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
+                            </a>
+                            <a href="#"><img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
+                                             src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
+                            </a>
 
-                </ul>
-            </li>
-            {# <li class="default open">
-                 <div class="link"><i class="fa fa-code"></i>Professional Skills<i class="fa fa-chevron-down"></i></div>
-                 <ul class="submenu">
-                     <li><a href="#"><span class="tags">Adobe Photoshop</span> <span class="tags">Corel Draw</span> <span class="tags">CSS</span> <span class="tags">Css 3</span>
-                             <span class="tags">Graphic Design</span> <span class="tags">HTML</span> <span class="tags">HTML5</span> <span class="tags">JavaScript</span>
-                             <span class="tags">Twitter bootstrap</span> <span class="tags">bootstrap</span> <span class="tags">User Interface Design</span> <span class="tags">Wordpress</span></a>
-                 </ul>
-             </li>#}
-            <li>
-                <div class="link"><i class="fa fa-picture-o"></i>Photos
-                    <small>1,120</small>
-                    <i class="fa fa-chevron-down"></i></div>
-                <ul class="submenu">
-                    <li class="photosgurdeep"><a href="#"><img class="img-responsive iamgurdeeposahan"
-                                                               alt="iamgurdeeposahan"
-                                                               src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
-                        </a>
-                        <a href="#"><img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
-                                         src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
-                        </a>
-                        <a href="#"><img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
-                                         src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
-                        </a>
-                        <a href="#"><img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
-                                         src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
-                        </a>
+                            <a class="view-all" href="https://web.facebook.com/iamgurdeeposahan" target="_blank">15+
+                            </a>
 
-                        <a class="view-all" href="https://web.facebook.com/iamgurdeeposahan" target="_blank">15+
-                        </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="link"><i class="fa fa-paw"></i>Participants
+                        <small>{{ nbparticipants }}/{{ event.capacity }}</small>
+                        <i class="fa fa-chevron-down"></i></div>
+                    <ul class="submenu">
+                        <li class="photosgurdeep">
+                            {% for reservation in reservations %}
+                        <ul>
+                            <li>
+                                <small style="color: white;">    {{ reservation.participantid.username }}</small><br>
+                            </li>
+                        </ul>
+                            {#<a href="#"><img class="img-responsive iamgurdeeposahan"
+                                                                   alt="iamgurdeeposahan"
+                                                                   src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
+                            </a>
+                            <a href="#"><img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
+                                             src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
+                            </a>
+                            <a href="#"><img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
+                                             src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
+                            </a>
+                            <a href="#"><img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
+                                             src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
+                            </a>
+                            <a href="#"><img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
+                                             src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
+                            </a>
+                            <a href="#"><img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
+                                             src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
+                            </a>
+                            <a href="#"><img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
+                                             src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
+                            </a>
+                            <a href="#"><img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
+                                             src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
+                            </a>
+                            <a href="#"><img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
+                                             src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
+                            </a>
 
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <div class="link"><i class="fa fa-paw"></i>Participants
-                    <small>1,053</small>
-                    <i class="fa fa-chevron-down"></i></div>
-                <ul class="submenu">
-                    <li class="photosgurdeep"><a href="#"><img class="img-responsive iamgurdeeposahan"
-                                                               alt="iamgurdeeposahan"
-                                                               src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
-                        </a>
-                        <a href="#"><img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
-                                         src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
-                        </a>
-                        <a href="#"><img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
-                                         src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
-                        </a>
-                        <a href="#"><img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
-                                         src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
-                        </a>
-                        <a href="#"><img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
-                                         src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
-                        </a>
-                        <a href="#"><img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
-                                         src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
-                        </a>
-                        <a href="#"><img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
-                                         src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
-                        </a>
-                        <a href="#"><img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
-                                         src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
-                        </a>
-                        <a href="#"><img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
-                                         src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
-                        </a>
-
-                        <a class="view-all" href="https://web.facebook.com/iamgurdeeposahan" target="_blank">50+
-                        </a>
-
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <div class="link"><i class="fa fa-map"></i>Participants
-                    <small>1,053</small>
-                    <i class="fa fa-chevron-down"></i></div>
-                <ul class="submenu">
-                    {#<li class="photosgurdeep">#}
+                            <a class="view-all" href="https://web.facebook.com/iamgurdeeposahan" target="_blank">50+
+                            </a>
+#}                       {% endfor %}
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="link"><i class="fa fa-map"></i>Localisation
+                        <small>1,053</small>
+                        <i class="fa fa-chevron-down"></i></div>
+                    <ul class="submenu">
+                        {#<li class="photosgurdeep">#}
                         {% include 'map.html.twig' %}
-                   {# </li>#}
-                </ul>
-            </li>
-        </ul>
+                        {# </li>#}
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+
     </div>
+    <script>$(function () {
+            var Accordion = function (el, multiple) {
+                this.el = el || {};
+                this.multiple = multiple || false;
 
-
-</div>
-<script>$(function () {
-        var Accordion = function (el, multiple) {
-            this.el = el || {};
-            this.multiple = multiple || false;
-
-            // Variables privadas
-            var links = this.el.find('.link');
-            // Evento
-            links.on('click', {el: this.el, multiple: this.multiple}, this.dropdown)
-        }
-
-        Accordion.prototype.dropdown = function (e) {
-            var $el = e.data.el;
-            $this = $(this),
-                $next = $this.next();
-
-            $next.slideToggle();
-            $this.parent().toggleClass('open');
-
-            if (!e.data.multiple) {
-                $el.find('.submenu').not($next).slideUp().parent().removeClass('open');
+                // Variables privadas
+                var links = this.el.find('.link');
+                // Evento
+                links.on('click', {el: this.el, multiple: this.multiple}, this.dropdown)
             }
-            ;
-        }
 
-        var accordion = new Accordion($('#accordion'), false);
-    });
+            Accordion.prototype.dropdown = function (e) {
+                var $el = e.data.el;
+                $this = $(this),
+                    $next = $this.next();
+
+                $next.slideToggle();
+                $this.parent().toggleClass('open');
+
+                if (!e.data.multiple) {
+                    $el.find('.submenu').not($next).slideUp().parent().removeClass('open');
+                }
+                ;
+            }
+
+            var accordion = new Accordion($('#accordion'), false);
+        });
 
 
-</script></div>
-
-
-
-{#
-    <h1>Event</h1>
-
-    <table>
-        <tbody>
-        <tr>
-            <th>Id</th>
-            <td>{{ event.id }}</td>
-        </tr>
-        <tr>
-            <th>Name</th>
-            <td>{{ event.name }}</td>
-        </tr>
-        <tr>
-            <th>Description</th>
-            <td>{{ event.description }}</td>
-        </tr>
-        <tr>
-            <th>Beginningdate</th>
-            <td>{% if event.beginningDate %}{{ event.beginningDate|date('Y-m-d H:i:s') }}{% endif %}</td>
-        </tr>
-        <tr>
-            <th>Endingdate</th>
-            <td>{% if event.endingDate %}{{ event.endingDate|date('Y-m-d H:i:s') }}{% endif %}</td>
-        </tr>
-        <tr>
-            <th>Address</th>
-            <td>{{ event.address }}</td>
-        </tr>
-        <tr>
-            <th>Posx</th>
-            <td>{{ event.posx }}</td>
-        </tr>
-        <tr>
-            <th>Posy</th>
-            <td>{{ event.posy }}</td>
-        </tr>
-        <tr>
-            <th>Capacity</th>
-            <td>{{ event.capacity }}</td>
-        </tr>
-        <tr>
-            <th>Cost</th>
-            <td>{{ event.cost }}</td>
-        </tr>
-        </tbody>
-    </table>
-
-    <ul>
-
-        <li>
-            <a href="{{ path('event_index') }}">Back to the list</a>
-        </li>
-
-        <li>
-            <a href="{{ path('event_edit', { 'id': event.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-            <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-
-    </ul>
+    </script></div>
 
 
 
-#}
+    {#
+        <h1>Event</h1>
+
+        <table>
+            <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ event.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ event.name }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ event.description }}</td>
+            </tr>
+            <tr>
+                <th>Beginningdate</th>
+                <td>{% if event.beginningDate %}{{ event.beginningDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Endingdate</th>
+                <td>{% if event.endingDate %}{{ event.endingDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td>{{ event.address }}</td>
+            </tr>
+            <tr>
+                <th>Posx</th>
+                <td>{{ event.posx }}</td>
+            </tr>
+            <tr>
+                <th>Posy</th>
+                <td>{{ event.posy }}</td>
+            </tr>
+            <tr>
+                <th>Capacity</th>
+                <td>{{ event.capacity }}</td>
+            </tr>
+            <tr>
+                <th>Cost</th>
+                <td>{{ event.cost }}</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <ul>
+
+            <li>
+                <a href="{{ path('event_index') }}">Back to the list</a>
+            </li>
+
+            <li>
+                <a href="{{ path('event_edit', { 'id': event.id }) }}">Edit</a>
+            </li>
+            <li>
+                {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+                {{ form_end(delete_form) }}
+            </li>
+
+        </ul>
+
+
+
+    #}
 
 {% endblock %}

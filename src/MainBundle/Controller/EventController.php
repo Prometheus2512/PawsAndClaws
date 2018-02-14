@@ -83,12 +83,32 @@ class EventController extends Controller
      * @Method("GET")
      */
     public function showAction(Event $event)
-    {
+    { $verif=1;
         $deleteForm = $this->createDeleteForm($event);
+
+        $securityContext = $this->container->get('security.authorization_checker');
+        if ($securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            // authenticated REMEMBERED, FULLY will imply REMEMBERED (NON anonymous)
+         $user=$this->getUser();
+        $actualuid=$user->getid();
+
+        $em = $this->getDoctrine()->getManager();
+
+        $test = $em->getRepository('MainBundle:Reservation')->findBy(['eventid' => $event->getId(),'participantid' => $actualuid]);
+        $thiseventreservation=$em->getRepository('MainBundle:Reservation')->findBy(['eventid' => $event->getId()]);
+        $participationnumber=count($thiseventreservation);
+        if(empty($test)){
+        $verif=0;
+        }else{
+$verif=1;
+        }}
 
         return $this->render('event/show.html.twig', array(
             'event' => $event,
             'delete_form' => $deleteForm->createView(),
+            'verif'=>$verif,
+            'nbparticipants'=>$participationnumber,
+            'reservations'=>$thiseventreservation,
         ));
     }
 
@@ -107,7 +127,7 @@ class EventController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('event_index', array('id' => $event->getId()));
+            return $this->redirectToRoute('event_edit', array('id' => $event->getId()));
         }
 
         return $this->render('event/edit.html.twig', array(

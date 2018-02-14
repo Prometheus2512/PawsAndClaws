@@ -21,15 +21,25 @@ class Reservation
      */
     private $id;
 
-
     /**
-     * @ORM\OneToOne(targetEntity="MainBundle\Entity\User", cascade={"persist"})
+
+     * @ORM\ManyToOne(targetEntity="MainBundle\Entity\User", cascade={"persist"})
+
+     * @ORM\JoinColumn(nullable=false)
+
      */
+
     private $participantid;
 
+
     /**
-     * @ORM\OneToOne(targetEntity="MainBundle\Entity\Event", cascade={"persist"})
+
+     * @ORM\ManyToOne(targetEntity="MainBundle\Entity\Event", cascade={"persist"})
+
+     * @ORM\JoinColumn(nullable=false)
+
      */
+
     private $eventid;
 
 

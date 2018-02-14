@@ -35,3 +35,8 @@ calendar:
 myevents:
      path:     /myevents
      defaults: { _controller: MainBundle:Event:myevents}
+addreservation:
+     path:     /{uid}/{eid}/
+     defaults: { _controller: MainBundle:User:reservation}
+
+

@@ -14,6 +14,7 @@
             <tr>
 
                 <th>Name</th>
+                <th>Host</th>
                 <th>Description</th>
                 <th>Beginning</th>
                 <th>Ending</th>
@@ -30,6 +31,7 @@
             {% for event in events %}
                 <tr>
                     <td><a href="{{ path('event_show', { 'id': event.id }) }}">{{ event.name }}</a></td>
+                    <td>{{ event.hostid.username }}</td>
                     <td>{{ event.description }}</td>
                     <td>{% if event.beginningDate %}{{ event.beginningDate|date('Y-m-d H:i:s') }}{% endif %}</td>
                     <td>{% if event.endingDate %}{{ event.endingDate|date('Y-m-d H:i:s') }}{% endif %}</td>
