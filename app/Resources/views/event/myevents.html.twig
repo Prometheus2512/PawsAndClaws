@@ -22,7 +22,7 @@
             <th>Cost</th>
             <th>Available</th>
             <th></th>
-            <th></th>
+           {# <th></th>#}
 
         </tr>
         </thead>
@@ -52,10 +52,10 @@
 
 
                 </td>
-                <td>
+                {#<td>
                     <a href="{{ path('event_delete', { 'id': event.id }) }}"> <div style="font-size:1em; color:gray"> <i class="fa fa-trash" style="size: 25px"> </i>
                     </div></a>
-                </td>
+                </td>#}
             </tr>
         {% endfor %}
 
@@ -64,6 +64,7 @@
 
 
             <a  class="btn btn-default btn-green" href="{{ path('event_new') }}">Host a new Event </a>
+    <a  class="btn btn-default btn-green" href="{{ path('event_index') }}">Check all events </a>
 
 </div>
 {% endblock %}

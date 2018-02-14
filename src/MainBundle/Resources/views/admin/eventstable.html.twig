@@ -1,0 +1,67 @@
+{% extends 'dashbase.html.twig' %}
+{% block content %}
+
+    <link href="{{ asset('css/table.css') }}" rel="stylesheet">
+
+
+    <link href="{{ asset('css/admintable.css') }}" rel="stylesheet">
+
+    <div style="padding-top: 5%; padding-bottom: 5%; text-align: center;  ">
+
+        <h1>MY EVENTS</h1>
+
+        <table >
+            <thead>
+            <tr>
+
+                <th>Name</th>
+                <th>Host name</th>
+                <th>Description</th>
+                <th>Beginning</th>
+                <th>Ending</th>
+                <th>Address</th>
+                <th>Capacity</th>
+                <th>Cost</th>
+                <th></th>
+                <th></th>
+                {# <th></th>#}
+
+            </tr>
+            </thead>
+            <tbody>
+            {% for event in events %}
+                <tr>
+                    <td><a href="{{ path('event_show', { 'id': event.id }) }}">{{ event.name }}</a></td>
+                    <td>{{ event.hostid.username }}</td>
+
+                    <td>{{ event.description }}</td>
+                    <td>{% if event.beginningDate %}{{ event.beginningDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    <td>{% if event.endingDate %}{{ event.endingDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    <td>{{ event.address }}</td>
+                    <td>{{ event.capacity }}</td>
+                    <td>{{ event.cost }}</td>
+                    <td>
+                        <svg class="glyph stroked cancel"  style="color: red; height: 30px; width: 30px;">
+                            <use xlink:href="#stroked-cancel"/>
+                        </svg>
+
+                    </td>
+                    <td>
+                        <svg class="glyph stroked checkmark"  style="color: green; height: 30px; width: 30px;">
+                            <use xlink:href="#stroked-checkmark"/>
+                        </svg>
+                    </td>
+
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+
+
+        <a class="btn btn-default btn-green" href="{{ path('event_new') }}">Host a new Event </a>
+        <a class="btn btn-default btn-green" href="{{ path('myevents') }}">Check my events</a>
+
+    </div>
+{% endblock %}
+

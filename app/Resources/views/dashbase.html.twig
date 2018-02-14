@@ -67,9 +67,14 @@
         </div>
     </form>
     <ul class="nav menu">
-        <li><a href="{{ path('admin-index')  }}" ><svg class="glyph stroked table "><use xlink:href="#stroked-table"></use></svg> Dashboard</a></li>
-        <li><a href="{{ path('admin-user-table') }}" ><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Gestion des utilisateurs</a></li>
 {#
+        <li><a href="{{ path('admin-index')  }}" ><svg class="glyph stroked table "><use xlink:href="#stroked-table"></use></svg> Dashboard</a></li>
+#}
+        <li><a href="{{ path('admin-user-table') }}" ><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Users manager</a></li>
+        <li><a href="{{ path('admin-events-table')  }}" ><svg class="glyph stroked table "><use xlink:href="#stroked-table"></use></svg> Events manager</a></li>
+
+
+        {#
 
         <li><a href="widgets.html.twig"><svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"></use></svg> Widgets</a></li>
         <li><a href="charts.html.twig"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> Charts</a></li>
