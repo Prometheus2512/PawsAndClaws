@@ -24,7 +24,7 @@ class EventController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $events = $em->getRepository('MainBundle:Event')->findAll();
+        $events = $em->getRepository('MainBundle:Event')->findAll(array('beginningDate' => 'DESC'));
 
         return $this->render('event/index.html.twig', array(
             'events' => $events,
@@ -38,7 +38,7 @@ class EventController extends Controller
         $user=$this->getUser();
         $uid=$user->getid();
 
-        $events = $em->getRepository('MainBundle:Event')->findBy(['hostid' => $uid]);
+        $events = $em->getRepository('MainBundle:Event')->findBy(['hostid' => $uid], array('beginningDate' => 'DESC'));
 
         return $this->render('event/myevents.html.twig', array(
             'events' => $events,

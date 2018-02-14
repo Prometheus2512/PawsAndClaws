@@ -1,9 +1,19 @@
-{#
 {% extends 'base.html.twig' %}
-#}
+
 
 {% block content %}
-    <h1>Event creation</h1>
+<link href="{{ asset('css/myformulaire.css') }}" rel="stylesheet">
+
+
+
+
+<div class="login-page">
+
+    <div class="form">
+
+        <div class="login-form" >
+
+        <h1>Event creation</h1>
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
@@ -15,4 +25,5 @@
             <a href="{{ path('event_index') }}">Back to the list</a>
         </li>
     </ul>
+        </div></div></div>
 {% endblock %}

@@ -18,8 +18,6 @@ class EventType extends AbstractType
                 ->add('beginningDate')
                 ->add('endingDate')
                 ->add('address')
-                ->add('posx')
-                ->add('posy')
                 ->add('capacity')
                 ->add('cost')
                 ;

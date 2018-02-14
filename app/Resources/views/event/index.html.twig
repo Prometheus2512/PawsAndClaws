@@ -22,7 +22,7 @@
                 <th>Cost</th>
                 <th>Available</th>
                 <th></th>
-                <th></th>
+               {# <th></th>#}
 
             </tr>
             </thead>
@@ -44,6 +44,9 @@
                             </div>
                         {% endif %}
                     </td>
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+                    {% if event.hostid.id==app.user.id %}
                     <td>
 
                         <a href="{{ path('event_edit', { 'id': event.id }) }}">  <div style="font-size:1em; color:gray"> <i class="fa fa-cog" style="size: 25px">  </i>
@@ -52,21 +55,21 @@
 
 
                     </td>
-                    <td>
+                  {#  <td>
                         <a href="{{ path('event_delete', { 'id': event.id }) }}"> <div style="font-size:1em; color:gray"> <i class="fa fa-trash" style="size: 25px"> </i>
                             </div></a>
-                    </td>
+                    </td>#}
+                    {% endif %}{% endif %}
                 </tr>
             {% endfor %}
 
             </tbody>
         </table>
 
-        <ul>
-            <li>
-                <a href="{{ path('event_new') }}">Create a new event</a>
-            </li>
-        </ul>
+
+                <a  class="btn btn-default btn-green" href="{{ path('event_new') }}">Host a new Event </a>
+        <a  class="btn btn-default btn-green" href="{{ path('myevents') }}">Check my events</a>
+
     </div>
 {% endblock %}
 

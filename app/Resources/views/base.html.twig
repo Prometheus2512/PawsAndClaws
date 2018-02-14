@@ -77,8 +77,8 @@
                         {% endif %}
                         <li>
                             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                           {# <a> {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}
-                            </a>#}
+                            <a> {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}
+                            </a>
                         </li>
                         <li>
 
@@ -87,7 +87,7 @@
                                 <div class="dropdown2">
                                     <button onclick="myFunction()" class="dropbtn btn btn-default {#btn-green#}"> {#My account#}  <img src="{{ asset('images/my-profile.png')}}" style="width:15px;height: 15px;">
                                     </button>
-                                    <div id="myDropdown" class="dropdown-content">
+                                    <div id="myDropdown" class="dropdown-content" style="text-align: center">
                                         <a  href="{{ path('fos_user_profile_show') }}">
                                             {{ 'Check Profile'|trans({}, 'FOSUserBundle') }}
                                         </a>
