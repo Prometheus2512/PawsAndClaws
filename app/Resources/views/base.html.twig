@@ -78,7 +78,7 @@
                         <li>
                             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                             <a> {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}
-                            </a> {{ app.user.id }}
+                            </a>
                         </li>
                         <li>
 
