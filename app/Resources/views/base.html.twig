@@ -94,11 +94,12 @@
                                         <a  href="{{ path('fos_user_profile_edit') }}">
                                             {{ 'Edit Profile'|trans({}, 'FOSUserBundle') }}
                                         </a>
-                                        <a  href="{{ path('fos_user_security_logout') }}">
-                                            {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                                        </a>
+
                                         <a  href="{{ path('myevents') }}">
                                           My events
+                                        </a>
+                                        <a  href="{{ path('fos_user_security_logout') }}">
+                                            {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
                                         </a>
                                     </div>
                                 </div>
@@ -130,8 +131,9 @@
     <body class="homepage">
 
     {% block content%}{% endblock %}
-    </body>
+
     {% block footer  %}
+    </body>
         <!-- Footer -->
         <div class="footer">
             <div class="container">
