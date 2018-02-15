@@ -43,5 +43,4 @@ security:
             - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
             - { path: ^/myevents, role: ROLE_USER }
             - { path: ^/event/new, role: ROLE_USER }
-
-
+            - { path: ^/admin/, role: ROLE_ADMIN }

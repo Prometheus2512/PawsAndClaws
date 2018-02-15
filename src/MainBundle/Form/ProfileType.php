@@ -11,6 +11,7 @@ namespace MainBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 class ProfileType extends AbstractType
@@ -21,6 +22,9 @@ class ProfileType extends AbstractType
         $builder->add('firstname');
         $builder->add('lastname');
         $builder->add('phonenumber');
+        $builder->add('banned', HiddenType::class, array(
+        'data' => '0',
+    ));
 
 
     }
