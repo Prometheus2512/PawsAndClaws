@@ -1,3 +1,7 @@
+main_animal:
+    resource: "@MainBundle/Resources/config/routing/animal.yml"
+    prefix:   /animal
+
 main_homepage:
     path:     /
     defaults: { _controller: MainBundle:Default:index }

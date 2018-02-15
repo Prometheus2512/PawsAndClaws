@@ -1,0 +1,24 @@
+animal_index:
+    path:     /
+    defaults: { _controller: "MainBundle:Animal:index" }
+    methods:  GET
+
+animal_show:
+    path:     /{id}/show
+    defaults: { _controller: "MainBundle:Animal:show" }
+    methods:  GET
+
+animal_new:
+    path:     /new
+    defaults: { _controller: "MainBundle:Animal:new" }
+    methods:  [GET, POST]
+
+animal_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "MainBundle:Animal:edit" }
+    methods:  [GET, POST]
+
+animal_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "MainBundle:Animal:delete" }
+    methods:  DELETE
