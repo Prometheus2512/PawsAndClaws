@@ -105,23 +105,26 @@ class EventController extends Controller
     public function showAction(Event $event)
     { $verif=1;
         $deleteForm = $this->createDeleteForm($event);
-
+        $em = $this->getDoctrine()->getManager();
         $securityContext = $this->container->get('security.authorization_checker');
         if ($securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
             // authenticated REMEMBERED, FULLY will imply REMEMBERED (NON anonymous)
-         $user=$this->getUser();
-        $actualuid=$user->getid();
+            $user = $this->getUser();
+            $actualuid = $user->getid();
 
-        $em = $this->getDoctrine()->getManager();
 
-        $test = $em->getRepository('MainBundle:Reservation')->findBy(['eventid' => $event->getId(),'participantid' => $actualuid]);
+
+            $test = $em->getRepository('MainBundle:Reservation')->findBy(['eventid' => $event->getId(), 'participantid' => $actualuid]);
+
+            if(empty($test)){
+                $verif=0;
+            }else{
+                $verif=1;
+            }
+        }
         $thiseventreservation=$em->getRepository('MainBundle:Reservation')->findBy(['eventid' => $event->getId()]);
         $participationnumber=count($thiseventreservation);
-        if(empty($test)){
-        $verif=0;
-        }else{
-$verif=1;
-        }}
+
 
         return $this->render('event/show.html.twig', array(
             'event' => $event,

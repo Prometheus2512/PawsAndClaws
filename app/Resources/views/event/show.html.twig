@@ -14,13 +14,15 @@
             <ul style="margin-top: 10%" id="accordion" class="accordion">
                 <li>
                     <div class="col col_4 iamgurdeep-pic">
-                        {% if event.brochure is not empty%}
-                        <img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
-                             src="{{ asset('bundles/uploads/brochures/'~event.brochure )}}">
+                        {% if event.brochure  %}
+                            <img style="width: 400px; height: 400px" class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
+                                 src="{{ asset('bundles/uploads/brochures/'~event.brochure )}}">
                         {% else %}
-                        <img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
-                             src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg">
-                         {% endif %}
+                            <img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
+                                 src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg">
+
+
+                        {% endif %}
 {#
                         <img style="width: 100px ;height: 100px" src="{{ asset('bundles/uploads/brochures/'~produit.brochure )}}">
 #}

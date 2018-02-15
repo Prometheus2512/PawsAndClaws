@@ -10,6 +10,12 @@ class UserController extends Controller
 {
     public function reservationAction( $uid,  $eid)
     {
+
+        $tokenInterface = $this->get('security.token_storage')->getToken();
+        $isAuthenticated = $tokenInterface->isAuthenticated();
+
+        if($isAuthenticated){
+
         $user=$this->getUser();
         $actualuid=$user->getid();
 
@@ -32,7 +38,7 @@ class UserController extends Controller
 
             return $this->redirectToRoute('event_show', array('id' => $event->getId()));
 
-        }
+        }}else{}
         return $this->render('event/errorreservation.html.twig');
     }
 

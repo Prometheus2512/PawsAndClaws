@@ -95,7 +95,7 @@ class Event
     private $hostid;
 
     /**
-     * @ORM\Column(type="integer",options={"default" : 0})
+     * @ORM\Column(type="integer",options={"default" : 0},nullable=true)
      */
     protected $Validated    ;
 
