@@ -97,7 +97,7 @@ class Event
     /**
      * @ORM\Column(type="integer",options={"default" : 0})
      */
-    protected $Validated    ;
+    protected $Validated;
 
 
     /**
@@ -369,29 +369,5 @@ class Event
         $this->brochure = $brochure;
 
         return $this;
-    }
-
-    /**
-     * Set validated
-     *
-     * @param integer $validated
-     *
-     * @return Event
-     */
-    public function setValidated($validated)
-    {
-        $this->Validated = $validated;
-
-        return $this;
-    }
-
-    /**
-     * Get validated
-     *
-     * @return integer
-     */
-    public function getValidated()
-    {
-        return $this->Validated;
     }
 }

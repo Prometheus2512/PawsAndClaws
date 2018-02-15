@@ -52,3 +52,6 @@ services:
     class: AppBundle\Listener\LoadDataListener
    tags:
    - { name: 'kernel.event_listener', event: 'fullcalendar.set_data', method: loadData }
+
+parameters:
+    brochures_directory: '%kernel.project_dir%/web/bundles/uploads/brochures'

@@ -46,5 +46,27 @@ class AdminController extends Controller
         ));
     }
 
+    public function validateAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $event = $em->getRepository('MainBundle:Event')->find($id);
+
+        if ($event) {
+            $event->setValidated('1');
+            $em->flush();
+        }
+
+
+
+
+        $em = $this->getDoctrine()->getManager();
+
+        $events = $em->getRepository('MainBundle:Event')->findAll(array('beginningDate' => 'DESC'));
+
+        return $this->render('MainBundle:admin:eventstable.html.twig', array(
+            'events' => $events,
+        ));
+    }
+
 
 }

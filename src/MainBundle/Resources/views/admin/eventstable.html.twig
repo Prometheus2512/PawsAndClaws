@@ -40,19 +40,24 @@
                     <td>{{ event.address }}</td>
                     <td>{{ event.capacity }}</td>
                     <td>{{ event.cost }}</td>
+                    {% if  event.validated ==1 %}
+                      <td style="color: green;">EVENT VALIDATED</td>
+                    {% elseif event.endingDate|date('Y-m-d') <= 'now'|date('Y-m-d') %}
+                    <td style="color: red;">OUT OF DATE</td>
+                    {% else %}
                     <td>
                         <a href="{{ path('admin-delete-event', { 'id': event.id } )}}">  <svg class="glyph stroked cancel"  style="color: red; height: 30px; width: 30px;">
                                 <use xlink:href="#stroked-cancel"/>
                             </svg></a>
 
 
-                    </td>
-                    <td>
+
+                        <a href="{{ path('admin-validate-event', { 'id': event.id } )}}">
                         <svg class="glyph stroked checkmark"  style="color: green; height: 30px; width: 30px;">
                             <use xlink:href="#stroked-checkmark"/>
-                        </svg>
+                        </svg></a>
                     </td>
-
+                    {% endif %}
                 </tr>
             {% endfor %}
 

@@ -14,9 +14,16 @@
             <ul style="margin-top: 10%" id="accordion" class="accordion">
                 <li>
                     <div class="col col_4 iamgurdeep-pic">
+                        {% if event.brochure is not empty%}
+                        <img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
+                             src="{{ asset('bundles/uploads/brochures/'~event.brochure )}}">
+                        {% else %}
                         <img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
                              src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg">
-
+                         {% endif %}
+{#
+                        <img style="width: 100px ;height: 100px" src="{{ asset('bundles/uploads/brochures/'~produit.brochure )}}">
+#}
                         <div class="username">
                             <h2>{{ event.name }}
                                 <small><i class="fa fa-map-marker"></i> {{ event.address }}</small>
@@ -47,7 +54,7 @@
                                                 <i class="fa fa-ticket "></i>Participate</a>
                                         {% else %}
 
-                                            <a style="color: red;"> Already Participating</a>
+                                               <a style="color: green;">      Already Participating</a>
 
 
                                         {% endif %}
@@ -137,49 +144,52 @@
                     <ul class="submenu">
                         <li class="photosgurdeep">
                             {% for reservation in reservations %}
-                        <ul>
-                            <li>
-                                <small style="color: white;">    {{ reservation.participantid.username }}</small><br>
-                            </li>
-                        </ul>
-                            {#<a href="#"><img class="img-responsive iamgurdeeposahan"
-                                                                   alt="iamgurdeeposahan"
-                                                                   src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
-                            </a>
-                            <a href="#"><img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
-                                             src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
-                            </a>
-                            <a href="#"><img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
-                                             src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
-                            </a>
-                            <a href="#"><img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
-                                             src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
-                            </a>
-                            <a href="#"><img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
-                                             src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
-                            </a>
-                            <a href="#"><img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
-                                             src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
-                            </a>
-                            <a href="#"><img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
-                                             src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
-                            </a>
-                            <a href="#"><img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
-                                             src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
-                            </a>
-                            <a href="#"><img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
-                                             src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
-                            </a>
+                                <ul>
+                                    <li>
+                                        <small style="color: white;">    {{ reservation.participantid.username }}</small>
+                                        <br>
+                                    </li>
+                                </ul>
+                                {#<a href="#"><img class="img-responsive iamgurdeeposahan"
+                                                                       alt="iamgurdeeposahan"
+                                                                       src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
+                                </a>
+                                <a href="#"><img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
+                                                 src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
+                                </a>
+                                <a href="#"><img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
+                                                 src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
+                                </a>
+                                <a href="#"><img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
+                                                 src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
+                                </a>
+                                <a href="#"><img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
+                                                 src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
+                                </a>
+                                <a href="#"><img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
+                                                 src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
+                                </a>
+                                <a href="#"><img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
+                                                 src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
+                                </a>
+                                <a href="#"><img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
+                                                 src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
+                                </a>
+                                <a href="#"><img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
+                                                 src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
+                                </a>
 
-                            <a class="view-all" href="https://web.facebook.com/iamgurdeeposahan" target="_blank">50+
-                            </a>
-#}                       {% endfor %}
+                                <a class="view-all" href="https://web.facebook.com/iamgurdeeposahan" target="_blank">50+
+                                </a>
+    #}                       {% endfor %}
                         </li>
                     </ul>
                 </li>
                 <li>
                     <div class="link"><i class="fa fa-map"></i>Localisation
+{#
                         <small>1,053</small>
+#}
                         <i class="fa fa-chevron-down"></i></div>
                     <ul class="submenu">
                         {#<li class="photosgurdeep">#}
