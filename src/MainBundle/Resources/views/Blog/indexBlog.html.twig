@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+
+    <div style="padding-top: 12%; padding-bottom: 5%; text-align: center;  ">
+
+
+    <h1>MY Blog</h1>
+    <form  method="post">
+    <table  >
+
+        {% for blog in blogs %}
+            <tr>
+                <td> <h3 >Titre : </h3>  {{ blog.titre }}  </td>
+                <td>  {{ blog.content }} </td>
+                <td>   Date of creation  {{ blog.date|date("m/d/Y")  }} </td>
+                <td>   Createur  {{ blog.auteur }} </td>
+            </tr>
+
+            <div>
+                <tr>
+                    <td><a href="{{ path('forum_update_blog',{'id':blog.id}) }}">Edit</a></td>
+                    <td><a href="{{ path('forum_delete_blog',{'id':blog.id}) }}">delete</a></td>
+
+
+                </tr>
+            </div>
+
+        {% endfor %}
+
+
+
+        <a  class="btn btn-default btn-green" href="{{ path('addBlog') }}">Host a new Article </a>
+        <a  class="btn btn-default btn-green" href="{{ path('indexBlog') }}">Check all Articles</a>
+
+    </table>
+
+{% endblock %}

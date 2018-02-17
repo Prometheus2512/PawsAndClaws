@@ -10,4 +10,17 @@ namespace MainBundle\Repository;
  */
 class BlogRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findBlogByCategory($type)
+    {
+        return $this->getEntityManager()
+            ->createQueryBuilder()
+            ->select("blog")
+            ->from("MainBundle:Blog", "blog")
+            ->leftJoin("blog.categories", "category")
+            ->where("category.type = :type")
+            ->setParameter("type", $type)
+            ->orderBy("blog.id","ASC")
+            ->getQuery()
+            ->getResult();
+    }
 }

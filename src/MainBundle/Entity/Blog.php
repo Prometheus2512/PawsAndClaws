@@ -55,6 +55,13 @@ class Blog
      *
      * @return int
      */
+
+    /**
+     * @ORM\ManyToOne(targetEntity="MainBundle\Entity\BlogCategory", inversedBy="blogs")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id", onDelete="CASCADE")
+     */
+    private $categories;
+
     public function getId()
     {
         return $this->id;
@@ -154,5 +161,29 @@ class Blog
     public function getAuteur()
     {
         return $this->auteur;
+    }
+
+    /**
+     * Set categories
+     *
+     * @param \MainBundle\Entity\BlogCategory $categories
+     *
+     * @return Blog
+     */
+    public function setCategories(\MainBundle\Entity\BlogCategory $categories = null)
+    {
+        $this->categories = $categories;
+
+        return $this;
+    }
+
+    /**
+     * Get categories
+     *
+     * @return \MainBundle\Entity\BlogCategory
+     */
+    public function getCategories()
+    {
+        return $this->categories;
     }
 }

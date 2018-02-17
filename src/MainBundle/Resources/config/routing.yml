@@ -62,3 +62,26 @@ edit_product:
 add_product_category:
      path:     products/addcategory
      defaults: { _controller: MainBundle:ProductCategory:addProductCategory}
+addBlog:
+     path:     /add
+     defaults: { _controller: MainBundle:Blog:addBlog}
+addBlogCategory:
+     path:     /addCategory
+     defaults: { _controller: MainBundle:BlogCategory:addcategory}
+indexBlog:
+     path:     /indexBlog
+     defaults: { _controller: MainBundle:Blog:indexBlog}
+forum_delete_blog:
+    path:     /{id}/deletepage
+    defaults:
+        _controller: MainBundle:Blog:delete
+    requirements :
+        id : '\d+'
+forum_update_blog:
+    path:     /{id}/updatepage
+    defaults:
+        _controller: MainBundle:Blog:updateBlog
+forum_search_blog:
+    path:     /search
+    defaults:
+        _controller: MainBundle:Blog:findBlogbYcategory
