@@ -156,4 +156,3 @@ class Blog
         return $this->auteur;
     }
 }
-

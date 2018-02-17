@@ -39,7 +39,22 @@ myevents:
      path:     /myevents
      defaults: { _controller: MainBundle:Event:myevents}
 addreservation:
-     path:     /{uid}/{eid}/
+     path:     /reservation/{uid}/{eid}/
      defaults: { _controller: MainBundle:User:reservation}
 
+add_product:
+     path:     products/add
+     defaults: { _controller: MainBundle:Product:addProduct}
+index_product:
+     path:     products/index
+     defaults: { _controller: MainBundle:Product:indexProduct}
+delete_product:
+     path:     products/{id}/delete
+     defaults: { _controller: MainBundle:Product:deleteProduct}
+edit_product:
+     path:     products/{id}/edit
+     defaults: { _controller: MainBundle:Product:editProduct}
 
+add_product_category:
+     path:     products/addcategory
+     defaults: { _controller: MainBundle:ProductCategory:addProductCategory}
