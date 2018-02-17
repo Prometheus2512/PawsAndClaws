@@ -22,13 +22,14 @@
                 <th>Capacity</th>
                 <th>Cost</th>
                 <th>Available</th>
-                <th></th>
+                {#<th></th>#}
                {# <th></th>#}
 
             </tr>
             </thead>
             <tbody>
             {% for event in events %}
+                {% if event.validated==1 %}
                 <tr>
                     <td><a href="{{ path('event_show', { 'id': event.id }) }}">{{ event.name }}</a></td>
                     <td>{{ event.hostid.username }}</td>
@@ -64,6 +65,7 @@
                     {% endif %}
                     {% endif %}
                 </tr>
+            {% endif %}
             {% endfor %}
 
             </tbody>

@@ -42,7 +42,7 @@ fos_user:
         sender_name: Paws and Claws
     registration:
             confirmation:
-                enabled: true
+                enabled: false
             form:
                 type: MainBundle\Form\RegistrationType
     profile:

@@ -42,7 +42,7 @@ class User extends BaseUser
     protected $address;
 
     /**
-     * @ORM\Column(type="integer",options={"default" : 0})
+     * @ORM\Column(type="integer",options={"default" : 0},nullable=true)
      */
     protected $Banned;
 

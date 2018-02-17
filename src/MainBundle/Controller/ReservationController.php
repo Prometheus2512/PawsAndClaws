@@ -1,15 +1,21 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: root
+ * Date: 2/15/18
+ * Time: 5:14 AM
+ */
 
 namespace MainBundle\Controller;
-
 use MainBundle\Entity\Reservation;
-use MainBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class UserController extends Controller
+class ReservationController extends Controller
+{ public function reservationAction( $uid,  $eid)
 {
-    public function reservationAction( $uid,  $eid)
-    {
+
+
+
         $user=$this->getUser();
         $actualuid=$user->getid();
 
@@ -33,7 +39,6 @@ class UserController extends Controller
             return $this->redirectToRoute('event_show', array('id' => $event->getId()));
 
         }
-        return $this->render('event/errorreservation.html.twig');
-    }
+}
 
 }

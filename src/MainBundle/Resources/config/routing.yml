@@ -30,8 +30,12 @@ admin-events-table:
      path:     /admin/events
      defaults: { _controller: MainBundle:Admin:eventstable}
 admin-delete-event:
-    path:     admin/eventdelete/{id}
+    path:     /admin/eventdelete/{id}
     defaults: { _controller: MainBundle:Admin:eventsdelete }
+admin-validate-event:
+    path:     /admin/eventvalidate/{id}
+    defaults: { _controller: MainBundle:Admin:validate }
+
 calendar:
      path:     /calendar
      defaults: { _controller: MainBundle:Default:calendar}
