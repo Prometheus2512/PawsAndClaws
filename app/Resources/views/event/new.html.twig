@@ -37,7 +37,7 @@
       <form id="msform" style="padding-top:15%;padding-bottom: 30%">
 #}
           <!-- progressbar -->
-    <div style="padding-bottom: 40%;padding-top: 5%">
+    <div style="padding-bottom: 40%;padding-top: 5% ">
 
           {{ form_start(form, {'attr': {'id': 'msform'}})  }}
           <ul id="progressbar">
@@ -52,6 +52,8 @@
               {{ form_row(form.name) }}
               {{ form_row(form.description) }}
               {{ form_row(form.address) }}
+
+
               <input type="button" name="next" class="next action-button" value="Next" />
           </fieldset>
           <fieldset>
@@ -59,16 +61,21 @@
               <h3 class="fs-subtitle">Date</h3>
               {{ form_row(form.beginningDate) }}
               {{ form_row(form.endingDate) }}
+              {{ form_row(form.capacity) }}
+              {{ form_row(form.cost) }}
+              {{ form_row(form.brochure) }}
+
               <input type="button" name="previous" class="previous action-button" value="Previous" />
               <input type="button" name="next" class="next action-button" value="Next" />
           </fieldset>
           <fieldset>
               <h2 class="fs-title">Host an event</h2>
               <h3 class="fs-subtitle">Provide details about the event's participation</h3>
-              {{ form_row(form.capacity) }}
-              {{ form_row(form.cost) }}
-              {{ form_row(form.brochure) }}
 
+
+              {{ form_widget(form.posy, { 'id': 'lat' }) }}
+              {{ form_widget(form.posx, { 'id': 'lng' }) }}
+              {% include 'event/map.html.twig' %}
 
               <input type="button" name="previous" class="previous action-button" value="Previous" />
               <input type="submit" value="Create" />
@@ -173,6 +180,9 @@
         $(".submit").click(function () {
             return false;
         })
+        $( document ).ready()
+        {$('#lat').val('52')}
+        {$('#lng').val('54')}
 
 
     </script>

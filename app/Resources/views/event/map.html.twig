@@ -1,3 +1,4 @@
+{#
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,6 +42,139 @@
 </script>
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAM-OpkHAescn9IJZWrHSEj5nrkxUjPHWg&callback=initMap">
+</script>
+</body>
+</html>#}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple click event</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+         * element that contains the map. */
+        #map {
+            height: 200px;
+            width: 100%;
+        }
+        /* Optional: Makes the sample page fill the window. */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        .controls {
+            margin-top: 10px;
+            border: 1px solid transparent;
+            border-radius: 2px 0 0 2px;
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            height: 32px;
+            outline: none;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        #pac-input {
+            background-color: #fff;
+            font-family: Roboto;
+            font-size: 15px;
+            font-weight: 300;
+            margin-left: 12px;
+            padding: 0 11px 0 13px;
+            text-overflow: ellipsis;
+            width: 300px;
+        }
+
+        #pac-input:focus {
+            border-color: #4d90fe;
+        }
+
+        .pac-container {
+            font-family: Roboto;
+        }
+
+        #type-selector {
+            color: #fff;
+            background-color: #4d90fe;
+            padding: 5px 11px 0px 11px;
+        }
+
+        #type-selector label {
+            font-family: Roboto;
+            font-size: 13px;
+            font-weight: 300;
+        }
+        #target {
+            width: 345px;
+        }
+
+    </style>
+</head>
+<body>
+{#<input id="lng" type="text" name="lng" disabled><br>
+<input id="lat" type="text" name="lat" disabled><br>#}
+<div id="map"></div>
+<script>
+    function initMap() {
+        var myLatlng = {lat: 36.7449451, lng: 9.955523};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 7,
+            center: myLatlng
+        });
+
+        var marker = new google.maps.Marker({
+            position: myLatlng,
+            map: map,
+            title: 'Click to zoom'
+        });
+
+        google.maps.event.addListener(map, "click", function (e) {
+
+            latLng = e.latLng;
+
+            console.log(e.latLng.lat());
+            console.log(e.latLng.lng());
+
+            console.log("Marker");
+
+            // if marker exists and has a .setMap method, hide it
+            if (marker && marker.setMap) {
+                marker.setMap(null);
+            }
+            marker = new google.maps.Marker({
+                position: latLng,
+                map: map,
+
+            });
+
+            $(function () {
+                $('#lng').val(latLng.lng());
+            });
+            $(function () {
+                $('#lat').val(latLng.lat());
+            });
+        });
+
+        function placeMarker(location) {
+            var marker = new google.maps.Marker({
+                position: location,
+                map: map
+
+            });
+
+            $(function () {
+                $("input:disabled").val('hola');
+            });
+
+            /*document.getElementById('lng').valueOf()
+            document.getElementsByName('lng').val = 'hello';*/
+        }
+    }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAM-OpkHAescn9IJZWrHSEj5nrkxUjPHWg&libraries=places&callback=initMap">
 </script>
 </body>
 </html>

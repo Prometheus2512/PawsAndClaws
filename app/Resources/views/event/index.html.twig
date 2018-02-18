@@ -21,7 +21,7 @@
                 <th>Address</th>
                 <th>Capacity</th>
                 <th>Cost</th>
-                <th>Available</th>
+                <th>Ongoing</th>
                 {#<th></th>#}
                {# <th></th>#}
 
@@ -39,11 +39,12 @@
                     <td>{{ event.address }}</td>
                     <td>{{ event.capacity }}</td>
                     <td>{{ event.cost }}</td>
-                    <td>{% if event.endingDate|date('Y-m-d') <= 'now'|date('Y-m-d') %}
-                            <div style="font-size:1em; color:red"> <i class="fa fa-close" style="size: 25px"> </i>
+                    <td>{% if (event.beginningDate|date('Y-m-d') <= 'now'|date('Y-m-d')) or (event.endingDate|date('Y-m-d') >= 'now'|date('Y-m-d')) %}
+                            <div style="font-size:1em; color:green"><i class="fa fa-check" style="size: 25px"> </i>
                             </div>
                         {% else %}
-                            <div style="font-size:1em; color:green"> <i class="fa fa-check" style="size: 25px"> </i>
+                            <div style="font-size:1em; color:red"> <i class="fa fa-close" style="size: 25px"> </i>
+
                             </div>
                         {% endif %}
                     </td>

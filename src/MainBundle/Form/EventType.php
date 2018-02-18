@@ -22,6 +22,8 @@ class EventType extends AbstractType
                 ->add('address')
                 ->add('capacity')
                 ->add('cost')
+            ->add('posx',HiddenType::class)
+            ->add('posy',HiddenType::class)
             ->add('validated', HiddenType::class, array(
                 'data' => '0',
             ))

@@ -150,17 +150,6 @@ $securityContext = $this->container->get('security.authorization_checker');
                 $commentary = new Commentary();
                 $form = $this->createForm('MainBundle\Form\CommentaryType', $commentary);
                 $commentaries = $em->getRepository('MainBundle:Commentary')->findBy(['commentedevent'=>$event]);
-
-             /*   return $this->render('event/show.html.twig', array(
-                    'event' => $event,
-                    'delete_form' => $deleteForm->createView(),
-                    'verif'=>$verif,
-                    'nbparticipants'=>$participationnumber,
-                    'reservations'=>$thiseventreservation,
-                    'form' => $form->createView(),
-                    'commentaries' => $commentaries,
-                ));*/
-
                 $this->redirect($this->generateUrl('event_show',array(
                     'id'=>$event->getId(),
                     'event' => $event,
@@ -235,6 +224,7 @@ $securityContext = $this->container->get('security.authorization_checker');
             $em = $this->getDoctrine()->getManager();
             $reservations= $em->getRepository('MainBundle:Reservation')
                 ->findBy(['eventid'=>$event]);
+
 
             foreach ($reservations as $reservation ) {
                 $em->remove($reservation);
