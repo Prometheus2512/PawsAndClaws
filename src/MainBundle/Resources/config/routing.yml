@@ -44,7 +44,15 @@ myevents:
      defaults: { _controller: MainBundle:Event:myevents}
 addreservation:
      path:     /reservation/{uid}/{eid}/
+<<<<<<< Updated upstream
      defaults: { _controller: MainBundle:User:reservation}
+=======
+     defaults: { _controller: MainBundle:Reservation:reservation}
+deletereservation:
+     path:     /reservation/delete/{uid}/{eid}/
+     defaults: { _controller: MainBundle:Reservation:delete}
+
+>>>>>>> Stashed changes
 
 add_product:
      path:     products/add

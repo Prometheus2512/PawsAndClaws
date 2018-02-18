@@ -1,31 +1,372 @@
 {% extends 'base.html.twig' %}
+
 {% block content %}
+    {% include 'event/obstart.html.twig' %}
+    <style href="{{ asset('css/commentary.css') }}"></style>
+    <link href="{{ asset('css/commentary.css') }}" rel="stylesheet">
 
     <link href="{{ asset('css/myformulaire.css') }}" rel="stylesheet">
 
+    <style>
 
+       /* .thumbnail {
+            padding: 0px;
+        }
+
+        .panel {
+            position: relative;
+        }
+
+        .panel > .panel-heading:after, .panel > .panel-heading:before {
+            position: absolute;
+            top: 11px;
+            left: -16px;
+            right: 15%;
+            width: 0;
+            height: 0;
+            display: block;
+            content: " ";
+            border-color: transparent;
+            border-style: solid solid outset;
+            pointer-events: none;
+        }
+
+        .panel > .panel-heading:after {
+            border-width: 7px;
+            border-right-color: #f7f7f7;
+            margin-top: 1px;
+            margin-left: 2px;
+        }
+
+        .panel > .panel-heading:before {
+            border-right-color: #ddd;
+            border-width: 8px;
+        }*/
+       *{
+           margin: 0;
+           padding: 0;
+           box-sizing: border-box;
+       }
+
+       html{
+           font: normal 13px sans-serif;
+       }
+
+       .comment-section{
+           list-style: none;
+           max-width: 800px;
+           width: 100%;
+           margin: 50px auto;
+           padding: 10px;
+       }
+
+       .comment{
+           display: flex;
+           border-radius: 3px;
+           margin-bottom: 45px;
+           flex-wrap: wrap;
+       }
+
+       .comment.user-comment{
+           color:  #808080;
+       }
+
+       .comment.author-comment{
+           color:  #60686d;
+           justify-content: flex-end;
+       }
+
+       /* User and time info */
+
+       .comment .info{
+           width: 17%;
+       }
+
+       .comment.user-comment .info{
+           text-align: right;
+       }
+
+       .comment.author-comment .info{
+           order: 3;
+       }
+
+
+       .comment .info a{	/* User name */
+           display: block;
+           text-decoration: none;
+           color: black;
+           font-weight: bold;
+           text-overflow: ellipsis;
+           overflow: hidden;
+           white-space: nowrap;
+           padding: 10px 0 3px 0;
+       }
+
+       .comment .info span{	/* Time */
+           font-size: 11px;
+           color:  black;
+       }
+
+
+       /* The user avatar */
+
+       .comment .avatar{
+           width: 8%;
+       }
+
+       .comment.user-comment .avatar{
+           padding: 10px 18px 0 3px;
+       }
+
+       .comment.author-comment .avatar{
+           order: 2;
+           padding: 10px 3px 0 18px;
+       }
+
+       .comment .avatar img{
+           display: block;
+           border-radius: 50%;
+       }
+
+       .comment.user-comment .avatar img{
+           float: right;
+       }
+
+
+
+
+
+       /* The comment text */
+
+       .comment p{
+           line-height: 1.5;
+           padding: 18px 22px;
+           width: 50%;
+           position: relative;
+           word-wrap: break-word;
+       }
+
+       .comment.user-comment p{
+           background-color:  #f3f3f3;
+       }
+
+       .comment.author-comment p{
+           background-color:  #e2f8ff;
+           order: 1;
+       }
+
+       .user-comment p:after{
+           content: '';
+           position: absolute;
+           width: 15px;
+           height: 15px;
+           border-radius: 50%;
+           background-color: #ffffff;
+           border: 2px solid #f3f3f3;
+           left: -8px;
+           top: 18px;
+       }
+
+       .author-comment p:after{
+           content: '';
+           position: absolute;
+           width: 15px;
+           height: 15px;
+           border-radius: 50%;
+           background-color: #ffffff;
+           border: 2px solid #e2f8ff;
+           right: -8px;
+           top: 18px;
+       }
+
+
+
+
+       /* Comment form */
+
+       .write-new{
+           margin: 80px auto 0;
+           width: 50%;
+       }
+
+       .write-new textarea{
+           color:  #444;
+           font: inherit;
+
+           outline: 0;
+           border-radius: 3px;
+           border: 1px solid #cecece;
+           background-color:  #fefefe;
+           box-shadow: 1px 2px 1px 0 rgba(0, 0, 0, 0.06);
+           overflow: auto;
+
+           width:100%;
+           min-height: 80px;
+           padding: 15px 20px;
+       }
+
+       .write-new img{
+           border-radius: 50%;
+           margin-top: 15px;
+       }
+
+       .write-new button{
+           float:right;
+           background-color:  #87bae1;
+           box-shadow: 1px 2px 1px 0 rgba(0, 0, 0, 0.12);
+           border-radius: 2px;
+           border: 0;
+           color: #ffffff;
+           font-weight: bold;
+           cursor: pointer;
+
+           padding: 10px 25px;
+           margin-top: 18px;
+       }
+
+
+
+       /* Responsive styles */
+
+       @media (max-width: 800px){
+           /* Make the paragraph in the comments take up the whole width,
+           forcing the avatar and user info to wrap to the next line*/
+           .comment p{
+               width: 100%;
+           }
+
+           /* Reverse the order of elements in the user comments,
+           so that the avatar and info appear after the text. */
+           .comment.user-comment .info{
+               order: 3;
+               text-align: left;
+           }
+
+           .comment.user-comment .avatar{
+               order: 2;
+           }
+
+           .comment.user-comment p{
+               order: 1;
+           }
+
+
+           /* Align toward the beginning of the container (to the left)
+           all the elements inside the author comments. */
+           .comment.author-comment{
+               justify-content: flex-start;
+           }
+
+
+           .comment-section{
+               margin-top: 10px;
+           }
+
+           .comment .info{
+               width: auto;
+           }
+
+           .comment .info a{
+               padding-top: 15px;
+           }
+
+           .comment.user-comment .avatar,
+           .comment.author-comment .avatar{
+               padding: 15px 10px 0 18px;
+               width: auto;
+           }
+
+           .comment.user-comment p:after,
+           .comment.author-comment p:after{
+               width: 12px;
+               height: 12px;
+               top: initial;
+               left: 28px;
+               bottom: -6px;
+           }
+
+           .write-new{
+               width: 100%;
+           }
+       }
+
+
+
+       /* ------- Demo footer. Please ignore and remove ------- */
+
+       footer {
+           font: normal 16px Arial, Helvetica, sans-serif;
+           padding: 15px 35px;
+           position: fixed;
+           bottom: 0;
+           left: 0;
+           right: 0;
+           background-color: #1B1F22;
+           box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.2);
+           z-index: 1;
+           text-align: left;
+       }
+
+       footer a.tz{
+           font-weight: normal;
+           font-size: 16px !important;
+           text-decoration: none !important;
+           display: block;
+           margin-right: 300px;
+           text-overflow: ellipsis;
+           white-space: nowrap;
+           color: #CCC !important;
+           position: relative;
+           padding-left: 140px;
+       }
+
+       footer a.tz:before{
+           font-weight: bold;
+           color: #FFF;
+           content: 'tutorial';
+           position: absolute;
+           text-align: right;
+           width: 100px;
+           left: -20px;
+       }
+
+       footer a.tz:after{
+           content: 'zine';
+           position: absolute;
+           font-weight: bold;
+           color: #DA431C;
+           left: 80px;
+       }
+
+
+       @media (max-width: 1024px) {
+           footer{ display:none;}
+       }
+    </style>
     <link href="{{ asset('css/myprofile.css') }}" rel="stylesheet">
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <div class="container">
-        <div class="row">
+   <body style="background-color: #ccff99">
+    <div class="container" style="width: 100%">
+        <div class="row" style="width: 100%">
 
 
-            <ul style="margin-top: 10%" id="accordion" class="accordion">
+            <ul style="margin-top: 10%;float: left;width:700px; left: 0px;padding-right: 0px;" id="accordion" class="accordion">
                 <li>
                     <div class="col col_4 iamgurdeep-pic">
-                        {% if event.brochure  %}
-                            <img style="width: 400px; height: 400px" class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
-                                 src="{{ asset('bundles/uploads/brochures/'~event.brochure )}}">
+                        {% if event.brochure %}
+                            <img style="width: 400px; height: 400px" class="img-responsive iamgurdeeposahan"
+                                 alt="iamgurdeeposahan"
+                                 src="{{ asset('bundles/uploads/brochures/'~event.brochure ) }}">
                         {% else %}
                             <img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
                                  src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg">
 
 
                         {% endif %}
-{#
-                        <img style="width: 100px ;height: 100px" src="{{ asset('bundles/uploads/brochures/'~produit.brochure )}}">
-#}
+                        {#
+                                                <img style="width: 100px ;height: 100px" src="{{ asset('bundles/uploads/brochures/'~produit.brochure )}}">
+                        #}
                         <div class="username">
                             <h2>{{ event.name }}
                                 <small><i class="fa fa-map-marker"></i> {{ event.address }}</small>
@@ -55,8 +396,8 @@
                                             <a href={{ path('addreservation', {'uid': app.user.id, 'eid': event.id}) }} class="btn-o">
                                                 <i class="fa fa-ticket "></i>Participate</a>
                                         {% else %}
-
-                                               <a style="color: green;">      Already Participating</a>
+                                            <a href={{ path('deletereservation', {'uid': app.user.id, 'eid': event.id}) }} class="btn-o">
+                                                <i class="fa fa-ticket "></i>Not participating </a>
 
 
                                         {% endif %}
@@ -95,13 +436,13 @@
                                             <li><a href="#"><i class="fa fa-calendar left-none"></i> Date of Birth : 03/09/1994</a></li>
                         #}
                         <li><a {#href="#"#}>Description: {{ event.description }}</a></li>
-                        <li><a {#href="#"#}> Cost: {{ event.cost }}</a></li>
+                        <li><a {#href="#"#}> Ticket price: {{ event.cost }} DT</a></li>
                         <li><a {#href="#"#}> Capacity: {{ event.capacity }}</a></li>
                         <li><a {#href="#"#}> Starting
-                                : {% if event.beginningDate %}{{ event.beginningDate|date('Y-m-d H:i:s') }}{% endif %}</a>
+                                : {% if event.beginningDate %}{{ event.beginningDate|date('Y-m-d ') }} at {{ event.beginningDate|date(' H:i:s') }}{% endif %}</a>
                         </li>
-                        <li><a {#href="#"#}> Starting
-                                : {% if event.endingDate %}{{ event.endingDate|date('Y-m-d H:i:s') }}{% endif %}</a>
+                        <li><a {#href="#"#}> Ending
+                                : {% if event.endingDate %}{{ event.endingDate|date('Y-m-d ') }} at {{ event.endingDate|date(' H:i:s') }}{% endif %}</a>
                         </li>
 
                     </ul>
@@ -152,58 +493,87 @@
                                         <br>
                                     </li>
                                 </ul>
-                                {#<a href="#"><img class="img-responsive iamgurdeeposahan"
-                                                                       alt="iamgurdeeposahan"
-                                                                       src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
-                                </a>
-                                <a href="#"><img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
-                                                 src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
-                                </a>
-                                <a href="#"><img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
-                                                 src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
-                                </a>
-                                <a href="#"><img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
-                                                 src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
-                                </a>
-                                <a href="#"><img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
-                                                 src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
-                                </a>
-                                <a href="#"><img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
-                                                 src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
-                                </a>
-                                <a href="#"><img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
-                                                 src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
-                                </a>
-                                <a href="#"><img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
-                                                 src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
-                                </a>
-                                <a href="#"><img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan"
-                                                 src="http://webncc.in/img/user/gurdeep-singh-osahan.jpg">
-                                </a>
-
-                                <a class="view-all" href="https://web.facebook.com/iamgurdeeposahan" target="_blank">50+
-                                </a>
-    #}                       {% endfor %}
+                            {% endfor %}
                         </li>
                     </ul>
                 </li>
                 <li>
                     <div class="link"><i class="fa fa-map"></i>Localisation
-{#
-                        <small>1,053</small>
-#}
+                        {#
+                                                <small>1,053</small>
+                        #}
                         <i class="fa fa-chevron-down"></i></div>
                     <ul class="submenu">
-                        {#<li class="photosgurdeep">#}
-                        {% include 'map.html.twig' %}
-                        {# </li>#}
+
                     </ul>
                 </li>
             </ul>
+
+
+<div style=" width: 70%;float: right;background-color:#e6ffcc;overflow-y: scroll; height:350px;margin-top: 10%">
+ <ul class="comment-section">
+
+        {% for commentary in commentaries %}
+        {% if  commentary.commentator.username==app.user %}
+
+        <li class="comment author-comment">
+
+            <div class="info">
+                <a href="#"> {{ commentary.commentator.username }} </a>
+                <span>3 hours ago</span>
+            </div>
+
+            <a class="avatar" href="#">
+                <img src="images/avatar_author.jpg" width="35" alt="Profile Avatar" title="Jack Smith" />
+            </a>
+
+            <p> {{ commentary.content}}</p>
+
+        </li>
+
+
+        {% else %}
+        <li class="comment user-comment">
+
+                    <div class="info">
+                        <a href="#">{{ commentary.commentator.username }}</a>
+                        <span>4 hours ago</span>
+                    </div>
+
+                    <a class="avatar" href="#">
+                        <img src="images/avatar_user_1.jpg" width="35" alt="Profile Avatar" title="Anie Silverston" />
+                    </a>
+
+                    <p>{{ commentary.content}}</p>
+
+                </li>
+        {% endif %}
+       {% endfor %}
+           </ul>
+
+</div>
+            <div style="float: right; width: 800px;">
+                <div class="write-new">
+
+                    <form action="#" method="post">
+                        {{ form_start(form) }}
+                        {% if   is_granted('ROLE_USER') %}
+
+                        {{ form_row(form.content) }}
+                        {% else %}
+                        {{ form_row(form.content, { 'attr':{'disabled':'disabled'} }) }}
+{% endif %}
+                        <input type="submit" value="Comment"/>
+
+
+                        {{ form_end(form) }}
+                    </form>
+
+
+                </div>
+            </div>
         </div>
-
-
-    </div>
+    </div></body>
     <script>$(function () {
             var Accordion = function (el, multiple) {
                 this.el = el || {};
@@ -233,77 +603,9 @@
         });
 
 
-    </script></div>
+    </script>
 
 
 
-    {#
-        <h1>Event</h1>
-
-        <table>
-            <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ event.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ event.name }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ event.description }}</td>
-            </tr>
-            <tr>
-                <th>Beginningdate</th>
-                <td>{% if event.beginningDate %}{{ event.beginningDate|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Endingdate</th>
-                <td>{% if event.endingDate %}{{ event.endingDate|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Address</th>
-                <td>{{ event.address }}</td>
-            </tr>
-            <tr>
-                <th>Posx</th>
-                <td>{{ event.posx }}</td>
-            </tr>
-            <tr>
-                <th>Posy</th>
-                <td>{{ event.posy }}</td>
-            </tr>
-            <tr>
-                <th>Capacity</th>
-                <td>{{ event.capacity }}</td>
-            </tr>
-            <tr>
-                <th>Cost</th>
-                <td>{{ event.cost }}</td>
-            </tr>
-            </tbody>
-        </table>
-
-        <ul>
-
-            <li>
-                <a href="{{ path('event_index') }}">Back to the list</a>
-            </li>
-
-            <li>
-                <a href="{{ path('event_edit', { 'id': event.id }) }}">Edit</a>
-            </li>
-            <li>
-                {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-                {{ form_end(delete_form) }}
-            </li>
-
-        </ul>
-
-
-
-    #}
 
 {% endblock %}

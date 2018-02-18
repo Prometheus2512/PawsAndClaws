@@ -2,6 +2,7 @@
 
 namespace MainBundle\Controller;
 
+use MainBundle\Entity\Commentary;
 use MainBundle\Entity\Event;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -100,13 +101,18 @@ class EventController extends Controller
      * Finds and displays a event entity.
      *
      * @Route("/{id}", name="event_show")
-     * @Method("GET")
+     * @Method({"GET", "POST"})
      */
-    public function showAction(Event $event)
+    public function showAction(Event $event,Request $request)
     { $verif=1;
         $deleteForm = $this->createDeleteForm($event);
         $em = $this->getDoctrine()->getManager();
-        $securityContext = $this->container->get('security.authorization_checker');
+
+$thiseventreservation=$em->getRepository('MainBundle:Reservation')->findBy(['eventid' => $event->getId()]);
+        $commentaries = $em->getRepository('MainBundle:Commentary')->findBy(['commentedevent'=>$event]);
+$participationnumber=count($thiseventreservation);
+
+$securityContext = $this->container->get('security.authorization_checker');
         if ($securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
             // authenticated REMEMBERED, FULLY will imply REMEMBERED (NON anonymous)
             $user = $this->getUser();
@@ -121,9 +127,58 @@ class EventController extends Controller
             }else{
                 $verif=1;
             }
-        }
+            $commentary = new Commentary();
+            $form = $this->createForm('MainBundle\Form\CommentaryType', $commentary);
+            $form->handleRequest($request);
+
+
+            if ($form->isSubmitted() && $form->isValid()) {
+                $sessionMessageIdent = isset($_SESSION['messageIdent'])?$_SESSION['messageIdent']:'';
+
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($commentary);
+                $date = new \DateTime();
+
+                $commentary->setCreationDate($date);
+                $commentary->setCommentedevent($event);
+                $commentary->setCommentator($user);
+                $em->flush();
+                unset($commentary);
+                unset($form);
+                unset($_POST);
+                unset($_REQUEST);
+                $commentary = new Commentary();
+                $form = $this->createForm('MainBundle\Form\CommentaryType', $commentary);
+                $commentaries = $em->getRepository('MainBundle:Commentary')->findBy(['commentedevent'=>$event]);
+
+             /*   return $this->render('event/show.html.twig', array(
+                    'event' => $event,
+                    'delete_form' => $deleteForm->createView(),
+                    'verif'=>$verif,
+                    'nbparticipants'=>$participationnumber,
+                    'reservations'=>$thiseventreservation,
+                    'form' => $form->createView(),
+                    'commentaries' => $commentaries,
+                ));*/
+
+                $this->redirect($this->generateUrl('event_show',array(
+                    'id'=>$event->getId(),
+                    'event' => $event,
+                    'delete_form' => $deleteForm->createView(),
+                    'verif'=>$verif,
+                    'nbparticipants'=>$participationnumber,
+                    'reservations'=>$thiseventreservation,
+                    'form' => $form->createView(),
+                    'commentaries' => $commentaries)));
+
+            }
+
+            }
         $thiseventreservation=$em->getRepository('MainBundle:Reservation')->findBy(['eventid' => $event->getId()]);
         $participationnumber=count($thiseventreservation);
+        $commentary = new Commentary();
+
+        $form = $this->createForm('MainBundle\Form\CommentaryType', $commentary);
 
 
         return $this->render('event/show.html.twig', array(
@@ -132,6 +187,10 @@ class EventController extends Controller
             'verif'=>$verif,
             'nbparticipants'=>$participationnumber,
             'reservations'=>$thiseventreservation,
+            'commentaries' => $commentaries,
+            'form' => $form->createView(),
+
+
         ));
     }
 
@@ -168,11 +227,18 @@ class EventController extends Controller
      */
     public function deleteAction(Request $request, Event $event)
     {
+
         $form = $this->createDeleteForm($event);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $reservations= $em->getRepository('MainBundle:Reservation')
+                ->findBy(['eventid'=>$event]);
+
+            foreach ($reservations as $reservation ) {
+                $em->remove($reservation);
+            }
             $em->remove($event);
             $em->flush();
         }

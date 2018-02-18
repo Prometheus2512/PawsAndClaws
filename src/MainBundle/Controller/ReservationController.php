@@ -40,5 +40,28 @@ class ReservationController extends Controller
 
         }
 }
+    public function deleteAction( $uid,  $eid)
+    {
+
+        $user=$this->getUser();
+        $actualuid=$user->getid();
+
+        $em = $this->getDoctrine()->getManager();
+
+        $reserve = $em->getRepository('MainBundle:Reservation')->findOneBy(['participantid' => $uid,'eventid'=>$eid]);
+
+        if ($actualuid==$uid) {
+            $em->remove($reserve);
+            $em->flush();
+        }
+
+
+            return $this->redirectToRoute('event_show', array('id' => $eid));
+
+
+
+    }
+
+
 
 }

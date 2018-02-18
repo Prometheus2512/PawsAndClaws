@@ -1,0 +1,24 @@
+commentary_index:
+    path:     /
+    defaults: { _controller: "MainBundle:Commentary:index" }
+    methods:  GET
+
+commentary_show:
+    path:     /{id}/show
+    defaults: { _controller: "MainBundle:Commentary:show" }
+    methods:  GET
+
+commentary_new:
+    path:     /new
+    defaults: { _controller: "MainBundle:Commentary:new" }
+    methods:  [GET, POST]
+
+commentary_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "MainBundle:Commentary:edit" }
+    methods:  [GET, POST]
+
+commentary_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "MainBundle:Commentary:delete" }
+    methods:  DELETE
