@@ -48,6 +48,12 @@ addreservation:
 deletereservation:
      path:     /reservation/delete/{uid}/{eid}/
      defaults: { _controller: MainBundle:Reservation:delete}
+nextevent:
+     path:     /event/{id}/nextevent
+     defaults: { _controller: MainBundle:Event:nextevent}
+previousevent:
+     path:     /event/{id}/previous
+     defaults: { _controller: MainBundle:Event:previousevent}
 
 
 add_product:

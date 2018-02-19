@@ -2,6 +2,9 @@
 
 {% block content %}
     {% include 'event/obstart.html.twig' %}
+<link rel="stylesheet" type="text/css" href="{{ asset('bundles/starrating/css/rating.css') }}" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="{{ asset('bundles/starrating/js/rating.js') }}"></script>
     <style href="{{ asset('css/commentary.css') }}"></style>
     <link href="{{ asset('css/commentary.css') }}" rel="stylesheet">
 
@@ -346,14 +349,21 @@
     <link href="{{ asset('css/myprofile.css') }}" rel="stylesheet">
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-   <body style="background-color: #ccff99">
-    <div class="container" style="width: 100%">
-        <div class="row" style="width: 100%">
+   <body style="background-color:#62c28d">
+
+   <br><br><br><br><br><br><br>
+
+   <div class="container" style="width: 100%">
+        <div class="row" style="width: 100%;background-color:#62c28d">
 
 
-            <ul style="margin-top: 10%;float: left;width:700px; left: 0px;padding-right: 0px;" id="accordion" class="accordion">
+            <ul style="margin-top: -2%;float: left;width:700px; left: 0px;padding-right: 0px;" id="accordion" class="accordion">
                 <li>
                     <div class="col col_4 iamgurdeep-pic">
+                        <div style="background-color: #62c28d">
+                        <a  href="{{ path('nextevent', {'id': event.id}) }}" style="color: white;font-size: 20px; margin-bottom: 2%;float: right;padding-right: 10%; " >Next Event </a>
+                            <a  href="{{ path('previousevent', {'id': event.id}) }}" style="color: white;font-size: 20px; float: left;padding-left: 8%" >Previous event</a>
+
                         {% if event.brochure %}
                             <img style="width: 400px; height: 400px" class="img-responsive iamgurdeeposahan"
                                  alt="iamgurdeeposahan"
@@ -393,9 +403,12 @@
                                 {% else %}
                                     {% if event.endingDate|date('Y-m-d') > 'now'|date('Y-m-d') %}
                                         {% if verif==0 %}
+
                                             <a href={{ path('addreservation', {'uid': app.user.id, 'eid': event.id}) }} class="btn-o">
                                                 <i class="fa fa-ticket "></i>Participate</a>
                                         {% else %}
+                                           {# {{ form(formrating) }}#}
+
                                             <a href={{ path('deletereservation', {'uid': app.user.id, 'eid': event.id}) }} class="btn-o">
                                                 <i class="fa fa-ticket "></i>Not participating </a>
 
@@ -504,8 +517,8 @@
                         #}
                         <i class="fa fa-chevron-down"></i></div>
                     <ul class="submenu">
-                        <input id="lat"  value="{{ event.posy }}">
-                        <input id="lng"  value="{{ event.posx }}">
+                        <input id="lat" hidden value="{{ event.posy }}">
+                        <input id="lng" hidden value="{{ event.posx }}">
 
 
                         {% include 'event/singleeventmap.html.twig' %}
@@ -514,7 +527,7 @@
             </ul>
 
 
-<div style=" width: 70%;float: right;background-color:#e6ffcc;overflow-y: scroll; height:350px;margin-top: 10%">
+<div style=" width: 70%;float: right;background-color:#76c99b;overflow-y: scroll; height:350px;margin-top: 0%">
  <ul class="comment-section">
 
         {% for commentary in commentaries %}
@@ -524,7 +537,7 @@
 
             <div class="info">
                 <a href="#"> {{ commentary.commentator.username }} </a>
-                <span>3 hours ago</span>
+                <span>{{ commentary.creationDate |date('Y-m-d') }} at {{ commentary.creationDate |date(' H:i:s') }} </span>
             </div>
 
             <a class="avatar" href="#">
@@ -563,11 +576,11 @@
                         {{ form_start(form) }}
                         {% if   is_granted('ROLE_USER') %}
 
-                        {{ form_row(form.content) }}
+                        {{ form_widget(form.content) }}
                         {% else %}
                         {{ form_row(form.content, { 'attr':{'disabled':'disabled'} }) }}
 {% endif %}
-                        <input type="submit" value="Comment"/>
+                        <input style="float:right;margin-top: 5%" type="submit" value="Comment"/>
 
 
                         {{ form_end(form) }}

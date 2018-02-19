@@ -130,7 +130,35 @@ $securityContext = $this->container->get('security.authorization_checker');
             $commentary = new Commentary();
             $form = $this->createForm('MainBundle\Form\CommentaryType', $commentary);
             $form->handleRequest($request);
+            $ratedreservation = $em->getRepository('MainBundle:Reservation')->findOneBy(['eventid' => $event->getId(), 'participantid' => $actualuid]);
 
+            $formrating = $this->createForm('MainBundle\Form\ReservationType');
+
+$formrating->handleRequest($request);
+if($formrating->isSubmitted()&&$formrating->isValid()){
+
+
+    $em = $this->getDoctrine()->getEntityManager();
+    $ratedreservation = $em->getRepository('MainBundle:Reservation')->findOneBy(['eventid' => $event->getId(), 'participantid' => $actualuid]);
+    $note=$formrating->getData('rating');
+    $LAnote=$note->getRating();
+    $ratedreservation->setRating($note);
+    $em->flush();
+    $ratedreservation = $em->getRepository('MainBundle:Reservation')->findOneBy(['eventid' => $event->getId(), 'participantid' => $actualuid]);
+$note=$ratedreservation->getRating();
+    return $this->render('event/show.html.twig', array(
+        'event' => $event,
+        'delete_form' => $deleteForm->createView(),
+        'verif'=>$verif,
+        'nbparticipants'=>$participationnumber,
+        'reservations'=>$thiseventreservation,
+        'commentaries' => $commentaries,
+        'form' => $form->createView(),
+
+
+    ));
+
+}
 
             if ($form->isSubmitted() && $form->isValid()) {
                 $sessionMessageIdent = isset($_SESSION['messageIdent'])?$_SESSION['messageIdent']:'';
@@ -158,7 +186,10 @@ $securityContext = $this->container->get('security.authorization_checker');
                     'nbparticipants'=>$participationnumber,
                     'reservations'=>$thiseventreservation,
                     'form' => $form->createView(),
-                    'commentaries' => $commentaries)));
+                    'commentaries' => $commentaries,
+
+
+                )));
 
             }
 
@@ -251,4 +282,31 @@ $securityContext = $this->container->get('security.authorization_checker');
             ->getForm()
         ;
     }
+    public function nexteventAction( $id)
+    {
+        $em=$this->getDoctrine()->getManager();
+       $nextid= $em->getRepository('MainBundle:Event')->getNextEvent($id);
+        if($nextid== null)
+        {
+            $nextid=$em->getRepository('MainBundle:Event')->getFirstEvent();
+            return $this->redirectToRoute('event_show', array('id'=> $nextid->getId()));
+
+        }
+        return $this->redirectToRoute('event_show', array('id'=> $nextid->getId()));
+
+    }
+    public function previouseventAction( $id)
+    {
+        $em=$this->getDoctrine()->getManager();
+        $previousid= $em->getRepository('MainBundle:Event')->getPreviousEvent($id);
+        if($previousid== null)
+        {
+            $previousid=$em->getRepository('MainBundle:Event')->getLastEvent();
+            return $this->redirectToRoute('event_show', array('id'=> $previousid->getId()));
+
+        }
+        return $this->redirectToRoute('event_show', array('id'=> $previousid->getId()));
+
+    }
+
 }

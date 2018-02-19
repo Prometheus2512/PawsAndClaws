@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new AncaRebeca\FullCalendarBundle\FullCalendarBundle(),
             new Mgilet\NotificationBundle\MgiletNotificationBundle(),
             new Knp\Bundle\TimeBundle\KnpTimeBundle(),
+            new blackknight467\StarRatingBundle\StarRatingBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

@@ -44,6 +44,13 @@ class Reservation
 
 
     /**
+     * @var float
+     *
+     * @ORM\Column(name="rating", type="float",nullable=true)
+     */
+    private $rating;
+
+    /**
      * Get id
      *
      * @return int
@@ -100,4 +107,22 @@ class Reservation
     {
         return $this->eventid;
     }
+
+    /**
+     * @return float
+     */
+    public function getRating()
+    {
+        return $this->rating;
+    }
+
+    /**
+     * @param float $rating
+     */
+    public function setRating($rating)
+    {
+        $this->rating = $rating;
+    }
+
 }
+
