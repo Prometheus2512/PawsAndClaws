@@ -106,6 +106,20 @@ class EventController extends Controller
      */
     public function showAction(Event $event,Request $request)
     { $verif=1;
+        $em = $this->getDoctrine()->getManager();
+       if((!isset($_SESSION["q"])) ){    $_SESSION['q'] = array();}
+        elseif(/*(!isset($_SESSION["q"])) and*/(!in_array($event->getId(),$_SESSION['q']))) {
+/*            $_SESSION['q'][] = $event->getId();*/
+            array_push($_SESSION["q"],$event->getId());
+            $oldviews=$event->getViews();
+            $newviews=$oldviews+1;
+            $event->setViews($newviews);
+            $em->flush();
+        }
+
+
+
+
         $deleteForm = $this->createDeleteForm($event);
         $em = $this->getDoctrine()->getManager();
 
@@ -131,35 +145,9 @@ $securityContext = $this->container->get('security.authorization_checker');
             $commentary = new Commentary();
             $form = $this->createForm('MainBundle\Form\CommentaryType', $commentary);
             $form->handleRequest($request);
-            $ratedreservation = $em->getRepository('MainBundle:Reservation')->findOneBy(['eventid' => $event->getId(), 'participantid' => $actualuid]);
-
-            $formrating = $this->createForm('MainBundle\Form\ReservationType');
-
-$formrating->handleRequest($request);
-if($formrating->isSubmitted()&&$formrating->isValid()){
 
 
-    $em = $this->getDoctrine()->getEntityManager();
-    $ratedreservation = $em->getRepository('MainBundle:Reservation')->findOneBy(['eventid' => $event->getId(), 'participantid' => $actualuid]);
-    $note=$formrating->getData('rating');
-    $LAnote=$note->getRating();
-    $ratedreservation->setRating($note);
-    $em->flush();
-    $ratedreservation = $em->getRepository('MainBundle:Reservation')->findOneBy(['eventid' => $event->getId(), 'participantid' => $actualuid]);
-$note=$ratedreservation->getRating();
-    return $this->render('event/show.html.twig', array(
-        'event' => $event,
-        'delete_form' => $deleteForm->createView(),
-        'verif'=>$verif,
-        'nbparticipants'=>$participationnumber,
-        'reservations'=>$thiseventreservation,
-        'commentaries' => $commentaries,
-        'form' => $form->createView(),
 
-
-    ));
-
-}
 
             if ($form->isSubmitted() && $form->isValid()) {
                 $sessionMessageIdent = isset($_SESSION['messageIdent'])?$_SESSION['messageIdent']:'';
@@ -179,6 +167,7 @@ $note=$ratedreservation->getRating();
                 $commentary = new Commentary();
                 $form = $this->createForm('MainBundle\Form\CommentaryType', $commentary);
                 $commentaries = $em->getRepository('MainBundle:Commentary')->findBy(['commentedevent'=>$event]);
+                $numbercommentaries=count($commentaries);
                 $this->redirect($this->generateUrl('event_show',array(
                     'id'=>$event->getId(),
                     'event' => $event,
@@ -188,6 +177,7 @@ $note=$ratedreservation->getRating();
                     'reservations'=>$thiseventreservation,
                     'form' => $form->createView(),
                     'commentaries' => $commentaries,
+                    'numbercommentaries'=>$numbercommentaries,
 
 
                 )));
@@ -200,6 +190,7 @@ $note=$ratedreservation->getRating();
         $commentary = new Commentary();
 
         $form = $this->createForm('MainBundle\Form\CommentaryType', $commentary);
+        $numbercommentaries=count($commentaries);
 
 
         return $this->render('event/show.html.twig', array(
@@ -210,6 +201,7 @@ $note=$ratedreservation->getRating();
             'reservations'=>$thiseventreservation,
             'commentaries' => $commentaries,
             'form' => $form->createView(),
+            'numbercommentaries'=>$numbercommentaries,
 
 
         ));

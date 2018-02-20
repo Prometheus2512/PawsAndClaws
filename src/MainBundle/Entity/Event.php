@@ -77,6 +77,12 @@ class Event
      * @ORM\Column(name="capacity", type="integer")
      */
     private $capacity;
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="views", type="integer",options={"default" : 0},nullable=true)
+     */
+    private $views;
 
     /**
      * @var float
@@ -394,4 +400,21 @@ class Event
     {
         return $this->Validated;
     }
+
+    /**
+     * @return int
+     */
+    public function getViews()
+    {
+        return $this->views;
+    }
+
+    /**
+     * @param int $views
+     */
+    public function setViews($views)
+    {
+        $this->views = $views;
+    }
+
 }

@@ -70,7 +70,7 @@
        .comment{
            display: flex;
            border-radius: 3px;
-           margin-bottom: 45px;
+           margin-bottom: 0px;
            flex-wrap: wrap;
        }
 
@@ -168,7 +168,7 @@
            width: 15px;
            height: 15px;
            border-radius: 50%;
-           background-color: #ffffff;
+           background-color: #76c99b;
            border: 2px solid #f3f3f3;
            left: -8px;
            top: 18px;
@@ -180,7 +180,7 @@
            width: 15px;
            height: 15px;
            border-radius: 50%;
-           background-color: #ffffff;
+           background-color: #76c99b;
            border: 2px solid #e2f8ff;
            right: -8px;
            top: 18px;
@@ -367,7 +367,6 @@
                         <div style="background-color: #62c28d">
                         <a  href="{{ path('nextevent', {'id': event.id}) }}" style="color: white;font-size: 20px; margin-bottom: 2%;float: right;padding-right: 10%; " >Next Event </a>
                             <a  href="{{ path('previousevent', {'id': event.id}) }}" style="color: white;font-size: 20px; float: left;padding-left: 8%" >Previous event</a>
-
                         {% if event.brochure %}
                             <img style="width: 400px; height: 400px" class="img-responsive iamgurdeeposahan"
                                  alt="iamgurdeeposahan"
@@ -382,10 +381,14 @@
                                                 <img style="width: 100px ;height: 100px" src="{{ asset('bundles/uploads/brochures/'~produit.brochure )}}">
                         #}
                         <div class="username">
+
                             <h2>{{ event.name }}
                                 <small><i class="fa fa-map-marker"></i> {{ event.address }}</small>
                             </h2>
+
                             <p><i class="fa fa-user"></i> Hosted by <strong>{{ event.hostid.username }}</strong></p>
+                           <p> <i class="fa fa-comment"></i> {{ numbercommentaries }} comments <br><i class="fa fa-eye"></i> {{ event.views }} views</p>
+
 
                             {#
                                                     <a href="{{ path('fos_user_profile_edit') }}"  class="btn-o"> <i class="fa fa-cog"></i> Edit </a>
@@ -415,10 +418,8 @@
 
                                             <a href={{ path('deletereservation', {'uid': app.user.id, 'eid': event.id}) }} class="btn-o">
                                                 <i class="fa fa-ticket "></i>Not participating </a>
-{#
-                                            pdfinvitation
-#}
-                                            <a href={{ path('pdfinvitation', {'uid': app.user.id, 'eid': event.id}) }} class="btn-o" >Get invitation</a>
+
+                                            <a href={{ path('pdfinvitation', {'uid': app.user.id, 'eid': event.id}) }} class="btn-o" ><i class="fa fa-download "></i>Get invitation</a>
 
                                         {% endif %}
                                     {% else %}
@@ -540,6 +541,7 @@
 
         <li class="comment author-comment">
 
+
             <div class="info">
                 <a href="#"> {{ commentary.commentator.username }} </a>
                 <span>{{ commentary.creationDate |date('Y-m-d') }} at {{ commentary.creationDate |date(' H:i:s') }} </span>
@@ -559,7 +561,7 @@
 
                     <div class="info">
                         <a href="#">{{ commentary.commentator.username }}</a>
-                        <span>4 hours ago</span>
+                        <span>{{ commentary.creationDate |date('Y-m-d') }} at {{ commentary.creationDate |date(' H:i:s') }}</span>
                     </div>
 
                     <a class="avatar" href="#">
@@ -572,7 +574,6 @@
         {% endif %}
        {% endfor %}
            </ul>
-
 </div>
             <div style="float: right; width: 800px;">
                 <div class="write-new">
@@ -583,7 +584,7 @@
 
                         {{ form_widget(form.content) }}
                         {% else %}
-                        {{ form_row(form.content, { 'attr':{'disabled':'disabled'} }) }}
+                        {{ form_widget(form.content, { 'attr':{'disabled':'disabled'} }) }}
 {% endif %}
                         <input style="float:right;margin-top: 5%" type="submit" value="Comment"/>
 

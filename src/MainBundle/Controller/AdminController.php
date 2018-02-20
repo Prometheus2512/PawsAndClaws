@@ -23,11 +23,27 @@ class AdminController extends Controller
         //access user manager services
 
         $em = $this->getDoctrine()->getManager();
+        $events = $em->getRepository('MainBundle:Event')->findBy(['Validated' => 0]);
+        $unvalidatedevents=count($events);
+        $events = $em->getRepository('MainBundle:Event')->findBy(['Validated' => 1]);
+        $validatedevents=count($events);
+
+        $nviews = 0;
+        foreach($events as $event){
+            $nviews += $event->getViews();
+        }
+
+        $comments=$em->getRepository('MainBundle:Commentary')->findAll();
+        $ncomments=count($comments);
 
         $events = $em->getRepository('MainBundle:Event')->findAll(array('beginningDate' => 'DESC'));
 
         return $this->render('MainBundle:admin:eventstable.html.twig', array(
             'events' => $events,
+            'nviews' =>$nviews,
+            'vale'=>$validatedevents,
+            'unvale'=>$unvalidatedevents,
+            'ncom'=>$ncomments
         ));}
 
     public function eventsdeleteAction($id) {

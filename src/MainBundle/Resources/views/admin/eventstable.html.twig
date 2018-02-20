@@ -5,10 +5,68 @@
 
 
     <link href="{{ asset('css/admintable.css') }}" rel="stylesheet">
+    <div style="text-align: center">
+    <h1>EVENTS MANAGER </h1>
+    </div>
+    <div class="row" style="margin-top: 5%;">
+        <div class="col-xs-12 col-md-6 col-lg-3">
+            <div class="panel panel-red panel-widget ">
+                <div class="row no-padding">
+                    <div class="col-sm-3 col-lg-5 widget-left">
+                        <svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg>
+                    </div>
+                    <div class="col-sm-9 col-lg-7 widget-right">
+                        <div class="large">{{ vale }}</div>
+                        <div class="text-muted">Validated Events</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6 col-lg-3">
+            <div class="panel panel-teal panel-widget">
+                <div class="row no-padding">
+                    <div class="col-sm-3 col-lg-5 widget-left">
+                        <svg class="glyph stroked app-window-with-content"><use xlink:href="#stroked-app-window-with-content"></use></svg>
+                    </div>
+                    <div class="col-sm-9 col-lg-7 widget-right">
+                        <div class="large">{{ unvale }}</div>
+                        <div class="text-muted">New Events</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6 col-lg-3">
+            <div class="panel panel-orange panel-widget">
+                <div class="row no-padding">
+                    <div class="col-sm-3 col-lg-5 widget-left">
+                        <svg class="glyph stroked empty-message"><use xlink:href="#stroked-empty-message"></use></svg>
+                    </div>
+                    <div class="col-sm-9 col-lg-7 widget-right">
+                        <div class="large">{{ ncom }}</div>
+                        <div class="text-muted">Comments</div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <div style="padding-top: 5%; padding-bottom: 5%; text-align: center;  ">
+        <div class="col-xs-12 col-md-6 col-lg-3">
+            <div class="panel panel-blue panel-widget">
+                <div class="row no-padding">
+                    <div class="col-sm-3 col-lg-5 widget-left">
+                        <svg class="glyph stroked eye"><use xlink:href="#stroked-eye"></use></svg>
+                    </div>
+                    <div class="col-sm-9 col-lg-7 widget-right">
+                        <div class="large">{{ nviews }}</div>
+                        <div class="text-muted">Page Views</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!--/.row-->
 
-        <h1>EVENTS TABLE</h1>
+
+    <div style="padding-top: 0%; padding-bottom: 5%; text-align: center;  ">
+
 
         <table >
             <thead>
