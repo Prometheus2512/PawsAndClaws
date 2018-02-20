@@ -46,7 +46,7 @@
                     <td>{{ event.address }}</td>
                     <td>{{ event.capacity }}</td>
                     <td>{{ event.cost }}</td>
-                    <td>{% if (event.beginningDate|date('Y-m-d') <= 'now'|date('Y-m-d')) or (event.endingDate|date('Y-m-d') >= 'now'|date('Y-m-d')) %}
+                    <td>{% if (event.beginningDate|date('Y-m-d') <= 'now'|date('Y-m-d')) and (event.endingDate|date('Y-m-d') >= 'now'|date('Y-m-d')) %}
                             <div style="font-size:1em; color:green"><i class="fa fa-check" style="size: 25px"> </i>
                             </div>
                         {% else %}

@@ -9,9 +9,22 @@
 namespace MainBundle\Controller;
 use MainBundle\Entity\Reservation;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Knp\Bundle\SnappyBundle\Snappy\Response\PdfResponse;
 
 class ReservationController extends Controller
-{ public function reservationAction( $uid,  $eid)
+{
+    public function pdfAction()
+    {
+        $html = $this->renderView('event\invitation.html.twig', array(
+
+        ));
+
+        return new PdfResponse(
+            $this->get('knp_snappy.pdf')->getOutputFromHtml($html),
+            'file.pdf'
+        );
+    }
+    public function reservationAction( $uid,  $eid)
 {
 
 

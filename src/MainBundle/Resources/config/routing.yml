@@ -54,7 +54,9 @@ nextevent:
 previousevent:
      path:     /event/{id}/previous
      defaults: { _controller: MainBundle:Event:previousevent}
-
+pdfinvitation:
+     path:     /invitation/{eid}/{uid}
+     defaults: { _controller: MainBundle:Event:pdfinvitation}
 
 add_product:
      path:     products/add

@@ -2,6 +2,7 @@
 
 namespace MainBundle\Controller;
 
+use Knp\Bundle\SnappyBundle\Snappy\Response\PdfResponse;
 use MainBundle\Entity\Commentary;
 use MainBundle\Entity\Event;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -307,6 +308,22 @@ $note=$ratedreservation->getRating();
         }
         return $this->redirectToRoute('event_show', array('id'=> $previousid->getId()));
 
+    }
+    public function pdfinvitationAction($uid,$eid)
+    {           $em=$this->getDoctrine()->getManager();
+
+        $user = $em->getRepository('MainBundle:User')->findOneBy(['id' => $uid]);
+        $event = $em->getRepository('MainBundle:Event')->findOneBy(['id' => $eid]);
+
+        $html = $this->renderView('event\invitation.html.twig', array(
+            'user'=>$user,
+            'event'=>$event
+        ));
+
+        return new PdfResponse(
+            $this->get('knp_snappy.pdf')->getOutputFromHtml($html),
+            'file.pdf'
+        );
     }
 
 }

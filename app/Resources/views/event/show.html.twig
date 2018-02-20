@@ -12,39 +12,43 @@
 
     <style>
 
-       /* .thumbnail {
-            padding: 0px;
+        textarea {
+            resize: none;
         }
 
-        .panel {
-            position: relative;
-        }
+        /* .thumbnail {
+             padding: 0px;
+         }
 
-        .panel > .panel-heading:after, .panel > .panel-heading:before {
-            position: absolute;
-            top: 11px;
-            left: -16px;
-            right: 15%;
-            width: 0;
-            height: 0;
-            display: block;
-            content: " ";
-            border-color: transparent;
-            border-style: solid solid outset;
-            pointer-events: none;
-        }
+         .panel {
+             position: relative;
+         }
 
-        .panel > .panel-heading:after {
-            border-width: 7px;
-            border-right-color: #f7f7f7;
-            margin-top: 1px;
-            margin-left: 2px;
-        }
+         .panel > .panel-heading:after, .panel > .panel-heading:before {
+             position: absolute;
+             top: 11px;
+             left: -16px;
+             right: 15%;
+             width: 0;
+             height: 0;
+             display: block;
+             content: " ";
+             border-color: transparent;
+             border-style: solid solid outset;
+             pointer-events: none;
+         }
 
-        .panel > .panel-heading:before {
-            border-right-color: #ddd;
-            border-width: 8px;
-        }*/
+         .panel > .panel-heading:after {
+             border-width: 7px;
+             border-right-color: #f7f7f7;
+             margin-top: 1px;
+             margin-left: 2px;
+         }
+
+         .panel > .panel-heading:before {
+             border-right-color: #ddd;
+             border-width: 8px;
+         }*/
        *{
            margin: 0;
            padding: 0;
@@ -411,12 +415,14 @@
 
                                             <a href={{ path('deletereservation', {'uid': app.user.id, 'eid': event.id}) }} class="btn-o">
                                                 <i class="fa fa-ticket "></i>Not participating </a>
-
+{#
+                                            pdfinvitation
+#}
+                                            <a href={{ path('pdfinvitation', {'uid': app.user.id, 'eid': event.id}) }} class="btn-o" >Get invitation</a>
 
                                         {% endif %}
                                     {% else %}
-                                        <a style="color: red;"> Event Ended</a>
-
+<a style="color: red;"> Event Ended</a>
                                     {% endif %}
                                 {% endif %}
 
@@ -424,8 +430,7 @@
 
                             {% endif %}
 
-
-                            {# <ul class="nav navbar-nav">
+                             {#<ul class="nav navbar-nav">
                                  <li class="dropdown">
                                      <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-ellipsis-v pull-right"></span></a>
                                      <ul class="dropdown-menu pull-right">
@@ -435,12 +440,12 @@
                                          <li><a href="#">Block <i class="fa fa-lock"></i></a></li>
                                      </ul>
                                  </li>
-                             </ul>#}
-
+                             </ul>
+#}
                         </div>
 
                     </div>
-
+                    </div>
                 </li>
                 <li>
                     <div class="link"><i class="fa fa-globe"></i>About<i class="fa fa-chevron-down"></i></div>
