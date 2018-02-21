@@ -1,6 +1,14 @@
-{% extends 'base.html.twig' %}
+{#{% extends 'base.html.twig' %}#}
+{% extends 'dashbase.html.twig' %}
+{% block content %}
 
-{% block body %}
+    {% block body %}
+        <link href="{{ asset('css/table.css') }}" rel="stylesheet">
+
+
+        <link href="{{ asset('css/admintable.css') }}" rel="stylesheet">
+
+        <div style="padding-top: 5%; padding-bottom: 5%; text-align: center;  ">
     <h1>Animals list</h1>
 
     <table>
@@ -54,4 +62,5 @@
             <a href="{{ path('animal_new') }}">Create a new animal</a>
         </li>
     </ul>
+{% endblock %}
 {% endblock %}
