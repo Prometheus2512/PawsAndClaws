@@ -1,0 +1,104 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <link href="{{ asset('css/blogdisplay.css') }}" rel="stylesheet">
+
+    {#<h1>Articles list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Creationdate</th>
+                <th>Content</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for article in articles %}
+            <tr>
+                <td><a href="{{ path('article_show', { 'id': article.id }) }}">{{ article.id }}</a></td>
+                <td>{{ article.title }}</td>
+                <td>{% if article.creationDate %}{{ article.creationDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ article.content }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('article_show', { 'id': article.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('article_edit', { 'id': article.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('article_new') }}">Create a new article</a>
+        </li>
+    </ul>#}
+
+    <!--PEN CODE-->
+    <div style="margin-top: 10%">
+        {% if articles is empty %}
+            <strong style="margin-left: 40%"> No Available Articles.</strong><br>
+
+        {% endif %}
+
+{% for article in articles %}
+    <div class="blog-card">
+        <div class="photo "><img src="{{ asset('bundles/uploads/brochures/'~(article.brochure) ) }}"></div>
+        <ul class="details">
+            <li class="author"><a href="#">{{ article.author.username }}</a></li>
+            <li class="date">{{article.creationDate| date('F') }} {{ article.creationDate| date('d') }},{{ article.creationDate | date('Y') }}
+               </li>
+            <li class="tags">
+                <ul>
+                    <li><a href="{{ path('searchbycategory', { 'category': article.category}) }}">{{ article.category }}</a></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="description">
+            <h1>{{ article.title }}</h1>
+            <h2>{{ article.subtitle }}</h2>
+            <p class="summary">{{ article.summary }}</p>
+            <a href="{{ path('article_show', { 'id': article.id }) }}">Read More</a>
+        </div>
+    </div>
+ {% endfor %}
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            <a style="margin-left: 40%" class="btn btn-default btn-green" href="{{ path('event_new') }}">Host a new Event </a>
+        {% endif %}
+        <a  class="btn btn-default btn-green" href="{{ path('myevents') }}">Check my events</a>
+
+    </div>
+    {#<div class="blog-card alt">
+        <div class="photo photo2"></div>
+        <ul class="details">
+            <li class="author"><a href="#">Jane Doe</a></li>
+            <li class="date">July. 15, 2015</li>
+            <li class="tags">
+                <ul>
+                    <li><a href="#">Learn</a></li>
+                    <li><a href="#">Code</a></li>
+                    <li><a href="#">JavaScript</a></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="description">
+            <h1>Mastering the Language</h1>
+            <h2>Java is not the same as JavaScript</h2>
+            <p class="summary">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eum dolorum architecto obcaecati enim dicta praesentium, quam nobis! Neque ad aliquam facilis numquam. Veritatis, sit.</p>
+            <a href="#">Read More</a>
+        </div>
+    </div>#}
+    <!--END PEN CODE-->
+
+{% endblock %}
+{#
+--------#}
