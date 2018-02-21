@@ -93,4 +93,345 @@ class Animal
     private $user;
 
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->adoption = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id.
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name.
+     *
+     * @param string $name
+     *
+     * @return Animal
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name.
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set gender.
+     *
+     * @param int $gender
+     *
+     * @return Animal
+     */
+    public function setGender($gender)
+    {
+        $this->gender = $gender;
+
+        return $this;
+    }
+
+    /**
+     * Get gender.
+     *
+     * @return int
+     */
+    public function getGender()
+    {
+        return $this->gender;
+    }
+
+    /**
+     * Set type.
+     *
+     * @param string $type
+     *
+     * @return Animal
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type.
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Set age.
+     *
+     * @param int $age
+     *
+     * @return Animal
+     */
+    public function setAge($age)
+    {
+        $this->age = $age;
+
+        return $this;
+    }
+
+    /**
+     * Get age.
+     *
+     * @return int
+     */
+    public function getAge()
+    {
+        return $this->age;
+    }
+
+    /**
+     * Set size.
+     *
+     * @param string $size
+     *
+     * @return Animal
+     */
+    public function setSize($size)
+    {
+        $this->size = $size;
+
+        return $this;
+    }
+
+    /**
+     * Get size.
+     *
+     * @return string
+     */
+    public function getSize()
+    {
+        return $this->size;
+    }
+
+    /**
+     * Set spayed.
+     *
+     * @param int|null $spayed
+     *
+     * @return Animal
+     */
+    public function setSpayed($spayed = null)
+    {
+        $this->spayed = $spayed;
+
+        return $this;
+    }
+
+    /**
+     * Get spayed.
+     *
+     * @return int|null
+     */
+    public function getSpayed()
+    {
+        return $this->spayed;
+    }
+
+    /**
+     * Set liveWcats.
+     *
+     * @param int|null $liveWcats
+     *
+     * @return Animal
+     */
+    public function setLiveWcats($liveWcats = null)
+    {
+        $this->liveWcats = $liveWcats;
+
+        return $this;
+    }
+
+    /**
+     * Get liveWcats.
+     *
+     * @return int|null
+     */
+    public function getLiveWcats()
+    {
+        return $this->liveWcats;
+    }
+
+    /**
+     * Set homeTest.
+     *
+     * @param int|null $homeTest
+     *
+     * @return Animal
+     */
+    public function setHomeTest($homeTest = null)
+    {
+        $this->homeTest = $homeTest;
+
+        return $this;
+    }
+
+    /**
+     * Get homeTest.
+     *
+     * @return int|null
+     */
+    public function getHomeTest()
+    {
+        return $this->homeTest;
+    }
+
+    /**
+     * Set childFriend.
+     *
+     * @param int|null $childFriend
+     *
+     * @return Animal
+     */
+    public function setChildFriend($childFriend = null)
+    {
+        $this->childFriend = $childFriend;
+
+        return $this;
+    }
+
+    /**
+     * Get childFriend.
+     *
+     * @return int|null
+     */
+    public function getChildFriend()
+    {
+        return $this->childFriend;
+    }
+
+    /**
+     * Set status.
+     *
+     * @param string|null $status
+     *
+     * @return Animal
+     */
+    public function setStatus($status = null)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status.
+     *
+     * @return string|null
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Set breed.
+     *
+     * @param \MainBundle\Entity\Breed $breed
+     *
+     * @return Animal
+     */
+    public function setBreed(\MainBundle\Entity\Breed $breed)
+    {
+        $this->breed = $breed;
+
+        return $this;
+    }
+
+    /**
+     * Get breed.
+     *
+     * @return \MainBundle\Entity\Breed
+     */
+    public function getBreed()
+    {
+        return $this->breed;
+    }
+
+    /**
+     * Add adoption.
+     *
+     * @param \MainBundle\Entity\Adoption $adoption
+     *
+     * @return Animal
+     */
+    public function addAdoption(\MainBundle\Entity\Adoption $adoption)
+    {
+        $this->adoption[] = $adoption;
+
+        return $this;
+    }
+
+    /**
+     * Remove adoption.
+     *
+     * @param \MainBundle\Entity\Adoption $adoption
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeAdoption(\MainBundle\Entity\Adoption $adoption)
+    {
+        return $this->adoption->removeElement($adoption);
+    }
+
+    /**
+     * Get adoption.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAdoption()
+    {
+        return $this->adoption;
+    }
+
+    /**
+     * Set user.
+     *
+     * @param \MainBundle\Entity\User $user
+     *
+     * @return Animal
+     */
+    public function setUser(\MainBundle\Entity\User $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user.
+     *
+     * @return \MainBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
 }

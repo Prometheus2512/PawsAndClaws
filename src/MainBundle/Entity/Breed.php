@@ -39,4 +39,86 @@ class Breed
      * @ORM\OneToOne(targetEntity="Animal", mappedBy="breed")
      */
     private $animal;
+
+    /**
+     * Get id.
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set breedName.
+     *
+     * @param string $breedName
+     *
+     * @return Breed
+     */
+    public function setBreedName($breedName)
+    {
+        $this->breedName = $breedName;
+
+        return $this;
+    }
+
+    /**
+     * Get breedName.
+     *
+     * @return string
+     */
+    public function getBreedName()
+    {
+        return $this->breedName;
+    }
+
+    /**
+     * Set breedDescription.
+     *
+     * @param string|null $breedDescription
+     *
+     * @return Breed
+     */
+    public function setBreedDescription($breedDescription = null)
+    {
+        $this->breedDescription = $breedDescription;
+
+        return $this;
+    }
+
+    /**
+     * Get breedDescription.
+     *
+     * @return string|null
+     */
+    public function getBreedDescription()
+    {
+        return $this->breedDescription;
+    }
+
+    /**
+     * Set animal.
+     *
+     * @param \MainBundle\Entity\Animal|null $animal
+     *
+     * @return Breed
+     */
+    public function setAnimal(\MainBundle\Entity\Animal $animal = null)
+    {
+        $this->animal = $animal;
+
+        return $this;
+    }
+
+    /**
+     * Get animal.
+     *
+     * @return \MainBundle\Entity\Animal|null
+     */
+    public function getAnimal()
+    {
+        return $this->animal;
+    }
 }

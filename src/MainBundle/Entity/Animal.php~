@@ -10,104 +10,87 @@ namespace MainBundle\Entity;
 use Doctrine\ORM\Mapping as ORM ;
 
 /**
- * @ORM\Entity
+ * Animal
+ *
  * @ORM\Table(name="Animal")
+ * @ORM\Entity(repositoryClass="MainBundle\Repository\AnimalRepository")
  */
 
 class Animal
 {
     /**
-     * @ORM\Column(type="integer")
      * @ORM\Id
+     * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
-
     /**
-     * @ORM\ManyToOne(targetEntity="User",inversedBy="animals")
-     * @ORM\JoinColumn(name="user_id",referencedColumnName="id")
+     * @ORM\Column(type="string", length=255, nullable=false)
      */
-    private $user;
-
-    /**
-     * @ORM\Column(type="string", length=100)
-     */
-
     private $name;
 
-
-    const GENDER_MALE = 'Male';
-    const GENDER_FEMALE = 'Female';
-
-    /** @ORM\Column(type="string", length=20) */
+    /**
+     * @ORM\Column(type="smallint", length=4, nullable=false)
+     */
     private $gender;
 
-    public function setGender($gender)
-    {
-        if (!in_array($gender, array(self::GENDER_MALE, self::GENDER_FEMALE))) {
-            throw new \InvalidArgumentException("Invalid SEX");
-        }
-        $this->gender = $gender;
-    }
-
-
-    /** @ORM\Column(type="string", columnDefinition="ENUM('Cats', 'Dogs')") */
-
-    private $species;
+    /**
+     * @ORM\Column(type="string", length=50, nullable=false)
+     */
+    private $type;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="integer", length=11, nullable=false)
      */
-
-    private $breed;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-
     private $age;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="string", length=20, nullable=false)
      */
     private $size;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="smallint", length=4, nullable=true)
      */
     private $spayed;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="smallint", length=4, nullable=true)
      */
     private $liveWcats;
+
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="smallint", length=4, nullable=true)
      */
     private $homeTest;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="smallint", length=4, nullable=true)
      */
     private $childFriend;
-    /*private $photo;*/
 
-    const STATUS_ADOPTED = 'Adopted';
-    const STATUS_PROCESSING = 'being processed';
-
-    /** @ORM\Column(type="string") */
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
     private $status;
 
+    /**
+     * @ORM\OneToOne(targetEntity="Breed", inversedBy="animal")
+     * @ORM\JoinColumn(name="breed_id", referencedColumnName="id", nullable=false, unique=true)
+     */
+    private $breed;
 
-    public function setStatus($status)
-    {
-        if (!in_array($status, array(self::STATUS_ADOPTED, self::STATUS_PROCESSING))) {
-            throw new \InvalidArgumentException("Invalid status");
-        }
-        $this->status = $status;
-    }
+    /**
+     * @ORM\OneToMany(targetEntity="Adoption", mappedBy="animal")
+     */
+    private $adoption;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="animal")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
+     */
+    private $user;
 
 
 }

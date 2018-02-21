@@ -42,7 +42,7 @@ class User extends BaseUser
     protected $address;
 
     /**
-     * @ORM\Column(type="integer",options={"default" : 0})
+     * @ORM\Column(type="integer",options={"default" : 0},nullable=true)
      */
     protected $Banned;
 
@@ -59,158 +59,27 @@ class User extends BaseUser
     }
 
     /*changement à partir d'ici'*/
+    private $isVet;
 
     /**
-     * @ORM\OneToMany(targetEntity="Animal",mappedBy="user")
+     * @ORM\Column(type="smallint", length=4, nullable=true)
      */
-    private $animals;
-    public function __construct()
-    {
-        $this->animals = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-
-
-
+    private $isOrganization;
 
     /**
-     * Add animal.
-     *
-     * @param \MainBundle\Entity\Animal $animal
-     *
-     * @return User
+     * @ORM\Column(type="smallint", length=4, nullable=true)
      */
-    public function addAnimal(\MainBundle\Entity\Animal $animal)
-    {
-        $this->animals[] = $animal;
-
-        return $this;
-    }
+    private $isPetsitter;
 
     /**
-     * Remove animal.
-     *
-     * @param \MainBundle\Entity\Animal $animal
-     *
-     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     * @ORM\OneToMany(targetEntity="Animal", mappedBy="user")
      */
-    public function removeAnimal(\MainBundle\Entity\Animal $animal)
-    {
-        return $this->animals->removeElement($animal);
-    }
+    private $animal;
 
     /**
-     * Get animals.
-     *
-     * @return \Doctrine\Common\Collections\Collection
+     * @ORM\OneToMany(targetEntity="Adoption", mappedBy="user")
      */
-    public function getAnimals()
-    {
-        return $this->animals;
-    }
-
-    /**
-     * Set firstname
-     *
-     * @param string $firstname
-     *
-     * @return User
-     */
-    public function setFirstname($firstname)
-    {
-        $this->firstname = $firstname;
-
-        return $this;
-    }
-
-    /**
-     * Get firstname
-     *
-     * @return string
-     */
-    public function getFirstname()
-    {
-        return $this->firstname;
-    }
-
-    /**
-     * Set lastname
-     *
-     * @param string $lastname
-     *
-     * @return User
-     */
-    public function setLastname($lastname)
-    {
-        $this->lastname = $lastname;
-
-        return $this;
-    }
-
-    /**
-     * Get lastname
-     *
-     * @return string
-     */
-    public function getLastname()
-    {
-        return $this->lastname;
-    }
-
-
-
-    /**
-     * Set address
-     *
-     * @param string $address
-     *
-     * @return User
-     */
-    public function setAddress($address)
-    {
-        $this->address = $address;
-
-        return $this;
-    }
-
-    /**
-     * Get address
-     *
-     * @return string
-     */
-    public function getAddress()
-    {
-        return $this->address;
-    }
-
-  
-
-
-
-
-    /**
-     * Set phonenumber
-     *
-     * @param string $phonenumber
-     *
-     * @return User
-     */
-    public function setPhonenumber($phonenumber)
-    {
-        $this->phonenumber = $phonenumber;
-
-        return $this;
-    }
-
-    /**
-     * Get phonenumber
-     *
-     * @return string
-     */
-    public function getPhonenumber()
-    {
-        return $this->phonenumber;
-    }
+    private $adoption;
 
 
 
