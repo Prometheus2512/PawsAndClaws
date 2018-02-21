@@ -42,7 +42,7 @@ fos_user:
         sender_name: Paws and Claws
     registration:
             confirmation:
-                enabled: false
+                enabled: true
             form:
                 type: MainBundle\Form\RegistrationType
     profile:
@@ -83,3 +83,12 @@ swiftmailer:
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
+knp_snappy:
+    pdf:
+        enabled:    true
+        binary:     /usr/bin/wkhtmltopdf
+        options:    []
+    image:
+        enabled:    true
+        binary:     /usr/bin/wkhtmltoimage #"\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltoimage.exe\"" for Windows users
+        options:    []

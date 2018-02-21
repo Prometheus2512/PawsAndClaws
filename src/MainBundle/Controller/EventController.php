@@ -2,6 +2,8 @@
 
 namespace MainBundle\Controller;
 
+use Knp\Bundle\SnappyBundle\Snappy\Response\PdfResponse;
+use MainBundle\Entity\Commentary;
 use MainBundle\Entity\Event;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -100,13 +102,32 @@ class EventController extends Controller
      * Finds and displays a event entity.
      *
      * @Route("/{id}", name="event_show")
-     * @Method("GET")
+     * @Method({"GET", "POST"})
      */
-    public function showAction(Event $event)
+    public function showAction(Event $event,Request $request)
     { $verif=1;
+        $em = $this->getDoctrine()->getManager();
+       if((!isset($_SESSION["q"])) ){    $_SESSION['q'] = array();}
+        elseif(/*(!isset($_SESSION["q"])) and*/(!in_array($event->getId(),$_SESSION['q']))) {
+/*            $_SESSION['q'][] = $event->getId();*/
+            array_push($_SESSION["q"],$event->getId());
+            $oldviews=$event->getViews();
+            $newviews=$oldviews+1;
+            $event->setViews($newviews);
+            $em->flush();
+        }
+
+
+
+
         $deleteForm = $this->createDeleteForm($event);
         $em = $this->getDoctrine()->getManager();
-        $securityContext = $this->container->get('security.authorization_checker');
+
+$thiseventreservation=$em->getRepository('MainBundle:Reservation')->findBy(['eventid' => $event->getId()]);
+        $commentaries = $em->getRepository('MainBundle:Commentary')->findBy(['commentedevent'=>$event]);
+$participationnumber=count($thiseventreservation);
+
+$securityContext = $this->container->get('security.authorization_checker');
         if ($securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
             // authenticated REMEMBERED, FULLY will imply REMEMBERED (NON anonymous)
             $user = $this->getUser();
@@ -121,9 +142,55 @@ class EventController extends Controller
             }else{
                 $verif=1;
             }
-        }
+            $commentary = new Commentary();
+            $form = $this->createForm('MainBundle\Form\CommentaryType', $commentary);
+            $form->handleRequest($request);
+
+
+
+
+            if ($form->isSubmitted() && $form->isValid()) {
+                $sessionMessageIdent = isset($_SESSION['messageIdent'])?$_SESSION['messageIdent']:'';
+
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($commentary);
+                $date = new \DateTime();
+
+                $commentary->setCreationDate($date);
+                $commentary->setCommentedevent($event);
+                $commentary->setCommentator($user);
+                $em->flush();
+                unset($commentary);
+                unset($form);
+                unset($_POST);
+                unset($_REQUEST);
+                $commentary = new Commentary();
+                $form = $this->createForm('MainBundle\Form\CommentaryType', $commentary);
+                $commentaries = $em->getRepository('MainBundle:Commentary')->findBy(['commentedevent'=>$event]);
+                $numbercommentaries=count($commentaries);
+                $this->redirect($this->generateUrl('event_show',array(
+                    'id'=>$event->getId(),
+                    'event' => $event,
+                    'delete_form' => $deleteForm->createView(),
+                    'verif'=>$verif,
+                    'nbparticipants'=>$participationnumber,
+                    'reservations'=>$thiseventreservation,
+                    'form' => $form->createView(),
+                    'commentaries' => $commentaries,
+                    'numbercommentaries'=>$numbercommentaries,
+
+
+                )));
+
+            }
+
+            }
         $thiseventreservation=$em->getRepository('MainBundle:Reservation')->findBy(['eventid' => $event->getId()]);
         $participationnumber=count($thiseventreservation);
+        $commentary = new Commentary();
+
+        $form = $this->createForm('MainBundle\Form\CommentaryType', $commentary);
+        $numbercommentaries=count($commentaries);
 
 
         return $this->render('event/show.html.twig', array(
@@ -132,6 +199,11 @@ class EventController extends Controller
             'verif'=>$verif,
             'nbparticipants'=>$participationnumber,
             'reservations'=>$thiseventreservation,
+            'commentaries' => $commentaries,
+            'form' => $form->createView(),
+            'numbercommentaries'=>$numbercommentaries,
+
+
         ));
     }
 
@@ -168,11 +240,19 @@ class EventController extends Controller
      */
     public function deleteAction(Request $request, Event $event)
     {
+
         $form = $this->createDeleteForm($event);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $reservations= $em->getRepository('MainBundle:Reservation')
+                ->findBy(['eventid'=>$event]);
+
+
+            foreach ($reservations as $reservation ) {
+                $em->remove($reservation);
+            }
             $em->remove($event);
             $em->flush();
         }
@@ -195,4 +275,47 @@ class EventController extends Controller
             ->getForm()
         ;
     }
+    public function nexteventAction( $id)
+    {
+        $em=$this->getDoctrine()->getManager();
+       $nextid= $em->getRepository('MainBundle:Event')->getNextEvent($id);
+        if($nextid== null)
+        {
+            $nextid=$em->getRepository('MainBundle:Event')->getFirstEvent();
+            return $this->redirectToRoute('event_show', array('id'=> $nextid->getId()));
+
+        }
+        return $this->redirectToRoute('event_show', array('id'=> $nextid->getId()));
+
+    }
+    public function previouseventAction( $id)
+    {
+        $em=$this->getDoctrine()->getManager();
+        $previousid= $em->getRepository('MainBundle:Event')->getPreviousEvent($id);
+        if($previousid== null)
+        {
+            $previousid=$em->getRepository('MainBundle:Event')->getLastEvent();
+            return $this->redirectToRoute('event_show', array('id'=> $previousid->getId()));
+
+        }
+        return $this->redirectToRoute('event_show', array('id'=> $previousid->getId()));
+
+    }
+    public function pdfinvitationAction($uid,$eid)
+    {           $em=$this->getDoctrine()->getManager();
+
+        $user = $em->getRepository('MainBundle:User')->findOneBy(['id' => $uid]);
+        $event = $em->getRepository('MainBundle:Event')->findOneBy(['id' => $eid]);
+
+        $html = $this->renderView('event\invitation.html.twig', array(
+            'user'=>$user,
+            'event'=>$event
+        ));
+
+        return new PdfResponse(
+            $this->get('knp_snappy.pdf')->getOutputFromHtml($html),
+            'file.pdf'
+        );
+    }
+
 }

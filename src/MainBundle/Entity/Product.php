@@ -49,6 +49,11 @@ class Product
      */
     private $promotion;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="MainBundle\Entity\ProductCategory", inversedBy="products")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id", onDelete="CASCADE")
+     */
+    private $category;
 
     /**
      * Get id
@@ -155,5 +160,28 @@ class Product
     {
         return $this->promotion;
     }
-}
 
+    /**
+     * Set category
+     *
+     * @param \MainBundle\Entity\ProductCategory $category
+     *
+     * @return Product
+     */
+    public function setCategory(\MainBundle\Entity\ProductCategory $category = null)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \MainBundle\Entity\ProductCategory
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+}

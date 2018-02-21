@@ -10,4 +10,67 @@ namespace MainBundle\Repository;
  */
 class EventRepository extends \Doctrine\ORM\EntityRepository
 {
+
+    public function getPreviousEvent($eventId)
+{
+    $qb = $this->createQueryBuilder('e')
+        ->select('e')
+
+        // Filter users.
+        ->where('e.id < :eventId')
+        ->setParameter(':eventId', $eventId)
+
+        // Order by id.
+        ->orderBy('e.id', 'DESC')
+
+        // Get the first record.
+        ->setFirstResult(0)
+        ->setMaxResults(1)
+    ;
+
+    return $result = $qb->getQuery()->getOneOrNullResult();
+}
+    public function getNextEvent($eventId)
+    {
+        $qb = $this->createQueryBuilder('e')
+            ->select('e')
+
+            ->where('e.id > :eventId')
+            ->setParameter(':eventId', $eventId)
+
+            ->orderBy('e.id', 'ASC')
+
+            ->setFirstResult(0)
+            ->setMaxResults(1)
+        ;
+
+       return $result = $qb->getQuery()->getOneOrNullResult();
+    }
+
+
+    public function getFirstEvent()
+    {
+        $qb = $this->createQueryBuilder('e')
+            ->select('e')
+            ->orderBy('e.id', 'ASC')
+
+            ->setFirstResult(0)
+            ->setMaxResults(1)
+        ;
+
+        return $result = $qb->getQuery()->getOneOrNullResult();
+    }
+
+    public function getLastEvent()
+    {
+        $qb = $this->createQueryBuilder('e')
+            ->select('e')
+            ->orderBy('e.id', 'DESC')
+
+            ->setFirstResult(0)
+            ->setMaxResults(1)
+        ;
+
+        return $result = $qb->getQuery()->getOneOrNullResult();
+    }
 }

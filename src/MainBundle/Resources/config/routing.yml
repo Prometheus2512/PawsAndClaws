@@ -1,7 +1,3 @@
-main_animal:
-    resource: "@MainBundle/Resources/config/routing/animal.yml"
-    prefix:   /animal
-
 main_homepage:
     path:     /
     defaults: { _controller: MainBundle:Default:index }
@@ -49,5 +45,32 @@ myevents:
 addreservation:
      path:     /reservation/{uid}/{eid}/
      defaults: { _controller: MainBundle:Reservation:reservation}
+deletereservation:
+     path:     /reservation/delete/{uid}/{eid}/
+     defaults: { _controller: MainBundle:Reservation:delete}
+nextevent:
+     path:     /event/{id}/nextevent
+     defaults: { _controller: MainBundle:Event:nextevent}
+previousevent:
+     path:     /event/{id}/previous
+     defaults: { _controller: MainBundle:Event:previousevent}
+pdfinvitation:
+     path:     /invitation/{eid}/{uid}
+     defaults: { _controller: MainBundle:Event:pdfinvitation}
 
+add_product:
+     path:     products/add
+     defaults: { _controller: MainBundle:Product:addProduct}
+index_product:
+     path:     products/index
+     defaults: { _controller: MainBundle:Product:indexProduct}
+delete_product:
+     path:     products/{id}/delete
+     defaults: { _controller: MainBundle:Product:deleteProduct}
+edit_product:
+     path:     products/{id}/edit
+     defaults: { _controller: MainBundle:Product:editProduct}
 
+add_product_category:
+     path:     products/addcategory
+     defaults: { _controller: MainBundle:ProductCategory:addProductCategory}

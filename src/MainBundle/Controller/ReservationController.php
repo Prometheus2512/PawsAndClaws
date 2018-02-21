@@ -9,9 +9,22 @@
 namespace MainBundle\Controller;
 use MainBundle\Entity\Reservation;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Knp\Bundle\SnappyBundle\Snappy\Response\PdfResponse;
 
 class ReservationController extends Controller
-{ public function reservationAction( $uid,  $eid)
+{
+    public function pdfAction()
+    {
+        $html = $this->renderView('event\invitation.html.twig', array(
+
+        ));
+
+        return new PdfResponse(
+            $this->get('knp_snappy.pdf')->getOutputFromHtml($html),
+            'file.pdf'
+        );
+    }
+    public function reservationAction( $uid,  $eid)
 {
 
 
@@ -40,5 +53,28 @@ class ReservationController extends Controller
 
         }
 }
+    public function deleteAction( $uid,  $eid)
+    {
+
+        $user=$this->getUser();
+        $actualuid=$user->getid();
+
+        $em = $this->getDoctrine()->getManager();
+
+        $reserve = $em->getRepository('MainBundle:Reservation')->findOneBy(['participantid' => $uid,'eventid'=>$eid]);
+
+        if ($actualuid==$uid) {
+            $em->remove($reserve);
+            $em->flush();
+        }
+
+
+            return $this->redirectToRoute('event_show', array('id' => $eid));
+
+
+
+    }
+
+
 
 }

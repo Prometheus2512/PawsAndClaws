@@ -1,13 +1,17 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
+    <br><br><br>
+    {% include  'event/tablemap.html.twig'%}
 
     <link href="{{ asset('css/table.css') }}" rel="stylesheet">
 
-    <div style="padding-top: 12%; padding-bottom: 5%; text-align: center;  ">
+    <div style="padding-top: 0%; padding-bottom: 5%; text-align: center;  ">
 
 
-        <h1>MY EVENTS</h1>
+
+
+
 
         <table>
             <thead>
@@ -21,7 +25,7 @@
                 <th>Address</th>
                 <th>Capacity</th>
                 <th>Cost</th>
-                <th>Available</th>
+                <th>Ongoing</th>
                 {#<th></th>#}
                {# <th></th>#}
 
@@ -30,7 +34,10 @@
             <tbody>
             {% for event in events %}
                 {% if event.validated==1 %}
-                <tr>
+{#
+<script>    addMarker({{ event.posx }}, {{ event.posy }});</script>
+#}
+                    <tr>
                     <td><a href="{{ path('event_show', { 'id': event.id }) }}">{{ event.name }}</a></td>
                     <td>{{ event.hostid.username }}</td>
                     <td>{{ event.description }}</td>
@@ -39,11 +46,12 @@
                     <td>{{ event.address }}</td>
                     <td>{{ event.capacity }}</td>
                     <td>{{ event.cost }}</td>
-                    <td>{% if event.endingDate|date('Y-m-d') <= 'now'|date('Y-m-d') %}
-                            <div style="font-size:1em; color:red"> <i class="fa fa-close" style="size: 25px"> </i>
+                    <td>{% if (event.beginningDate|date('Y-m-d') <= 'now'|date('Y-m-d')) and (event.endingDate|date('Y-m-d') >= 'now'|date('Y-m-d')) %}
+                            <div style="font-size:1em; color:green"><i class="fa fa-check" style="size: 25px"> </i>
                             </div>
                         {% else %}
-                            <div style="font-size:1em; color:green"> <i class="fa fa-check" style="size: 25px"> </i>
+                            <div style="font-size:1em; color:red"> <i class="fa fa-close" style="size: 25px"> </i>
+
                             </div>
                         {% endif %}
                     </td>

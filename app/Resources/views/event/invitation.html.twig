@@ -1,0 +1,55 @@
+{#
+<img src="
+https://maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&zoom=13&size=600x300&maptype=roadmap
+&markers=color:blue%7Clabel:S%7C40.702147,-74.015794&markers=color:green%7Clabel:G%7C40.711614,-74.012318
+&markers=color:red%7Clabel:C%7C40.718217,-73.998284
+&key=AIzaSyAcsrLEjp-oYNRVFr10K9tNbaKSVzdsj_M ">
+#}
+<style>
+    body
+    {
+        background-color: #a0daba;
+    }
+    .pannel
+    {
+        background-color:#76c99b;
+    }
+    html, body, #wrapper {
+        height:100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+    #wrapper td {
+        vertical-align: middle;
+        text-align: center;
+    }
+
+</style>
+
+<div style="height: 50%;/*background-color: red*/">hello mr {{ user.username }}you're invited to
+    <strong>{{ event.name }}</strong>
+
+   <p> {{ event.beginningDate| date('F') }} {{ event.beginningDate| date('d') }},{{ event.beginningDate | date('Y') }} </p>
+</div>
+<div style="height: 50%;/*background-color: blue*/">
+    ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    <div style="text-align: center; height: 45%;left: 10%;right: 10%;width: 67%;margin:0px auto;">
+
+        <table id="wrapper">
+            <tr>
+                <td><img style="border-width: 5px;border-style:solid;border-color: #4e9b70;  border-radius: 10px;margin:0px auto;"
+                            src="https://maps.googleapis.com/maps/api/staticmap?center={{ event.posy }},{{ event.posx }}&zoom=13&size=800x300&maptype=roadmap&markers=color:red%7Clabel:S%7C{{ event.posy }},{{ event.posx }}
+&key=AIzaSyAcsrLEjp-oYNRVFr10K9tNbaKSVzdsj_M"
+                    ></td>
+            </tr>
+        </table>
+
+</div>
+</div>
+
+{#
+
+api key AIzaSyAcsrLEjp-oYNRVFr10K9tNbaKSVzdsj_M#}
