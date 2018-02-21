@@ -10,374 +10,87 @@ namespace MainBundle\Entity;
 use Doctrine\ORM\Mapping as ORM ;
 
 /**
- * @ORM\Entity
+ * Animal
+ *
  * @ORM\Table(name="Animal")
+ * @ORM\Entity(repositoryClass="MainBundle\Repository\AnimalRepository")
  */
 
 class Animal
 {
     /**
-     * @ORM\Column(type="integer")
      * @ORM\Id
+     * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
-
     /**
-     * @ORM\ManyToOne(targetEntity="User",inversedBy="animals")
-     * @ORM\JoinColumn(name="user_id",referencedColumnName="id")
+     * @ORM\Column(type="string", length=255, nullable=false)
      */
-    private $user;
-
-    /**
-     * @ORM\Column(type="string", length=100)
-     */
-
     private $name;
 
-
-    const GENDER_MALE = 'Male';
-    const GENDER_FEMALE = 'Female';
-
-    /** @ORM\Column(type="string", length=20) */
+    /**
+     * @ORM\Column(type="smallint", length=4, nullable=false)
+     */
     private $gender;
 
-    public function setGender($gender)
-    {
-        if (!in_array($gender, array(self::GENDER_MALE, self::GENDER_FEMALE))) {
-            throw new \InvalidArgumentException("Invalid SEX");
-        }
-        $this->gender = $gender;
-    }
-
-
-    /** @ORM\Column(type="string", columnDefinition="ENUM('Cats', 'Dogs')") */
-
-    private $species;
+    /**
+     * @ORM\Column(type="string", length=50, nullable=false)
+     */
+    private $type;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="integer", length=11, nullable=false)
      */
-
-    private $breed;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-
     private $age;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="string", length=20, nullable=false)
      */
     private $size;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="smallint", length=4, nullable=true)
      */
     private $spayed;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="smallint", length=4, nullable=true)
      */
     private $liveWcats;
+
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="smallint", length=4, nullable=true)
      */
     private $homeTest;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="smallint", length=4, nullable=true)
      */
     private $childFriend;
-    /*private $photo;*/
 
-    const STATUS_ADOPTED = 'Adopted';
-    const STATUS_PROCESSING = 'being processed';
-
-    /** @ORM\Column(type="string") */
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
     private $status;
 
-
-    public function setStatus($status)
-    {
-        if (!in_array($status, array(self::STATUS_ADOPTED, self::STATUS_PROCESSING))) {
-            throw new \InvalidArgumentException("Invalid status");
-        }
-        $this->status = $status;
-    }
-
-
-
+    /**
+     * @ORM\OneToOne(targetEntity="Breed", inversedBy="animal")
+     * @ORM\JoinColumn(name="breed_id", referencedColumnName="id", nullable=false, unique=true)
+     */
+    private $breed;
 
     /**
-     * Get id.
-     *
-     * @return int
+     * @ORM\OneToMany(targetEntity="Adoption", mappedBy="animal")
      */
-    public function getId()
-    {
-        return $this->id;
-    }
+    private $adoption;
 
     /**
-     * Set name.
-     *
-     * @param string $name
-     *
-     * @return Animal
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="animal")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
      */
-    public function setName($name)
-    {
-        $this->name = $name;
+    private $user;
 
-        return $this;
-    }
 
-    /**
-     * Get name.
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Get gender.
-     *
-     * @return string
-     */
-    public function getGender()
-    {
-        return $this->gender;
-    }
-
-    /**
-     * Set species.
-     *
-     * @param string $species
-     *
-     * @return Animal
-     */
-    public function setSpecies($species)
-    {
-        $this->species = $species;
-
-        return $this;
-    }
-
-    /**
-     * Get species.
-     *
-     * @return string
-     */
-    public function getSpecies()
-    {
-        return $this->species;
-    }
-
-    /**
-     * Set breed.
-     *
-     * @param string $breed
-     *
-     * @return Animal
-     */
-    public function setBreed($breed)
-    {
-        $this->breed = $breed;
-
-        return $this;
-    }
-
-    /**
-     * Get breed.
-     *
-     * @return string
-     */
-    public function getBreed()
-    {
-        return $this->breed;
-    }
-
-    /**
-     * Set age.
-     *
-     * @param int $age
-     *
-     * @return Animal
-     */
-    public function setAge($age)
-    {
-        $this->age = $age;
-
-        return $this;
-    }
-
-    /**
-     * Get age.
-     *
-     * @return int
-     */
-    public function getAge()
-    {
-        return $this->age;
-    }
-
-    /**
-     * Set size.
-     *
-     * @param float $size
-     *
-     * @return Animal
-     */
-    public function setSize($size)
-    {
-        $this->size = $size;
-
-        return $this;
-    }
-
-    /**
-     * Get size.
-     *
-     * @return float
-     */
-    public function getSize()
-    {
-        return $this->size;
-    }
-
-    /**
-     * Set spayed.
-     *
-     * @param bool $spayed
-     *
-     * @return Animal
-     */
-    public function setSpayed($spayed)
-    {
-        $this->spayed = $spayed;
-
-        return $this;
-    }
-
-    /**
-     * Get spayed.
-     *
-     * @return bool
-     */
-    public function getSpayed()
-    {
-        return $this->spayed;
-    }
-
-    /**
-     * Set liveWcats.
-     *
-     * @param bool $liveWcats
-     *
-     * @return Animal
-     */
-    public function setLiveWcats($liveWcats)
-    {
-        $this->liveWcats = $liveWcats;
-
-        return $this;
-    }
-
-    /**
-     * Get liveWcats.
-     *
-     * @return bool
-     */
-    public function getLiveWcats()
-    {
-        return $this->liveWcats;
-    }
-
-    /**
-     * Set homeTest.
-     *
-     * @param bool $homeTest
-     *
-     * @return Animal
-     */
-    public function setHomeTest($homeTest)
-    {
-        $this->homeTest = $homeTest;
-
-        return $this;
-    }
-
-    /**
-     * Get homeTest.
-     *
-     * @return bool
-     */
-    public function getHomeTest()
-    {
-        return $this->homeTest;
-    }
-
-    /**
-     * Set childFriend.
-     *
-     * @param bool $childFriend
-     *
-     * @return Animal
-     */
-    public function setChildFriend($childFriend)
-    {
-        $this->childFriend = $childFriend;
-
-        return $this;
-    }
-
-    /**
-     * Get childFriend.
-     *
-     * @return bool
-     */
-    public function getChildFriend()
-    {
-        return $this->childFriend;
-    }
-
-    /**
-     * Get status.
-     *
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->status;
-    }
-
-    /**
-     * Set user.
-     *
-     * @param \MainBundle\Entity\User|null $user
-     *
-     * @return Animal
-     */
-    public function setUser(\MainBundle\Entity\User $user = null)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user.
-     *
-     * @return \MainBundle\Entity\User|null
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
 }
