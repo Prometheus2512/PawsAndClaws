@@ -1,59 +1,75 @@
-{% extends 'base.html.twig' %}
+{% extends 'dashbase.html.twig' %}
+{#{% extends 'base.html.twig' %}#}
 
-{% block body %}
-    <h1>Animals list</h1>
+{% block content %}
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Gender</th>
-                <th>Species</th>
-                <th>Breed</th>
-                <th>Age</th>
-                <th>Size</th>
-                <th>Spayed</th>
-                <th>Livewcats</th>
-                <th>Hometest</th>
-                <th>Childfriend</th>
-                <th>Status</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for animal in animals %}
-            <tr>
-                <td><a href="{{ path('animal_show', { 'id': animal.id }) }}">{{ animal.id }}</a></td>
-                <td>{{ animal.name }}</td>
-                <td>{{ animal.gender }}</td>
-                <td>{{ animal.species }}</td>
-                <td>{{ animal.breed }}</td>
-                <td>{{ animal.age }}</td>
-                <td>{{ animal.size }}</td>
-                <td>{% if animal.spayed %}Yes{% else %}No{% endif %}</td>
-                <td>{% if animal.liveWcats %}Yes{% else %}No{% endif %}</td>
-                <td>{% if animal.homeTest %}Yes{% else %}No{% endif %}</td>
-                <td>{% if animal.childFriend %}Yes{% else %}No{% endif %}</td>
-                <td>{{ animal.status }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('animal_show', { 'id': animal.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('animal_edit', { 'id': animal.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <link href="{{ asset('css/table.css') }}" rel="stylesheet">
 
-    <ul>
-        <li>
-            <a href="{{ path('animal_new') }}">Create a new animal</a>
-        </li>
-    </ul>
+
+    <link href="{{ asset('css/admintable.css') }}" rel="stylesheet">
+
+    <div style="padding-top: 5%; padding-bottom: 5%; text-align: center;  ">
+        <h1>Animals list</h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Gender</th>
+                    <th>Species</th>
+                    <th>Breed</th>
+                    <th>Age</th>
+                    <th>Size</th>
+                    <th>Spayed</th>
+                    <th>Livewcats</th>
+                    <th>Hometest</th>
+                    <th>Childfriend</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for animal in animals %}
+                <tr>
+                    <td><a href="{{ path('animal_show', { 'id': animal.id }) }}">{{ animal.id }}</a></td>
+                    <td>{{ animal.name }}</td>
+                    <td>{{ animal.gender }}</td>
+                    <td>{{ animal.species }}</td>
+                    <td>{{ animal.breed }}</td>
+                    <td>{{ animal.age }}</td>
+                    <td>{{ animal.size }}</td>
+                    <td>{% if animal.spayed %}Yes{% else %}No{% endif %}</td>
+                    <td>{% if animal.liveWcats %}Yes{% else %}No{% endif %}</td>
+                    <td>{% if animal.homeTest %}Yes{% else %}No{% endif %}</td>
+                    <td>{% if animal.childFriend %}Yes{% else %}No{% endif %}</td>
+                    <td>{{ animal.status }}</td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('animal_show', { 'id': animal.id }) }}">show</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('animal_edit', { 'id': animal.id }) }}">edit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                <a  class="btn btn-default btn-green" href="{{ path('animal_new') }}">add new animal </a>
+        {% endif %}
+        
+
+
+
+        {# <ul>
+            <li>
+                <a href="{{ path('animal_new') }}">Create a new animal</a>
+            </li>
+        </ul> #}
+    </div>
 {% endblock %}

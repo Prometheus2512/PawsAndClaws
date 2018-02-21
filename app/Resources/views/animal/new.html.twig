@@ -1,10 +1,19 @@
 {% extends 'base.html.twig' %}
 
+
+{% block content %}
+
+     <link href="{{ asset('css/myformulaire2.css') }}" rel="stylesheet">
 {% block body %}
+    
+
+ <div style="padding-bottom: 40%;padding-top: 5%">
     <h1>Animal creation</h1>
 
-    {{ form_start(form) }}
+    {{ form_start(form, {'attr': {'id': 'msform'}}) }}
         {{ form_widget(form) }}
+
+
         <input type="submit" value="Create" />
     {{ form_end(form) }}
 
@@ -13,4 +22,15 @@
             <a href="{{ path('animal_index') }}">Back to the list</a>
         </li>
     </ul>
+ </div>  
+
+
+
+
+
+
+
+
+
+{% endblock %}
 {% endblock %}
