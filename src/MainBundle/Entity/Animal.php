@@ -91,8 +91,8 @@ class Animal
     private $adoption;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="animal")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;
 
