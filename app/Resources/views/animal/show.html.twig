@@ -18,12 +18,8 @@
                 <td>{{ animal.gender }}</td>
             </tr>
             <tr>
-                <th>Species</th>
-                <td>{{ animal.species }}</td>
-            </tr>
-            <tr>
-                <th>Breed</th>
-                <td>{{ animal.breed }}</td>
+                <th>Type</th>
+                <td>{{ animal.type }}</td>
             </tr>
             <tr>
                 <th>Age</th>
@@ -35,19 +31,19 @@
             </tr>
             <tr>
                 <th>Spayed</th>
-                <td>{% if animal.spayed %}Yes{% else %}No{% endif %}</td>
+                <td>{{ animal.spayed }}</td>
             </tr>
             <tr>
                 <th>Livewcats</th>
-                <td>{% if animal.liveWcats %}Yes{% else %}No{% endif %}</td>
+                <td>{{ animal.liveWcats }}</td>
             </tr>
             <tr>
                 <th>Hometest</th>
-                <td>{% if animal.homeTest %}Yes{% else %}No{% endif %}</td>
+                <td>{{ animal.homeTest }}</td>
             </tr>
             <tr>
                 <th>Childfriend</th>
-                <td>{% if animal.childFriend %}Yes{% else %}No{% endif %}</td>
+                <td>{{ animal.childFriend }}</td>
             </tr>
             <tr>
                 <th>Status</th>

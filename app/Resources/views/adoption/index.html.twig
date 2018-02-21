@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Adoptions list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Adoptiondate</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for adoption in adoptions %}
+            <tr>
+                <td><a href="{{ path('adoption_show', { 'id': adoption.id }) }}">{{ adoption.id }}</a></td>
+                <td>{% if adoption.adoptionDate %}{{ adoption.adoptionDate|date('Y-m-d') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('adoption_show', { 'id': adoption.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('adoption_edit', { 'id': adoption.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('adoption_new') }}">Create a new adoption</a>
+        </li>
+    </ul>
+{% endblock %}

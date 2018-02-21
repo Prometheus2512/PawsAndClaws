@@ -1,3 +1,13 @@
+main_breed:
+    resource: "@MainBundle/Resources/config/routing/breed.yml"
+    prefix:   /breed
+main_animal:
+        resource: "@MainBundle/Resources/config/routing/animal.yml"
+        prefix:   /animal
+main_adoption:
+        resource: "@MainBundle/Resources/config/routing/adoption.yml"
+        prefix:   /adoption
+
 main_homepage:
     path:     /
     defaults: { _controller: MainBundle:Default:index }

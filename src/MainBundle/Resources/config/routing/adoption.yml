@@ -1,0 +1,24 @@
+adoption_index:
+    path:     /
+    defaults: { _controller: "MainBundle:Adoption:index" }
+    methods:  GET
+
+adoption_show:
+    path:     /{id}/show
+    defaults: { _controller: "MainBundle:Adoption:show" }
+    methods:  GET
+
+adoption_new:
+    path:     /new
+    defaults: { _controller: "MainBundle:Adoption:new" }
+    methods:  [GET, POST]
+
+adoption_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "MainBundle:Adoption:edit" }
+    methods:  [GET, POST]
+
+adoption_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "MainBundle:Adoption:delete" }
+    methods:  DELETE
