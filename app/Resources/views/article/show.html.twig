@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+    <link href="{{ asset('css/blogsingle.css') }}" rel="stylesheet">
+    <div class="wrapper" style="margin-top: 10%;">
+
+        <div class="card radius shadowDepth1" style="width: 170%;margin-right: 70%;border-color: #62c28d;border:#62c28d solid 5px;border-radius: 8px;">
+            <div class="card__image border-tlr-radius" style="text-align: center;border:#62c28d solid 5px;background-color: #76c99b;">
+                <img style="width: 50%;height: 20%; margin-left: 25%;" src="{{ asset('bundles/uploads/brochures/'~(article.brochure) ) }}">            </div>
+
+            <div class="card__content card__padding" style="background-color: #acdec3">
+
+                <div class="card__meta">
+                    <a href="#">{{ article.category }}</a>
+                    <time style="color: white;">{{article.creationDate| date('F') }} {{ article.creationDate| date('d') }},{{ article.creationDate | date('Y') }}</time>
+                </div>
+
+                <article class="card__article">
+                    <h2><a href="#">{{ article.title }}</a></h2>
+
+                    <p>{{ article.content }}</p>
+                </article>
+            </div>
+
+            <div class="card__action" style="background-color: #acdec3">
+
+                <div class="card__author">
+                    <img src="http://lorempixel.com/40/40/sports/" alt="user">
+                    <div class="card__author-content">
+                        By <a href="#">{{ article.author }}</a>
+                        <br>
+
+                    </div>
+{% if app.user==article.author %}
+                    {{ form_start(delete_form) }}
+                    <a  style="float: right;" href="{{ path('article_edit', { 'id': article.id }) }}"><input type="button" style="background-color: #5ea07c;color: white;" class="btn btn-default" value="Edit article"></a>
+
+                    <input style="float: right;background-color: #5ea07c;color: white;" type="submit"  class="btn btn-default" value="Delete article">
+                    {{ form_end(delete_form) }}
+                    {% endif %}
+                </div>
+                
+
+            </div>
+            <a style="float: right;margin-top: 2%" href="{{ path('article_index') }}">Check other articles</a>
+
+        </div>
+
+    </div>
+
+
+
+    {#   <h1>Article</h1>
+
+       <table>
+           <tbody>
+               <tr>
+                   <th>Id</th>
+                   <td>{{ article.id }}</td>
+               </tr>
+               <tr>
+                   <th>Title</th>
+                   <td>{{ article.title }}</td>
+               </tr>
+               <tr>
+                   <th>Creationdate</th>
+                   <td>{% if article.creationDate %}{{ article.creationDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+               </tr>
+               <tr>
+                   <th>Content</th>
+                   <td>{{ article.content }}</td>
+               </tr>
+           </tbody>
+       </table>
+
+       <ul>
+           <li>
+               <a href="{{ path('article_index') }}">Back to the list</a>
+           </li>
+           <li>
+               <a href="{{ path('article_edit', { 'id': article.id }) }}">Edit</a>
+           </li>
+           <li>
+               {{ form_start(delete_form) }}
+                   <input type="submit" value="Delete">
+               {{ form_end(delete_form) }}
+           </li>
+       </ul>#}
+{% endblock %}

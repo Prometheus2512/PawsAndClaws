@@ -14,3 +14,6 @@ fos_user:
 
 ancarebeca_fullcalendar:
     resource: "@FullCalendarBundle/Resources/config/routing.yml"
+main_article:
+        resource: "@MainBundle/Resources/config/routing/article.yml"
+        prefix:   /article

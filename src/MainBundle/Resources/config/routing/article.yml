@@ -1,0 +1,27 @@
+article_index:
+    path:     /
+    defaults: { _controller: "MainBundle:Article:index" }
+    methods:  GET
+
+article_show:
+    path:     /{id}/show
+    defaults: { _controller: "MainBundle:Article:show" }
+    methods:  GET
+
+article_new:
+    path:     /new
+    defaults: { _controller: "MainBundle:Article:new" }
+    methods:  [GET, POST]
+
+article_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "MainBundle:Article:edit" }
+    methods:  [GET, POST]
+
+article_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "MainBundle:Article:delete" }
+    methods:  DELETE
+searchbycategory:
+    path:     /search/{category}
+    defaults: { _controller: "MainBundle:Article:searchbycategory" }
