@@ -59,58 +59,33 @@ class User extends BaseUser
     }
 
     /*changement à partir d'ici'*/
+    private $isVet;
 
     /**
-     * @ORM\OneToMany(targetEntity="Animal",mappedBy="user")
+     * @ORM\Column(type="smallint", length=4, nullable=true)
      */
-    private $animals;
-    public function __construct()
-    {
-        $this->animals = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-
-
-
+    private $isOrganization;
 
     /**
-     * Add animal.
-     *
-     * @param \MainBundle\Entity\Animal $animal
-     *
-     * @return User
+     * @ORM\Column(type="smallint", length=4, nullable=true)
      */
-    public function addAnimal(\MainBundle\Entity\Animal $animal)
-    {
-        $this->animals[] = $animal;
-
-        return $this;
-    }
+    private $isPetsitter;
 
     /**
-     * Remove animal.
-     *
-     * @param \MainBundle\Entity\Animal $animal
-     *
-     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     * @ORM\OneToMany(targetEntity="Animal", mappedBy="user")
      */
-    public function removeAnimal(\MainBundle\Entity\Animal $animal)
-    {
-        return $this->animals->removeElement($animal);
-    }
+    private $animal;
 
     /**
-     * Get animals.
-     *
-     * @return \Doctrine\Common\Collections\Collection
+     * @ORM\OneToMany(targetEntity="Adoption", mappedBy="user")
      */
-    public function getAnimals()
-    {
-        return $this->animals;
-    }
+    private $adoption;
+
+
+
 
     /**
-     * Set firstname
+     * Set firstname.
      *
      * @param string $firstname
      *
@@ -124,7 +99,7 @@ class User extends BaseUser
     }
 
     /**
-     * Get firstname
+     * Get firstname.
      *
      * @return string
      */
@@ -134,7 +109,7 @@ class User extends BaseUser
     }
 
     /**
-     * Set lastname
+     * Set lastname.
      *
      * @param string $lastname
      *
@@ -148,7 +123,7 @@ class User extends BaseUser
     }
 
     /**
-     * Get lastname
+     * Get lastname.
      *
      * @return string
      */
@@ -157,39 +132,8 @@ class User extends BaseUser
         return $this->lastname;
     }
 
-
-
     /**
-     * Set address
-     *
-     * @param string $address
-     *
-     * @return User
-     */
-    public function setAddress($address)
-    {
-        $this->address = $address;
-
-        return $this;
-    }
-
-    /**
-     * Get address
-     *
-     * @return string
-     */
-    public function getAddress()
-    {
-        return $this->address;
-    }
-
-  
-
-
-
-
-    /**
-     * Set phonenumber
+     * Set phonenumber.
      *
      * @param string $phonenumber
      *
@@ -203,7 +147,7 @@ class User extends BaseUser
     }
 
     /**
-     * Get phonenumber
+     * Get phonenumber.
      *
      * @return string
      */
@@ -212,17 +156,38 @@ class User extends BaseUser
         return $this->phonenumber;
     }
 
-
-
-
     /**
-     * Set banned
+     * Set address.
      *
-     * @param integer $banned
+     * @param string $address
      *
      * @return User
      */
-    public function setBanned($banned)
+    public function setAddress($address)
+    {
+        $this->address = $address;
+
+        return $this;
+    }
+
+    /**
+     * Get address.
+     *
+     * @return string
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * Set banned.
+     *
+     * @param int|null $banned
+     *
+     * @return User
+     */
+    public function setBanned($banned = null)
     {
         $this->Banned = $banned;
 
@@ -230,12 +195,132 @@ class User extends BaseUser
     }
 
     /**
-     * Get banned
+     * Get banned.
      *
-     * @return integer
+     * @return int|null
      */
     public function getBanned()
     {
         return $this->Banned;
+    }
+
+    /**
+     * Set isOrganization.
+     *
+     * @param int|null $isOrganization
+     *
+     * @return User
+     */
+    public function setIsOrganization($isOrganization = null)
+    {
+        $this->isOrganization = $isOrganization;
+
+        return $this;
+    }
+
+    /**
+     * Get isOrganization.
+     *
+     * @return int|null
+     */
+    public function getIsOrganization()
+    {
+        return $this->isOrganization;
+    }
+
+    /**
+     * Set isPetsitter.
+     *
+     * @param int|null $isPetsitter
+     *
+     * @return User
+     */
+    public function setIsPetsitter($isPetsitter = null)
+    {
+        $this->isPetsitter = $isPetsitter;
+
+        return $this;
+    }
+
+    /**
+     * Get isPetsitter.
+     *
+     * @return int|null
+     */
+    public function getIsPetsitter()
+    {
+        return $this->isPetsitter;
+    }
+
+    /**
+     * Add animal.
+     *
+     * @param \MainBundle\Entity\Animal $animal
+     *
+     * @return User
+     */
+    public function addAnimal(\MainBundle\Entity\Animal $animal)
+    {
+        $this->animal[] = $animal;
+
+        return $this;
+    }
+
+    /**
+     * Remove animal.
+     *
+     * @param \MainBundle\Entity\Animal $animal
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeAnimal(\MainBundle\Entity\Animal $animal)
+    {
+        return $this->animal->removeElement($animal);
+    }
+
+    /**
+     * Get animal.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAnimal()
+    {
+        return $this->animal;
+    }
+
+    /**
+     * Add adoption.
+     *
+     * @param \MainBundle\Entity\Adoption $adoption
+     *
+     * @return User
+     */
+    public function addAdoption(\MainBundle\Entity\Adoption $adoption)
+    {
+        $this->adoption[] = $adoption;
+
+        return $this;
+    }
+
+    /**
+     * Remove adoption.
+     *
+     * @param \MainBundle\Entity\Adoption $adoption
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeAdoption(\MainBundle\Entity\Adoption $adoption)
+    {
+        return $this->adoption->removeElement($adoption);
+    }
+
+    /**
+     * Get adoption.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAdoption()
+    {
+        return $this->adoption;
     }
 }
