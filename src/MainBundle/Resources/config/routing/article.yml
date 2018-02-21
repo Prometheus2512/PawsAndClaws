@@ -25,3 +25,6 @@ article_delete:
 searchbycategory:
     path:     /search/{category}
     defaults: { _controller: "MainBundle:Article:searchbycategory" }
+myarticles:
+    path:     /myarticles
+    defaults: { _controller: "MainBundle:Article:myarticles" }

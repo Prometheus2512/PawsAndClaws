@@ -45,7 +45,11 @@
 
     <!--PEN CODE-->
     <div style="margin-top: 10%">
-        <strong style="margin-left: 40%">{{ number }} Results found for  {{ category }}</strong>
+        <h1 style="margin-top: 2%;margin-bottom:2%;margin-left: 45%">My articles</h1>
+        {% if articles is empty %}
+
+        <h1 style="margin-top: 2%;margin-bottom:2%;margin-left: 40%">You don't have any article yet.</h1>
+        {% endif %}
 
         {% for article in articles %}
             <div class="blog-card">

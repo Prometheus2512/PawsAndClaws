@@ -12,7 +12,7 @@
             <div class="card__content card__padding" style="background-color: #acdec3">
 
                 <div class="card__meta">
-                    <a href="#">{{ article.category }}</a>
+                    <a  href="{{ path('searchbycategory', { 'category': article.category}) }}">{{ article.category }}</a>
                     <time style="color: white;">{{article.creationDate| date('F') }} {{ article.creationDate| date('d') }},{{ article.creationDate | date('Y') }}</time>
                 </div>
 
