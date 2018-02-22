@@ -1,9 +1,6 @@
 /*PEN STYLES*/
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto:400,700);
-body {
-    background: #f1f1f1;
-    margin: 2rem;
-}
+
 
 .blog-card {
     transition: height 0.3s ease;

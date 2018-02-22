@@ -1,0 +1,104 @@
+{% extends 'dashbase.html.twig' %}
+{% block content %}
+
+    <link href="{{ asset('css/table.css') }}" rel="stylesheet">
+
+
+    <link href="{{ asset('css/admintable.css') }}" rel="stylesheet">
+    <div style="text-align: center">
+        <h1>ARTICLES MANAGER </h1>
+    </div>
+    <div class="row" style="margin-top: 5%;">
+        <div class="col-xs-12 col-md-6 col-lg-3">
+            <div class="panel panel-red panel-widget ">
+                <div class="row no-padding">
+                    <div class="col-sm-3 col-lg-5 widget-left">
+                        <svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg>
+                    </div>
+                    <div class="col-sm-9 col-lg-7 widget-right">
+                        <div class="large">{{ narticles }}</div>
+                        <div class="text-muted">All Articles</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6 col-lg-3">
+            <div class="panel panel-teal panel-widget">
+                <div class="row no-padding">
+                    <div class="col-sm-3 col-lg-5 widget-left">
+                        <svg class="glyph stroked app-window-with-content"><use xlink:href="#stroked-app-window-with-content"></use></svg>
+                    </div>
+                    <div class="col-sm-9 col-lg-7 widget-right">
+                        <div class="large">{{ nlikes }}</div>
+                        <div class="text-muted">Liked Articles</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6 col-lg-3">
+            <div class="panel panel-orange panel-widget">
+                <div class="row no-padding">
+                    <div class="col-sm-3 col-lg-5 widget-left">
+                        <svg class="glyph stroked empty-message"><use xlink:href="#stroked-empty-message"></use></svg>
+                    </div>
+                    <div class="col-sm-9 col-lg-7 widget-right">
+                        <div class="large">{{ ndislikes }}</div>
+                        <div class="text-muted">Disliked Events</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {#<div class="col-xs-12 col-md-6 col-lg-3">
+            <div class="panel panel-blue panel-widget">
+                <div class="row no-padding">
+                    <div class="col-sm-3 col-lg-5 widget-left">
+                        <svg class="glyph stroked eye"><use xlink:href="#stroked-eye"></use></svg>
+                    </div>
+                    <div class="col-sm-9 col-lg-7 widget-right">
+                        <div class="large">{{ nviews }}</div>
+                        <div class="text-muted">Page Views</div>
+                    </div>
+                </div>
+            </div>
+        </div>#}
+    </div><!--/.row-->
+
+
+    <div style="padding-top: 0%; padding-bottom: 5%; text-align: center;  ">
+
+
+        <table >
+            <thead>
+            <tr>
+
+                <th>Author</th>
+                <th>Title</th>
+                <th>Subtitle</th>
+                <th>Date</th>
+                <th></th>
+
+
+            </tr>
+            </thead>
+            <tbody>
+            {% for article in articles %}
+                <tr>
+                    <td>{{ article.author.username }}</td>
+                    <td>{{ article.title }}</td>
+                    <td>{{ article.subtitle }}</td>
+                    <td>{{article.creationDate| date('F') }} {{ article.creationDate| date('d') }},{{ article.creationDate | date('Y') }}</td>
+                    <td><a href="{{ path('event_show', { 'id': article.id }) }}">Show Article</a></td>
+
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+
+        {#   <a class="btn btn-default btn-green" href="{{ path('event_new') }}">Host a new Event </a>
+           <a class="btn btn-default btn-green" href="{{ path('myevents') }}">Check my events</a>#}
+
+    </div>
+{% endblock %}
+

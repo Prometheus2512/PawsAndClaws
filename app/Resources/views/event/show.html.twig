@@ -544,7 +544,7 @@
 
             <div class="info">
                 <a href="#"> {{ commentary.commentator.username }} </a>
-                <span>{{ commentary.creationDate |date('Y-m-d') }} at {{ commentary.creationDate |date(' H:i:s') }} </span>
+                <span> {{ time_diff(commentary.creationDate) }} </span>
             </div>
 
             <a class="avatar" href="#">
@@ -561,7 +561,7 @@
 
                     <div class="info">
                         <a href="#">{{ commentary.commentator.username }}</a>
-                        <span>{{ commentary.creationDate |date('Y-m-d') }} at {{ commentary.creationDate |date(' H:i:s') }}</span>
+                        <span> {{ time_diff(commentary.creationDate) }}</span>
                     </div>
 
                     <a class="avatar" href="#">
@@ -572,6 +572,7 @@
 
                 </li>
         {% endif %}
+
        {% endfor %}
            </ul>
 </div>

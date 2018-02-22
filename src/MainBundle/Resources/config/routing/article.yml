@@ -28,3 +28,10 @@ searchbycategory:
 myarticles:
     path:     /myarticles
     defaults: { _controller: "MainBundle:Article:myarticles" }
+likearticle:
+    path:     /like/{id}
+    defaults: { _controller: "MainBundle:Article:like" }
+dislikearticle:
+    path:     /dislike/{id}
+    defaults: { _controller: "MainBundle:Article:dislike" }
+

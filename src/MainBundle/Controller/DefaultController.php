@@ -7,8 +7,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class DefaultController extends Controller
 {
     public function indexAction()
-    {
-        return $this->render('MainBundle:Default:index.html.twig');
+
+    {           $em=$this->getDoctrine()->getManager();
+
+        $event= $em->getRepository('MainBundle:Event')->getmostviewedEvent();
+
+        return $this->render('MainBundle:Default:index.html.twig', array(
+            'event' => $event,
+        ));
     }
     public function servicesAction()
     {

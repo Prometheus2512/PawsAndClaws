@@ -2,6 +2,7 @@
 
 namespace MainBundle\Controller;
 
+use MainBundle\Entity\Appreciation;
 use MainBundle\Entity\Article;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -82,12 +83,32 @@ class ArticleController extends Controller
      *
      */
     public function showAction(Article $article)
-    {
+    {   $user=$this->getUser();
+    $test=0;
+        $em = $this->getDoctrine()->getManager();
+        $likes= $em->getRepository('MainBundle:Appreciation')->findBy(['eventappreciated'=>$article,'type'=>1]);
+        $dislikes= $em->getRepository('MainBundle:Appreciation')->findBy(['eventappreciated'=>$article,'type'=>2]);
+        $nlikes=count($likes);
+        $ndislikes=count($dislikes);
+
+        if($user)
+       {
+           $uid=$user->getid();
+           $appreciations= $em->getRepository('MainBundle:Appreciation')->findOneBy(['appreciator' => $uid,'eventappreciated'=>$article]);
+           if($appreciations){
+               $test=$appreciations->getType();
+               }
+
+
+       }
         $deleteForm = $this->createDeleteForm($article);
 
         return $this->render('article/show.html.twig', array(
             'article' => $article,
             'delete_form' => $deleteForm->createView(),
+            'test'=>$test,
+            'likes'=>$nlikes,
+            'dislikes'=>$ndislikes
         ));
     }
 
@@ -130,6 +151,62 @@ class ArticleController extends Controller
         }
 
         return $this->redirectToRoute('article_index');
+    }
+    public function likeAction( Article $article)
+    {
+        $appreciation = new Appreciation();
+
+        $em = $this->getDoctrine()->getManager();
+        $user=$this->getUser();
+        $uid=$user->getid();
+
+        $appreciations= $em->getRepository('MainBundle:Appreciation')->findOneBy(['appreciator' => $uid,'eventappreciated'=>$article]);
+        if(!$appreciations){
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($appreciation);
+        $user=$this->getUser();
+        $appreciation->setAppreciator($user);
+        $appreciation->setType(1);
+        $appreciation->setEventappreciated($article);
+        $em->flush();}
+        else
+        {
+            $appreciations->setType(1);
+            $em->flush();
+
+
+
+        }
+
+        return $this->redirectToRoute('article_show', array('id' => $article->getId()));
+    }
+    public function dislikeAction( Article $article)
+    {
+        $appreciation = new Appreciation();
+
+        $em = $this->getDoctrine()->getManager();
+        $user=$this->getUser();
+        $uid=$user->getid();
+
+        $appreciations= $em->getRepository('MainBundle:Appreciation')->findOneBy(['appreciator' => $uid,'eventappreciated'=>$article]);
+        if(!$appreciations){
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($appreciation);
+            $user=$this->getUser();
+            $appreciation->setAppreciator($user);
+            $appreciation->setType(2);
+            $appreciation->setEventappreciated($article);
+            $em->flush();}
+        else
+        {
+            $appreciations->setType(2);
+            $em->flush();
+
+
+
+        }
+
+        return $this->redirectToRoute('article_show', array('id' => $article->getId()));
     }
     public function myarticlesAction()
     {

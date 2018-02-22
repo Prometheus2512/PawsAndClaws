@@ -71,12 +71,14 @@
         </div>
     </div >
  {% endfor %}
-        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-            <a style="margin-left: 35%;margin-bottom: 2%"    class="btn btn-default btn-green" href="{{ path('article_new') }}">Write a new Article </a>
 
-        <a  class="btn btn-default btn-green" style="margin-bottom: 2%;margin-left: 35%;"  href="{{ path('myarticles') }}">Check my articles</a>
-        {% endif %}
     </div >
+    <div style="margin-left: 35%; margin-bottom: 5%" >
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        <a     class="btn btn-default btn-green" href="{{ path('article_new') }}">Write a new Article </a>
+
+        <a  class="btn btn-default btn-green"  href="{{ path('myarticles') }}">Check my articles</a>
+    {% endif %}</div>
     {#<div class="blog-card alt">
         <div class="photo photo2"></div>
         <ul class="details">

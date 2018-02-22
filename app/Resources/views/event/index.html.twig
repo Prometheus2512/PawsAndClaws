@@ -1,6 +1,31 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $(".event-thumb").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+
+   {# <table class="table">
+        <tr>
+            <th style="color: goldenrod">Nom Destinataire</th>
+            <th style="color: goldenrod">Contenu</th>
+            <th style="color: goldenrod">Supprimer</th>
+        </tr>
+        {% for event in events %}
+            <tr class="product-thumb">
+                <td>{{ event.name }}</td>
+                <td>{{ event.description }}</td>
+            </tr>
+        {% endfor %}
+    </table>#}
     <br><br><br>
     {% include  'event/tablemap.html.twig'%}
 
@@ -8,8 +33,11 @@
 
     <div style="padding-top: 0%; padding-bottom: 5%; text-align: center;  ">
 
+        <h3 class="subtitle">Nom Evenement <input id="eve" class="form-control" type="text" placeholder="Chercher .."></h3>
 
-
+{#
+        <input id="myInput" type="text" >
+#}
 
 
 
@@ -26,18 +54,18 @@
                 <th>Capacity</th>
                 <th>Cost</th>
                 <th>Ongoing</th>
-                {#<th></th>#}
-               {# <th></th>#}
+                <th></th>
+                <th></th>
 
             </tr>
             </thead>
             <tbody>
             {% for event in events %}
                 {% if event.validated==1 %}
-{#
+
 <script>    addMarker({{ event.posx }}, {{ event.posy }});</script>
-#}
-                    <tr>
+
+                    <tr class="event-thumb">
                     <td><a href="{{ path('event_show', { 'id': event.id }) }}">{{ event.name }}</a></td>
                     <td>{{ event.hostid.username }}</td>
                     <td>{{ event.description }}</td>
@@ -66,10 +94,10 @@
 
 
                     </td>
-                  {#  <td>
+                    <td>
                         <a href="{{ path('event_delete', { 'id': event.id }) }}"> <div style="font-size:1em; color:gray"> <i class="fa fa-trash" style="size: 25px"> </i>
                             </div></a>
-                    </td>#}
+                    </td>
                     {% endif %}
                     {% endif %}
                 </tr>

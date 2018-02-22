@@ -45,6 +45,26 @@ class AdminController extends Controller
             'unvale'=>$unvalidatedevents,
             'ncom'=>$ncomments
         ));}
+    public function articlestableAction() {
+        //access user manager services
+
+        $em = $this->getDoctrine()->getManager();
+
+
+        $articles=$em->getRepository('MainBundle:Article')->findAll(array('creationDate' => 'DESC'));
+        $narticles=count($articles);
+        $narticles=count($articles);
+        $likes=$em->getRepository('MainBundle:Appreciation')->findBy(['type'=>1]);
+        $dislikes=$em->getRepository('MainBundle:Appreciation')->findBy(['type'=>2]);
+        $nlikes=count($likes);
+        $ndislikes=count($dislikes);
+
+        return $this->render('MainBundle:admin:articlestable.html.twig', array(
+            'articles' => $articles,
+            'nlikes' =>$nlikes,
+            'ndislikes'=>$ndislikes,
+            'narticles'=>$narticles
+        ));}
 
     public function eventsdeleteAction($id) {
         //access user manager services
@@ -79,9 +99,7 @@ class AdminController extends Controller
 
         $events = $em->getRepository('MainBundle:Event')->findAll(array('beginningDate' => 'DESC'));
 
-        return $this->render('MainBundle:admin:eventstable.html.twig', array(
-            'events' => $events,
-        ));
+        return $this->redirectToRoute('admin-events-table');
     }
 
 

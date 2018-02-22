@@ -30,6 +30,21 @@ class EventRepository extends \Doctrine\ORM\EntityRepository
 
     return $result = $qb->getQuery()->getOneOrNullResult();
 }
+    public function getmostviewedEvent()
+    {
+        $qb = $this->createQueryBuilder('e')
+            ->select('e')
+
+            // Order by id.
+            ->orderBy('e.views', 'DESC')
+
+            // Get the first record.
+            ->setFirstResult(0)
+            ->setMaxResults(1)
+        ;
+
+        return $result = $qb->getQuery()->getOneOrNullResult();
+    }
     public function getNextEvent($eventId)
     {
         $qb = $this->createQueryBuilder('e')
