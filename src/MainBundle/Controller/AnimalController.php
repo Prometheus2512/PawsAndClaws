@@ -34,12 +34,14 @@ class AnimalController extends Controller
     public function newAction(Request $request)
     {
         $animal = new Animal();
+        $user=$this->getUser();
         $form = $this->createForm('MainBundle\Form\AnimalType', $animal);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($animal);
+            $animal->setUser($user);
             $em->flush();
 
             return $this->redirectToRoute('animal_show', array('id' => $animal->getId()));

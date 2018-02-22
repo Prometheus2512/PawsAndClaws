@@ -5,7 +5,8 @@ namespace MainBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 class AnimalType extends AbstractType
 {
     /**
@@ -13,7 +14,32 @@ class AnimalType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name')->add('gender')->add('type')->add('age')->add('size')->add('spayed')->add('liveWcats')->add('homeTest')->add('childFriend')->add('status')->add('breed')->add('user');
+        $builder->add('name')
+
+
+            ->add('gender', ChoiceType::class, array(
+                'choices'  => array('Male' => '1', 'Female' => '0'
+
+                ),
+            ))
+            ->add('type', ChoiceType::class, array(
+                'choices'  => array('Dog' => 'Dog', 'Cat' => 'Cat','Other'=>'Other'
+
+                ),
+            ))
+
+
+            ->add('age')
+            ->add('size')
+            ->add('breed')
+            ->add('spayed')
+            ->add('liveWcats')
+            ->add('homeTest')
+            ->add('childFriend')
+            ->add('Description');
+            /*->add('status');*/
+
+            /*->add('user');*/
     }/**
      * {@inheritdoc}
      */

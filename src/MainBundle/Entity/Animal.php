@@ -41,7 +41,7 @@ class Animal
     private $type;
 
     /**
-     * @ORM\Column(type="integer", length=11, nullable=false)
+     * @ORM\Column(type="string", length=50, nullable=false)
      */
     private $age;
 
@@ -51,22 +51,31 @@ class Animal
     private $size;
 
     /**
-     * @ORM\Column(type="smallint", length=4, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $breed;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $description;
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $spayed;
 
     /**
-     * @ORM\Column(type="smallint", length=4, nullable=true)
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $liveWcats;
 
     /**
-     * @ORM\Column(type="smallint", length=4, nullable=true)
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $homeTest;
 
     /**
-     * @ORM\Column(type="smallint", length=4, nullable=true)
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $childFriend;
 
@@ -75,11 +84,6 @@ class Animal
      */
     private $status;
 
-    /**
-     * @ORM\OneToOne(targetEntity="Breed", inversedBy="animal")
-     * @ORM\JoinColumn(name="breed_id", referencedColumnName="id", nullable=false, unique=true)
-     */
-    private $breed;
 
     /**
      * @ORM\OneToMany(targetEntity="Adoption", mappedBy="animal")
@@ -186,7 +190,7 @@ class Animal
     /**
      * Set age.
      *
-     * @param int $age
+     * @param string $age
      *
      * @return Animal
      */
@@ -200,7 +204,7 @@ class Animal
     /**
      * Get age.
      *
-     * @return int
+     * @return string
      */
     public function getAge()
     {
@@ -232,9 +236,33 @@ class Animal
     }
 
     /**
+     * Set breed.
+     *
+     * @param string|null $breed
+     *
+     * @return Animal
+     */
+    public function setBreed($breed = null)
+    {
+        $this->breed = $breed;
+
+        return $this;
+    }
+
+    /**
+     * Get breed.
+     *
+     * @return string|null
+     */
+    public function getBreed()
+    {
+        return $this->breed;
+    }
+
+    /**
      * Set spayed.
      *
-     * @param int|null $spayed
+     * @param bool|null $spayed
      *
      * @return Animal
      */
@@ -248,7 +276,7 @@ class Animal
     /**
      * Get spayed.
      *
-     * @return int|null
+     * @return bool|null
      */
     public function getSpayed()
     {
@@ -258,7 +286,7 @@ class Animal
     /**
      * Set liveWcats.
      *
-     * @param int|null $liveWcats
+     * @param bool|null $liveWcats
      *
      * @return Animal
      */
@@ -272,7 +300,7 @@ class Animal
     /**
      * Get liveWcats.
      *
-     * @return int|null
+     * @return bool|null
      */
     public function getLiveWcats()
     {
@@ -282,7 +310,7 @@ class Animal
     /**
      * Set homeTest.
      *
-     * @param int|null $homeTest
+     * @param bool|null $homeTest
      *
      * @return Animal
      */
@@ -296,7 +324,7 @@ class Animal
     /**
      * Get homeTest.
      *
-     * @return int|null
+     * @return bool|null
      */
     public function getHomeTest()
     {
@@ -306,7 +334,7 @@ class Animal
     /**
      * Set childFriend.
      *
-     * @param int|null $childFriend
+     * @param bool|null $childFriend
      *
      * @return Animal
      */
@@ -320,7 +348,7 @@ class Animal
     /**
      * Get childFriend.
      *
-     * @return int|null
+     * @return bool|null
      */
     public function getChildFriend()
     {
@@ -349,30 +377,6 @@ class Animal
     public function getStatus()
     {
         return $this->status;
-    }
-
-    /**
-     * Set breed.
-     *
-     * @param \MainBundle\Entity\Breed $breed
-     *
-     * @return Animal
-     */
-    public function setBreed(\MainBundle\Entity\Breed $breed)
-    {
-        $this->breed = $breed;
-
-        return $this;
-    }
-
-    /**
-     * Get breed.
-     *
-     * @return \MainBundle\Entity\Breed
-     */
-    public function getBreed()
-    {
-        return $this->breed;
     }
 
     /**
@@ -433,5 +437,29 @@ class Animal
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set description.
+     *
+     * @param string|null $description
+     *
+     * @return Animal
+     */
+    public function setDescription($description = null)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description.
+     *
+     * @return string|null
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 }

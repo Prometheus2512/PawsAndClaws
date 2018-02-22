@@ -1,6 +1,3 @@
-main_breed:
-    resource: "@MainBundle/Resources/config/routing/breed.yml"
-    prefix:   /breed
 main_animal:
         resource: "@MainBundle/Resources/config/routing/animal.yml"
         prefix:   /animal
