@@ -10,4 +10,18 @@ namespace MainBundle\Repository;
  */
 class ArticleRepository extends \Doctrine\ORM\EntityRepository
 {
+   /* public function getmostlikedArticle()
+    {
+
+        $dql = "select id eventappreciated_id , count(eventappreciated_id)   
+                as value_occurence                 
+                from appreciation
+                where type=1
+                group by eventappreciated_id            
+                order by value_occurence DESC LIMIT 2;";
+        $articles = $this->createQueryBuilder($dql);
+                    $results = $articles->getResult();
+
+        return $results;
+        }*/
 }

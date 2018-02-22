@@ -52,15 +52,15 @@
     <link href="{{ asset('css/blogsingle.css') }}" rel="stylesheet">
     <div class="wrapper" style="margin-top: 10%;">
 
-        <div class="card radius shadowDepth1" style="width: 170%;margin-right: 70%;border-color: #62c28d;border:#62c28d solid 5px;border-radius: 8px;">
-            <div class="card__image border-tlr-radius" style="text-align: center;border:#62c28d solid 5px;background-color: #76c99b;">
+        <div class="card radius shadowDepth1" style="width: 170%;margin-right: 70%;border-color: #c4e7d5;border:#c4e7d5 solid 5px;border-radius: 8px;">
+            <div class="card__image border-tlr-radius" style="text-align: center;border:#c4e7d5;solid 5px;background-color: #c4e7d5;">
                 <img style="width: 50%;height: 20%; margin-left: 25%;" src="{{ asset('bundles/uploads/brochures/'~(article.brochure) ) }}">            </div>
 
-            <div class="card__content card__padding" style="background-color: #acdec3">
+            <div class="card__content card__padding" style="background-color: #eef8f3">
 
                 <div class="card__meta">
                     <a  href="{{ path('searchbycategory', { 'category': article.category}) }}">{{ article.category }}</a>
-                    <time style="color: white;">{{article.creationDate| date('F') }} {{ article.creationDate| date('d') }},{{ article.creationDate | date('Y') }}</time>
+                    <time style="color: white;"></time>
                 </div>
 
                 <article class="card__article">
@@ -70,7 +70,7 @@
                 </article>
             </div>
 
-            <div class="card__action" style="background-color: #acdec3">
+            <div class="card__action" style="background-color: #eef8f3">
 
                 <div class="card__author">
                     <img src="http://lorempixel.com/40/40/sports/" >
@@ -79,7 +79,9 @@
                         <br>
 
                     </div>
+{#
                     {{ test }}
+#}
                    <div  style="float:right; margin-bottom: 8%;text-align: center;"> {{ likes }} likes , {{ dislikes }} dislikes <br>
 
                        {% if app.user %}
