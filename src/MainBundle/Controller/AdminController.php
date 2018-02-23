@@ -65,6 +65,17 @@ class AdminController extends Controller
             'ndislikes'=>$ndislikes,
             'narticles'=>$narticles
         ));}
+    public function  petstableAction() {
+        //access user manager services
+
+        $em = $this->getDoctrine()->getManager();
+
+
+        $pets=$em->getRepository('MainBundle:Pet')->findAll();
+        return $this->render('MainBundle:admin:petstable.html.twig', array(
+            'pets' => $pets,
+
+        ));}
 
     public function eventsdeleteAction($id) {
         //access user manager services

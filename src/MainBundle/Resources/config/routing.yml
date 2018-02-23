@@ -39,6 +39,9 @@ admin-events-table:
 admin-articles-table:
      path:     /admin/articles
      defaults: { _controller: MainBundle:Admin:articlestable}
+admin-pets-table:
+     path:     /admin/pets
+     defaults: { _controller: MainBundle:Admin:petstable}
 admin-delete-event:
     path:     /admin/eventdelete/{id}
     defaults: { _controller: MainBundle:Admin:eventsdelete }
@@ -84,3 +87,6 @@ edit_product:
 add_product_category:
      path:     products/addcategory
      defaults: { _controller: MainBundle:ProductCategory:addProductCategory}
+main_pet:
+        resource: "@MainBundle/Resources/config/routing/pet.yml"
+        prefix:   /pet

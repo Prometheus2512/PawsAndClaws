@@ -1,183 +1,180 @@
-{%  extends 'base.html.twig' %}
+{% extends 'base.html.twig' %}
 {% block content %}
+
+    <!-- Services -->
+
     <div style="
-    padding-top: 40px;
+    padding-top: 50px;
     padding-right: 30px;
     padding-bottom: 50px;
     padding-left: 80px;
 ">
-
-    <!-- Adoption -->
-  {#  <div class="container">
-        <div class="row">
-            <div class="col-md-12 centered">
-                <h3><span>The adoption centre</span></h3>
-                 </div>
-        </div>
-    </div>#}
-        <!-- Adoption -->
         <div class="container">
             <div class="row">
                 <div class="col-md-12 centered">
-                    <h3><span>The adoption centre</span></h3>
-                    <h3><span>Find your perfect companion</span></h3>
-                    <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.</p>
-                </div>
-            </div>
-            <div class="row adoption">
-                <div class="col-md-4">
-                    <a href="{{ path('singlepet') }}" title=""><img src="images/dog-4.png" alt="Saint Bernard" /></a>
-                    <div class="title">
-                        <h5>
-                            <span data-hover="Gerard">Gerard</span>
-                        </h5>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <a href="{{ path('singlepet') }}"  title="Beagle"><img src="images/dog-5.png" alt="Beagle" /></a>
-                    <div class="title">
-                        <h5>
-                            <span data-hover="Rex">Rex</span>
-                        </h5>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <a href="adoption-single.html" title="Staffordshire Bull Terrier"><img src="images/dog-6.png" alt="Staffordshire Bull Terrier" /></a>
-                    <div class="title">
-                        <h5>
-                            <span data-hover="George">George</span>
-                        </h5>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <a href="adoption-single.html" title="King Charles Cavalier"><img src="images/dog-7.png" alt="King Charles Cavalier" /></a>
-                    <div class="title">
-                        <h5>
-                            <span data-hover="King Charles Cavalier">King Charles Cavalier</span>
-                        </h5>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <a href="adoption-single.html" title="Dachshund"><img src="images/dog-8.png" alt="Dachshund" /></a>
-                    <div class="title">
-                        <h5>
-                            <span data-hover="Dachshund">Dachshund</span>
-                        </h5>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <a href="adoption-single.html" title="French Bulldog"><img src="images/dog-9.png" alt="French Bulldog" /></a>
-                    <div class="title">
-                        <h5>
-                            <span data-hover="French Bulldog">French Bulldog</span>
-                        </h5>
-                    </div>
+                    <h3><span>Dog caring services</span></h3>
+                    <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est
+                        notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas
+                        humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur
+                        parum clari, fiant sollemnes in futurum.</p>
                 </div>
             </div>
         </div>
-        <!-- Adoption end -->
-        <!-- Adoption -->
         <div class="container">
+            <div class="row">
+                {#<div class="col-md-4 col3">
+                    <a href="services-single.html" title="Dog boarding kennels" class="roundal" id="kennel"></a>
+                    <h3>Dog boarding kennels</h3>
+                    <p>Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum. Humanitatis per seacula quarta decima et quinta decima.</p>
+                    <form method="get" action="services-single.html">
+                        <button type="submit" class="btn btn-default btn-green">Learn more</button>
+                    </form>
+                </div>#}
+                {#<div class="col-md-4 col3">
+                    <a href="services-single.html" title="Doggy grooming" class="roundal" id="grooming"></a>
+                    <h3>Doggy grooming</h3>
+                    <p>Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum. Humanitatis per seacula quarta decima et quinta decima.</p>
+                    <form method="get" action="services-single.html">
+                        <button type="submit" class="btn btn-default btn-green">Learn more</button>
+                    </form>
+                </div>#}
+                <div class="col-md-4 col3">
+                    <a href="{{ path('adoptioncenter') }}"title="Adoption Center" class="roundal" id="adoption"></a>
+                    <h3>Adoption Center</h3>
+                    <p>Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum. Humanitatis per
+                        seacula quarta decima et quinta decima.</p>
+                    <a href="{{ path('adoptioncenter') }}">
+                        <button type="submit" class="btn btn-default btn-green">Learn more</button>
+                    </a>
+                </div>
+                <div class="col-md-4 col3">
+                    <a href="{{ path('pet_index') }}" title="Check All Pets" class="roundal" id="walking"></a>
+                    <h3>Check all pets</h3>
+                    <p>Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum. Humanitatis per
+                        seacula quarta decima et quinta decima.</p>
+                    <a href="{{ path('pet_index') }}">
+                        <button type="submit" class="btn btn-default btn-green">Learn more</button>
+                    </a>
+                </div>
+                <div class="col-md-4 col3">
+                    <a href="{{ path('pet_new') }}" title="Add a pet" class="roundal" id="advice"></a>
+                    <h3>Add a pet</h3>
+                    <p>Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum. Humanitatis per
+                        seacula quarta decima et quinta decima.</p>
+                    <a href="{{ path('pet_new') }}">
+                        <button type="submit" class="btn btn-default btn-green">Learn more</button>
+                    </a>
+                </div>
+                {#<div class="col-md-4 col3">
+                    <a href="services-single.html" title="Puppy play" class="roundal" id="play"></a>
+                    <h3>Puppy play</h3>
+                    <p>Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum. Humanitatis per seacula quarta decima et quinta decima.</p>
+                    <form method="get" action="services-single.html">
+                        <button type="submit" class="btn btn-default btn-green">Learn more</button>
+                    </form>
+                </div>#}
+            </div>
+            <div class="row">
+                {# <div class="col-md-12 centered">
+                     <h3><span>Our happy doggy customers</span></h3>
+                     <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.</p>
+                 </div>#}
+            </div>
+        </div>
+        <!-- Services end -->
+        {#   <!-- Carousel -->
+           <div id="c-carousel">
+               <div id="wrapper">
+                   <div id="carousel">
+                       <div>
+                           <a href="images/dog-1.png" title="Dog" data-hover="Sandy the west highland terrier" data-toggle="lightbox" class="lightbox">
+                               <img src="images/dog-1.png" alt="Dog" />
+                           </a>
+                       </div>
+                       <div>
+                           <a href="images/dog-2.png" title="Dog" data-hover="Marty the yorkshire terrier" data-toggle="lightbox" class="lightbox">
+                               <img src="images/dog-2.png" alt="Dog" />
+                           </a>
+                       </div>
+                       <div>
+                           <a href="images/dog-3.png" title="Dog" data-hover="Kyla the bull terrier" data-toggle="lightbox" class="lightbox">
+                               <img src="images/dog-3.png" alt="Dog" />
+                           </a>
+                       </div>
+                       <div>
+                           <a href="images/dog-1.png" title="Dog" data-hover="Marty the yorkshire terrier" data-toggle="lightbox" class="lightbox">
+                               <img src="images/dog-1.png" alt="Dog" />
+                           </a>
+                       </div>
+                       <div>
+                           <a href="images/dog-2.png" title="Dog" data-hover="Sandy the west highland terrier" data-toggle="lightbox" class="lightbox">
+                               <img src="images/dog-2.png" alt="Dog" />
+                           </a>
+                       </div>
+                       <div>
+                           <a href="images/dog-3.png" title="Dog" data-hover="Kyla the bull terrier" data-toggle="lightbox" class="lightbox">
+                               <img src="images/dog-3.png" alt="Dog" />
+                           </a>
+                       </div>
+                   </div>
+                   <div id="pager" class="pager"></div>
+               </div>
+           </div>
+           <!-- Carousel end -->
+           <!-- Testimonials -->
+           <div class="testimonials" data-stellar-background-ratio="0.6">
+               <div class="container">
+                   <div class="row">
+                       <div class="col-md-12 centered">
+                           <!-- Slider -->
+                           <div id="home_testimonial" class="carousel slide" data-ride="carousel">
+                               <!-- Indicators -->
+                               <ol class="carousel-indicators">
+                                   <li data-target="#home_testimonial" data-slide-to="0" class="active"></li>
+                                   <li data-target="#home_testimonial" data-slide-to="1"></li>
+                                   <li data-target="#home_testimonial" data-slide-to="2"></li>
+                                   <li data-target="#home_testimonial" data-slide-to="3"></li>
+                               </ol>
 
-            <div class="row adoption">
-                <div class="col-md-4">
-                    <a href="adoption-single.html" title=""><img src="images/dog-4.png" alt="Saint Bernard" /></a>
-                    <div class="title">
-                        <h5>
-                            <span data-hover="Saint Bernard">Saint Bernard</span>
-                        </h5>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <a href="adoption-single.html" title="Beagle"><img src="images/dog-5.png" alt="Beagle" /></a>
-                    <div class="title">
-                        <h5>
-                            <span data-hover="Beagle">Beagle</span>
-                        </h5>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <a href="adoption-single.html" title="Staffordshire Bull Terrier"><img src="images/dog-6.png" alt="Staffordshire Bull Terrier" /></a>
-                    <div class="title">
-                        <h5>
-                            <span data-hover="Staffordshire Bull Terrier">Staffordshire Bull Terrier</span>
-                        </h5>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <a href="adoption-single.html" title="King Charles Cavalier"><img src="images/dog-7.png" alt="King Charles Cavalier" /></a>
-                    <div class="title">
-                        <h5>
-                            <span data-hover="King Charles Cavalier">King Charles Cavalier</span>
-                        </h5>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <a href="adoption-single.html" title="Dachshund"><img src="images/dog-8.png" alt="Dachshund" /></a>
-                    <div class="title">
-                        <h5>
-                            <span data-hover="Dachshund">Dachshund</span>
-                        </h5>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <a href="adoption-single.html" title="French Bulldog"><img src="images/dog-9.png" alt="French Bulldog" /></a>
-                    <div class="title">
-                        <h5>
-                            <span data-hover="French Bulldog">French Bulldog</span>
-                        </h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Adoption end -->
-        <!-- Adoption end -->
-    {#<!-- Carousel -->
-    <div id="c-carousel">
-        <div id="wrapper">
-            <div class="featured">
-                <h3><span>Featured dog</span><br />
-                    Buddy the terrier</h3>
-                <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica.</p>
-                <form method="get" action="adoption-single.html">
-                    <button type="submit" class="btn btn-default btn-green">Meet buddy</button>
-                </form>
-            </div>
-            <div id="carousel">
-                <div>
-                    <a href="adoption-single.html" title="Dog" data-hover="Meet buddy the terrier">
-                        <img src="images/featured-1.png" alt="Dog" />
-                    </a>
-                </div>
-                <div>
-                    <a href="adoption-single.html" title="Dog" data-hover="Meet buddy the terrier">
-                        <img src="images/featured-2.png" alt="Dog" />
-                    </a>
-                </div>
-                <div>
-                    <a href="adoption-single.html" title="Dog" data-hover="Meet buddy the terrier">
-                        <img src="images/featured-3.png" alt="Dog" />
-                    </a>
-                </div>
-                <div>
-                    <a href="adoption-single.html" title="Dog" data-hover="Meet buddy the terrier">
-                        <img src="images/featured-1.png" alt="Dog" />
-                    </a>
-                </div>
-                <div>
-                    <a href="adoption-single.html" title="Dog" data-hover="Meet buddy the terrier">
-                        <img src="images/featured-2.png" alt="Dog" />
-                    </a>
-                </div>
-                <div>
-                    <a href="adoption-single.html" title="Dog" data-hover="Meet buddy the terrier">
-                        <img src="images/featured-3.png" alt="Dog" />
-                    </a>
-                </div>
-            </div>
-            <div id="pager" class="pager"></div>
-        </div>
+                               <!-- Wrapper for slides -->
+                               <div class="carousel-inner">
+                                   <div class="item active">
+                                       <p>"Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum."</p>
+                                   </div>
+                                   <div class="item">
+                                       <p>"Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui."</p>
+                                   </div>
+                                   <div class="item">
+                                       <p>"Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum."</p>
+                                   </div>
+                                   <div class="item">
+                                       <p>"Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui."</p>
+                                   </div>
+                               </div>
+                           </div>
+                           <!-- Slider end -->
+                       </div>
+                   </div>
+               </div>
+           </div>
+           <!-- Testimonials end -->
+           <!-- Purchase -->
+           <div class="purchase nospace">
+               <div class="container">
+                   <div class="row">
+                       <div class="col-md-9">
+                           <p><strong>Pet</strong>Care is a totally awesome unique &amp; responsive HTML template<br />
+                               <span>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum.</span></p>
+                       </div>
+                       <div class="col-md-3 purchase-button">
+                           <form method="get" action="index.html">
+                               <button type="submit" class="btn btn-default btn-green">Purchase theme</button>
+                           </form>
+                       </div>
+                   </div>
+               </div>
+           </div>
+           <!-- Purchase end -->#}
     </div>
-    <!-- Carousel end -->
-    #}</div>
+
 {% endblock %}

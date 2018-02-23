@@ -1,7 +1,7 @@
-{% extends 'dashbase.html.twig' %}
+{% extends 'base.html.twig' %}
+
 {% block content %}
-{% block body %}
-    <h1>Animal edit</h1>
+    <h1>Pet edit</h1>
 
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
@@ -10,7 +10,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('animal_index') }}">Back to the list</a>
+            <a href="{{ path('pet_index') }}">Back to the list</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
@@ -18,5 +18,4 @@
             {{ form_end(delete_form) }}
         </li>
     </ul>
-{% endblock %}
 {% endblock %}

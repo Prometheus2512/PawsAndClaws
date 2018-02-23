@@ -1,0 +1,53 @@
+{% extends 'dashbase.html.twig' %}
+{% block content %}
+
+    <link href="{{ asset('css/table.css') }}" rel="stylesheet">
+
+
+    <link href="{{ asset('css/admintable.css') }}" rel="stylesheet">
+
+    <div style="padding-top: 5%; padding-bottom: 5%; text-align: center;  ">
+
+
+        <h1>Accounts</h1>
+
+        <table>
+            <thead>
+            <tr>
+
+                <th>Id</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Age</th>
+                <th>Type</th>
+                <th>Breed</th>
+                <th>Child friendly ?</th>
+                <th>Need a garden ? </th>
+                <th>Status</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            {% for pet in pets %}
+                <tr>
+                    <td><a href="{{ path('pet_show', { 'id': pet.id }) }}">{{ pet.id }}</a></td>
+                    <td>{{ pet.name }}</td>
+                    <td>{{ pet.gender }}</td>
+                    <td>{{ pet.age }}</td>
+                    <td>{{ pet.type }}</td>
+                    <td>{{ pet.breed }}</td>
+                    <td>{% if pet.childfriendly %}Yes{% else %}No{% endif %}</td>
+                    <td>{% if pet.inOrOut %}Yes{% else %}No{% endif %}</td>
+                    <td>{% if pet.status==0 %}Owned{% elseif pet.status==1 %}For adoption{% else %}Pending adoption request{% endif %}</td>
+
+                </tr>
+
+            {% endfor %}
+
+            </tbody>
+        </table>
+
+
+    </div>
+{% endblock %}
+

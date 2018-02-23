@@ -1,0 +1,39 @@
+pet_index:
+    path:     /
+    defaults: { _controller: "MainBundle:Pet:index" }
+    methods:  GET
+
+pet_show:
+    path:     /{id}/show
+    defaults: { _controller: "MainBundle:Pet:show" }
+    methods:  GET
+
+pet_new:
+    path:     /new
+    defaults: { _controller: "MainBundle:Pet:new" }
+    methods:  [GET, POST]
+
+pet_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "MainBundle:Pet:edit" }
+    methods:  [GET, POST]
+
+pet_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "MainBundle:Pet:delete" }
+    methods:  DELETE
+adoptioncenter:
+    path:     /adoptioncenter
+    defaults: { _controller: "MainBundle:Pet:adoptioncenter" }
+toAdopt:
+    path:     /toadopt/{id}
+    defaults: { _controller: "MainBundle:Pet:toAdopt" }
+retrieve:
+    path:     /retrieve/{id}
+    defaults: { _controller: "MainBundle:Pet:retrieve" }
+adoptrequest:
+    path:     /adopt/{id}
+    defaults: { _controller: "MainBundle:Pet:adoptrequest" }
+acceptrequest:
+    path:     /acceptrequest/{id}
+    defaults: { _controller: "MainBundle:Pet:acceptrequest" }
