@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div style="
+
+    margin-top: 5%;
+    margin-bottom: 5%;
+
+">
+
+        <!-- Adoption -->
+        {#  <div class="container">
+              <div class="row">
+                  <div class="col-md-12 centered">
+                      <h3><span>The adoption centre</span></h3>
+                       </div>
+              </div>
+          </div>#}
+        <!-- Adoption -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 centered">
+                    <h3><span>My Pets</span></h3>
+                    <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.</p>
+                </div>
+            </div>
+            <div class="row adoption">
+                {% for pet in pets %}
+
+                    <div class="col-md-4">
+                        <a href="{{ path('pet_show', { 'id': pet.id }) }}" title="{{ pet.name }}"><img src="{{ asset('images/dog-4.png') }}" alt="Saint Bernard" /></a>
+                        <div class="title">
+                            <h5>
+                                <span data-hover="{{ pet.breed }}">{{ pet.name }}</span>
+                            </h5>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+        <!-- Adoption end -->
+
+
+    </div>
+
+
+    {#   <h1>Pets list</h1>
+
+       <table>
+           <thead>
+               <tr>
+                   <th>Id</th>
+                   <th>Name</th>
+                   <th>Gender</th>
+                   <th>Age</th>
+                   <th>Status</th>
+                   <th>Type</th>
+                   <th>Breed</th>
+                   <th>Childfriendly</th>
+                   <th>Inorout</th>
+                   <th>Actions</th>
+               </tr>
+           </thead>
+           <tbody>
+           {% for pet in pets %}
+               <tr>
+                   <td><a href="{{ path('pet_show', { 'id': pet.id }) }}">{{ pet.id }}</a></td>
+                   <td>{{ pet.name }}</td>
+                   <td>{{ pet.gender }}</td>
+                   <td>{{ pet.age }}</td>
+                   <td>{{ pet.status }}</td>
+                   <td>{{ pet.type }}</td>
+                   <td>{{ pet.breed }}</td>
+                   <td>{% if pet.childfriendly %}Yes{% else %}No{% endif %}</td>
+                   <td>{% if pet.inOrOut %}Yes{% else %}No{% endif %}</td>
+                   <td>
+                       <ul>
+                           <li>
+                               <a href="{{ path('pet_show', { 'id': pet.id }) }}">show</a>
+                           </li>
+                           <li>
+                               <a href="{{ path('pet_edit', { 'id': pet.id }) }}">edit</a>
+                           </li>
+                       </ul>
+                   </td>
+               </tr>
+           {% endfor %}
+           </tbody>
+       </table>
+
+       <ul>
+           <li>
+               <a href="{{ path('pet_new') }}">Create a new pet</a>
+           </li>
+       </ul>#}
+{% endblock %}

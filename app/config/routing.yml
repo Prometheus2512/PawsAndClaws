@@ -1,3 +1,7 @@
+main_wishlist:
+    resource: "@MainBundle/Controller/wishlistController.php"
+    type:     annotation
+
 main_event:
     resource: "@MainBundle/Controller/EventController.php"
     type:     annotation

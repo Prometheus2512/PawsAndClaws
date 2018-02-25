@@ -36,8 +36,16 @@ class PetType extends AbstractType
                     'offer for adoption center' => 1,
                 )))
             ->add('breed')
-            ->add('childfriendly')
-            ->add('inOrOut');
+            ->add('childfriendly', ChoiceType::class, array(
+                'choices' => array(
+                    'Yes he is' => true,
+                    'No he is not' => false,
+                )))
+            ->add('inOrOut', ChoiceType::class, array(
+                'choices' => array(
+                    'yes he can' => true,
+                    'no he can not' => false,
+                )));
     }
 
     /**

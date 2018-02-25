@@ -1,3 +1,21 @@
+{#
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Product creation</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('product_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}
+#}
 {% extends 'base.html.twig' %}
 
 {% block content %}
@@ -18,26 +36,18 @@
         </ul>
         <!-- fieldsets -->
         <fieldset>
-            <h2 class="fs-title">Add a new pet</h2>
-            <h3 class="fs-subtitle">Informations about the pet</h3>
-            {{ form_row(form.name) }}
+            <h2 class="fs-title">Add a new Product to sell</h2>
+            <h3 class="fs-subtitle">Name your product :</h3>
+            {{ form_widget(form.name) }}
 
-            {{ form_row(form.breed) }}
-
-            {{ form_row(form.age) }}
-            {{ form_row(form.gender) }}
-            {{ form_row(form.type) }}
 
 
             <input type="button" name="next" class="next action-button" value="Next" />
         </fieldset>
         <fieldset>
-            <h2 class="fs-title">Add a new pet</h2>
-            <h3 class="fs-subtitle">More informations</h3>
-            Is the pet Child friendly ? <br>
-            {{ form_widget(form.childfriendly) }}<br>
-            Does the pet need a garden ? <br>
-            {{ form_widget(form.inOrOut) }}<br>
+            <h2 class="fs-title">Add a new Product to sell</h2>
+            <h3 class="fs-subtitle">your product's price:</h3>
+            {{ form_widget(form.price) }}<br>
 
 
 
@@ -45,11 +55,15 @@
             <input type="button" name="next" class="next action-button" value="Next" />
         </fieldset>
         <fieldset>
-            <h2 class="fs-title">Add a new pet</h2>
-            <h3 class="fs-subtitle">Why would you add this pet ?</h3>
+            <h2 class="fs-title">Add a new Product to sell</h2>
+            <h3 class="fs-subtitle">What is exactly your product ?</h3>
+             In which category is classed your product ?
+            {{ form_widget(form.category) }}<br>
+             What pets is your product for ?<br>
+            {{ form_widget(form.aimedpets) }}<br>
+             tell us more about your product :<br>
+            {{ form_widget(form.description) }}<br>
 
-
-            {{ form_widget(form.status) }}
 
 
 
@@ -177,3 +191,4 @@
         </li>
     </ul>#}
 {% endblock %}
+

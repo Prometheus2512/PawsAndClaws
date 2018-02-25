@@ -165,6 +165,19 @@ class PetController extends Controller
             'pet' => $pet,
         ));
     }
+
+    public function mypetsAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user=$this->getUser();
+        $uid=$user->getid();
+
+        $pets = $em->getRepository('MainBundle:Pet')->findBy(['owner' => $uid]);
+
+        return $this->render('pet/mypets.html.twig', array(
+            'pets' => $pets,
+        ));
+    }
     public function adoptrequestAction( Pet $pet)
     {
         $em = $this->getDoctrine()->getManager();

@@ -1,0 +1,273 @@
+{#
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Product</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ product.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ product.name }}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{{ product.price }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ product.description }}</td>
+            </tr>
+            <tr>
+                <th>Category</th>
+                <td>{{ product.category }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('product_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('product_edit', { 'id': product.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
+#}
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    {#<h1>Pet</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ pet.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ pet.name }}</td>
+            </tr>
+            <tr>
+                <th>Gender</th>
+                <td>{{ pet.gender }}</td>
+            </tr>
+            <tr>
+                <th>Age</th>
+                <td>{{ pet.age }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ pet.status }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ pet.type }}</td>
+            </tr>
+            <tr>
+                <th>Breed</th>
+                <td>{{ pet.breed }}</td>
+            </tr>
+            <tr>
+                <th>owner</th>
+                <td>{{ pet.owner.id }}</td>
+            </tr>
+            <tr>
+                <th>Childfriendly</th>
+                <td>{% if pet.childfriendly %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Inorout</th>
+                <td>{% if pet.inOrOut %}Yes{% else %}No{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('pet_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('pet_edit', { 'id': pet.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>#}
+
+    <div style="
+    padding-top: 40px;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    padding-left: 80px;
+    margin-top: 5%;
+">
+        <!-- Services -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 prev-next">
+                    <p>
+                        <a href="{{ path('product_index') }}" title="" class="prev-page"><span class="glyphicon glyphicon-chevron-left"></span>
+                            Get back to the full Products list</a>
+
+                    </p>
+                </div>
+            </div>
+            <div class="row adoption-single">
+                <div class="col-md-6">
+                    <!-- Slider -->
+
+                    <div id="adoption" class="carousel slide" data-ride="carousel">
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <img src="{{ asset('images/adoption-1.png') }}" alt="Dog adoption page"/>
+                            </div>
+                            <div class="item">
+                                <img src="{{ asset('images/adoption-1.png') }}" alt="Dog adoption page"/>
+                            </div>
+                            <div class="item">
+                                <img src="{{ asset('images/adoption-1.png') }}" alt="Dog adoption page"/>
+                            </div>
+                        </div>
+                        <!-- Indicators -->
+                        {# <ul class="carousel-indicators">
+                             <li data-target="#adoption" data-slide-to="0" class="active"><img src="{{ asset('images/adoption-1.png') }}" alt="Dog adoption page" /></li>
+                             <li data-target="#adoption" data-slide-to="1"><img src="{{ asset('images/adoption-1.png') }}" alt="Dog adoption page" /></li>
+                             <li data-target="#adoption" data-slide-to="2"><img src="{{ asset('images/adoption-1.png') }}" alt="Dog adoption page" /></li>
+                         </ul>#}
+
+                    </div>
+
+                    <!-- Slider end -->
+                </div>
+                <div class="col-md-6">
+                    <h2>{{ product.name }} for {{ product.aimedpets }}</h2>
+                    {#
+                                        <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum.</p>
+                    #}
+                    <ol>
+                        <li><span>Name</span> {{ product.name }} years</li>
+                        <li><span>Category</span> {{ product.category }}</li>
+                        <li><span>Aimed for </span>{{ product.aimedpets }}</li>
+                        <li><span>Price</span>{{ product.price }} DT</li>
+                        <li><span>Owner</span>{{ product.owner.username }}</li>
+
+                    </ol>
+                    {% if app.user %}
+                        {% if app.user==product.owner %}
+                                <div>
+                                    <div class="form-group">
+                                        <a href="{{ path('product_edit', { 'id': product.id }) }}">
+                                            <button type="button" class="btn btn-default btn-green col-xs-6 ">Edit Product
+                                            </button>
+                                        </a>
+
+                                    </div>
+                                </div>
+                            <div>
+                                <div class="form-group">
+                                    {{ form_start(delete_form) }}
+
+                                        <button type="submit" class="btn btn-default btn-green col-xs-6 ">Delete Product
+                                        </button>
+                                    {{ form_end(delete_form) }}
+
+                                </div>
+                            </div>
+
+                        {% else %}
+                                <div>
+
+                                    <div class="form-group">
+                                        <a href="{{ path('addtowishlist', { 'id': product.id }) }}">
+                                            <button type="button" class="btn btn-default btn-green col-xs-6 " >Add to wishlist
+                                            </button>
+                                        </a>
+                                    </div>
+                                </div>
+
+                        {% endif %}
+                    {% endif %}
+                </div>
+                <div class="container content">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <form role="form" id="contact_form">
+
+                                <div class="form-group">
+
+                                </div>
+                                <div class="form-group">
+                                    <strong style="font-size: 20px;"> Or notice a friend : </strong>
+                                    <div class="form-group">
+                                        <label for="InputEmail">Your friend's email</label>
+                                        <input type="email" class="form-control" id="InputEmail"
+                                               placeholder="Your email">
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-default btn-green">Send message</button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Adoption -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 centered">
+                    <h3><span>We have more dogs in need</span></h3>
+                    <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est
+                        notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas
+                        humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur
+                        parum clari, fiant sollemnes in futurum.</p>
+                </div>
+            </div>
+            <div class="row adoption">
+                <div class="col-md-4">
+                    <a href="adoption-single.html" title="King Charles Cavalier"><img
+                                src="{{ asset('images/dog-7.png') }}" alt="King Charles Cavalier"/></a>
+                    <div class="title">
+                        <h5>
+                            <span data-hover="King Charles Cavalier">King Charles Cavalier</span>
+                        </h5>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <a href="adoption-single.html" title="Dachshund"><img src="{{ asset('images/dog-8.png') }}"
+                                                                          alt="Dachshund"/></a>
+                    <div class="title">
+                        <h5>
+                            <span data-hover="Dachshund">Dachshund</span>
+                        </h5>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <a href="adoption-single.html" title="French Bulldog"><img src="{{ asset('images/dog-9.png') }}"
+                                                                               alt="French Bulldog"/></a>
+                    <div class="title">
+                        <h5>
+                            <span data-hover="French Bulldog">French Bulldog</span>
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Adoption end -->
+    </div>
+{% endblock %}

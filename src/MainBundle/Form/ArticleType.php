@@ -7,6 +7,8 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+
 
 class ArticleType extends AbstractType
 {
@@ -21,7 +23,13 @@ class ArticleType extends AbstractType
             ))
             ->add('subtitle')
             ->add('brochure', FileType::class, array('label' => 'Image','data_class' => null))
-            ->add('category')
+            ->add('category', ChoiceType::class, array(
+                'choices' => array(
+                    'Pet Stories' => 'Pet Stories',
+                    'Pet Advice' => 'Pet Advice',
+                    'Funny Pets' => 'Funny Pets',
+
+                )))
             ->add('content',TextareaType::class, array(
                 'attr' => array('style' => 'width: 400px;height:400px') ,
             ));

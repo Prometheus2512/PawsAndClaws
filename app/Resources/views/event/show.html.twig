@@ -515,25 +515,37 @@
                             {% endfor %}
                         </li>
                     </ul>
+                    {{ form_start(formimage) }}
+                    {{ form_widget(formimage.imagename) }}
+                    <input type="submit" value="add image">
+                    {{ form_end(formimage) }}
+
                 </li>
-                <li>
+              {#  <li>
                     <div class="link"><i class="fa fa-map"></i>Localisation
-                        {#
+                        #}{#
                                                 <small>1,053</small>
-                        #}
+                        #}{#
                         <i class="fa fa-chevron-down"></i></div>
                     <ul class="submenu">
                         <input id="lat" hidden value="{{ event.posy }}">
                         <input id="lng" hidden value="{{ event.posx }}">
 
 
+#}{#
                         {% include 'event/singleeventmap.html.twig' %}
+#}{#
                     </ul>
-                </li>
+                </li>#}
             </ul>
+            <input id="lat" hidden value="{{ event.posy }}">
+            <input id="lng" hidden value="{{ event.posx }}">
 
-
-<div style=" width: 70%;float: right;background-color:#76c99b;overflow-y: scroll; height:350px;margin-top: 0%">
+<div style=" width: 70%;height:10%;float: right; margin-top: -5%">            {% include 'event/singleeventmap.html.twig' %}
+</div>
+<div style=" width: 70%;float: right;background-color:#76c99b;  display: flex;
+  flex-direction: column;
+  min-height: 100vh;/*overflow-y: scroll; height:350px;*/margin-top: -4%">
  <ul class="comment-section">
 
         {% for commentary in commentaries %}
@@ -577,7 +589,7 @@
        {% endfor %}
            </ul>
 </div>
-            <div style="float: right; width: 800px;">
+            <div style="float: right; width: 800px; margin-bottom: 4%;margin-top: -2%">
                 <div class="write-new">
 
                     <form action="#" method="post">

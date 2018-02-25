@@ -37,3 +37,6 @@ adoptrequest:
 acceptrequest:
     path:     /acceptrequest/{id}
     defaults: { _controller: "MainBundle:Pet:acceptrequest" }
+mypets:
+    path:     /mypets
+    defaults: { _controller: "MainBundle:Pet:mypets" }

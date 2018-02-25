@@ -53,7 +53,7 @@
                             <a href="{{ path('pets_multi') }}" title="Pets"><span data-hover="Pets">Pets</span></a>
                         </li>
                         <li>
-                            <a href="{{ path('products') }}" title="Products"><span data-hover="Products">Products</span></a>
+                            <a href="{{ path('product_index') }}" title="Products"><span data-hover="Products">Products</span></a>
                         </li>
                         <li>
                             <a href="{{ path('leisure') }}" title="Leisure"><span data-hover="Leisure">Leisure</span></a>
@@ -98,6 +98,9 @@
 
                                         <a  href="{{ path('myevents') }}">
                                           My events
+                                        </a>
+                                        <a  href="{{ path('mypets') }}">
+                                            My pets
                                         </a>
                                         <a  href="{{ path('fos_user_security_logout') }}">
                                             {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}

@@ -42,18 +42,29 @@ class Product
      */
     private $description;
 
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="promotion", type="float")
-     */
-    private $promotion;
 
     /**
-     * @ORM\ManyToOne(targetEntity="MainBundle\Entity\ProductCategory", inversedBy="products")
-     * @ORM\JoinColumn(name="category_id", referencedColumnName="id", onDelete="CASCADE")
+     * @var string
+     *
+     * @ORM\Column(name="category", type="string", length=255)
      */
     private $category;
+    /**
+
+     * @ORM\ManyToOne(targetEntity="MainBundle\Entity\User")
+
+     * @ORM\JoinColumn(nullable=false)
+
+     */
+    private $owner;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="aimedpets", type="string", length=255)
+     */
+    private $aimedpets;
 
     /**
      * Get id
@@ -137,51 +148,58 @@ class Product
         return $this->description;
     }
 
-    /**
-     * Set promotion
-     *
-     * @param float $promotion
-     *
-     * @return Product
-     */
-    public function setPromotion($promotion)
-    {
-        $this->promotion = $promotion;
 
-        return $this;
+
+
+    /**
+     * @return mixed
+     */
+    public function getOwner()
+    {
+        return $this->owner;
     }
 
     /**
-     * Get promotion
-     *
-     * @return float
+     * @param mixed $owner
      */
-    public function getPromotion()
+    public function setOwner($owner)
     {
-        return $this->promotion;
+        $this->owner = $owner;
     }
 
     /**
-     * Set category
-     *
-     * @param \MainBundle\Entity\ProductCategory $category
-     *
-     * @return Product
-     */
-    public function setCategory(\MainBundle\Entity\ProductCategory $category = null)
-    {
-        $this->category = $category;
-
-        return $this;
-    }
-
-    /**
-     * Get category
-     *
-     * @return \MainBundle\Entity\ProductCategory
+     * @return string
      */
     public function getCategory()
     {
         return $this->category;
     }
+
+    /**
+     * @param string $category
+     */
+    public function setCategory($category)
+    {
+        $this->category = $category;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAimedpets()
+    {
+        return $this->aimedpets;
+    }
+
+    /**
+     * @param string $aimedpets
+     */
+    public function setAimedpets($aimedpets)
+    {
+        $this->aimedpets = $aimedpets;
+    }
+
+
+
 }
+

@@ -5,9 +5,12 @@ namespace MainBundle\Controller;
 use Knp\Bundle\SnappyBundle\Snappy\Response\PdfResponse;
 use MainBundle\Entity\Commentary;
 use MainBundle\Entity\Event;
+use MainBundle\Entity\Image;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Event controller.
@@ -105,7 +108,10 @@ class EventController extends Controller
      * @Method({"GET", "POST"})
      */
     public function showAction(Event $event,Request $request)
-    { $verif=1;
+    {
+
+
+        $verif=1;
         $em = $this->getDoctrine()->getManager();
        if((!isset($_SESSION["q"])) ){    $_SESSION['q'] = array();}
         elseif(/*(!isset($_SESSION["q"])) and*/(!in_array($event->getId(),$_SESSION['q']))) {
@@ -191,6 +197,34 @@ $securityContext = $this->container->get('security.authorization_checker');
 
         $form = $this->createForm('MainBundle\Form\CommentaryType', $commentary);
         $numbercommentaries=count($commentaries);
+        $image = new Image();
+        $formimage = $this->createForm('MainBundle\Form\ImageType', $image);
+        $formimage->handleRequest($request);
+
+        if ($formimage->isSubmitted() && $formimage->isValid()) {
+            // $file stores the uploaded PDF file
+            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+            $file = $image->getImagename();
+            $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
+
+            // moves the file to the directory where brochures are stored
+            $file->move(
+                $this->getParameter('brochures_directory'),
+                $fileName
+            );
+
+            // updates the 'brochure' property to store the PDF file name
+            // instead of its contents
+            $image->setImagename($fileName);
+
+            $em = $this->getDoctrine()->getManager();
+
+            $em->persist($image);
+            $image->setEvent($event);
+            $em->flush();
+
+            return $this->redirectToRoute('event_show', array('id' => $event->getId()));
+        }
 
 
         return $this->render('event/show.html.twig', array(
@@ -202,7 +236,7 @@ $securityContext = $this->container->get('security.authorization_checker');
             'commentaries' => $commentaries,
             'form' => $form->createView(),
             'numbercommentaries'=>$numbercommentaries,
-
+'formimage'=>$formimage->createView()
 
         ));
     }
@@ -216,7 +250,19 @@ $securityContext = $this->container->get('security.authorization_checker');
     public function editAction(Request $request, Event $event)
     {
         $deleteForm = $this->createDeleteForm($event);
-        $editForm = $this->createForm('MainBundle\Form\EventType', $event);
+        $editForm = $this->createFormBuilder($event)
+            ->add("name", TextType::class)
+            ->add('name')
+            ->add('description')
+            ->add('beginningDate')
+            ->add('endingDate')
+            ->add('address')
+            ->add('capacity')
+            ->add('cost')
+            ->add('posx',HiddenType::class)
+            ->add('posy',HiddenType::class)
+            ->getForm();
+
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -315,6 +361,19 @@ $securityContext = $this->container->get('security.authorization_checker');
         return new PdfResponse(
             $this->get('knp_snappy.pdf')->getOutputFromHtml($html),
             'file.pdf'
+        );
+    }
+    public function galleryAction()
+    {   $em=$this->getDoctrine()->getManager();
+        $image = $em->getRepository('MainBundle:Image')->findAll();
+
+
+        return $this->render(
+            "event\gallery.html.twig",
+            array(
+                'images'        => $image,
+
+            )
         );
     }
 
