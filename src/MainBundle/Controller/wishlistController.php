@@ -46,7 +46,22 @@ class wishlistController extends Controller
         return $this->redirectToRoute('product_show', array('id' => $id));
 
     }
+    public function deletefromwishlistAction($id)
+    {
 
+        $em = $this->getDoctrine()->getManager();
+        $user=$this->getUser();
+        $product = $em->getRepository('MainBundle:Product')->find($id);
+
+        $wishlist = $em->getRepository('MainBundle:wishlist')->findOneBy(['user' => $user,'product'=>$product]);
+
+        $em->remove($wishlist);
+        $em->flush()
+        ;
+
+        return $this->redirectToRoute('product_show', array('id' => $id));
+
+    }
 
     /**
      * Creates a new wishlist entity.

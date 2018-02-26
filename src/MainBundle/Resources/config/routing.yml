@@ -85,6 +85,12 @@ main_image:
 addtowishlist:
      path:     /addtowishlist/{id}
      defaults: { _controller: MainBundle:wishlist:addtowishlist}
+deletefromwishlist:
+     path:     /deletefromwishlist/{id}
+     defaults: { _controller: MainBundle:wishlist:deletefromwishlist}
+mgilet_notifications:
+    resource: "@MgiletNotificationBundle/Controller/"
+    prefix: /notifications
 
 
 

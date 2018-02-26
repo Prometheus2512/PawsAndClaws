@@ -6,9 +6,20 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class AdminController extends Controller
 {
-    public function indexAction()
+
+
+    public function backAction()
     {
+
         return $this->render('MainBundle:admin:index.html.twig');
+    }
+
+
+    public function indexAction()
+    {$notif = $this->get('mgilet.notification')->getAll();
+        $count= count($notif);
+        return $this->render('MainBundle:admin:index.html.twig'
+        ,array('notif'=>$notif,'count'=>$count));
     }
 
     public function usertableAction() {

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>DASHBOARD</title>
@@ -55,9 +56,49 @@
 
                 </li>
             </ul>
-        </div>
+            {% if notif is defined %}
 
-    </div><!-- /.container-fluid -->
+            <div class="sticky-header header-section user-menu   ">
+                <div class="header-left">
+
+                    <!--toggle button start-->
+                    <!--toggle button end-->
+                    <div class="profile_details_left"><!--notifications of menu start -->
+                        <ul class="nofitications-dropdown">
+
+                            <li class="dropdown head-dpdn">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-bell"></i><span class="badge blue">{{ count }} </span></a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <div class="notification_header">
+                                            <h3>You have {{ count }} new notification</h3>
+                                        </div>
+                                    </li>
+                                    {% for i in notif %}
+                                        <li><a href="{{ path('event_show', { 'id': i.subject }) }}" >
+                                                <div class="notification_desc">
+                                                    <p>{{ i.message }}</p>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </a>
+                                        </li>
+
+                                    {% endfor %}
+
+                                </ul>
+                            </li>
+
+
+                        </ul>
+                        </li>
+                        </ul>
+                        <div class="clearfix"> </div>
+                    </div>
+
+                    {% endif %}
+                </div>
+
+            </div><!-- /.container-fluid -->
 </nav>
 
 <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">

@@ -120,7 +120,8 @@
             <div class="row">
                 <div class="col-md-12 prev-next">
                     <p>
-                        <a href="{{ path('product_index') }}" title="" class="prev-page"><span class="glyphicon glyphicon-chevron-left"></span>
+                        <a href="{{ path('product_index') }}" title="" class="prev-page"><span
+                                    class="glyphicon glyphicon-chevron-left"></span>
                             Get back to the full Products list</a>
 
                     </p>
@@ -169,36 +170,50 @@
                     </ol>
                     {% if app.user %}
                         {% if app.user==product.owner %}
-                                <div>
-                                    <div class="form-group">
-                                        <a href="{{ path('product_edit', { 'id': product.id }) }}">
-                                            <button type="button" class="btn btn-default btn-green col-xs-6 ">Edit Product
-                                            </button>
-                                        </a>
+                            <div>
+                                <div class="form-group">
+                                    <a href="{{ path('product_edit', { 'id': product.id }) }}">
+                                        <button type="button" class="btn btn-default btn-green col-xs-6 ">Edit Product
+                                        </button>
+                                    </a>
 
-                                    </div>
                                 </div>
+                            </div>
                             <div>
                                 <div class="form-group">
                                     {{ form_start(delete_form) }}
 
-                                        <button type="submit" class="btn btn-default btn-green col-xs-6 ">Delete Product
-                                        </button>
+                                    <button type="submit" class="btn btn-default btn-green col-xs-6 ">Delete Product
+                                    </button>
                                     {{ form_end(delete_form) }}
 
                                 </div>
                             </div>
 
                         {% else %}
-                                <div>
 
-                                    <div class="form-group">
-                                        <a href="{{ path('addtowishlist', { 'id': product.id }) }}">
-                                            <button type="button" class="btn btn-default btn-green col-xs-6 " >Add to wishlist
-                                            </button>
-                                        </a>
-                                    </div>
+{% if test==1 %}
+                            <div>
+
+                                <div class="form-group">
+                                    <a href="{{ path('addtowishlist', { 'id': product.id }) }}">
+                                        <button type="button" class="btn btn-default btn-green col-xs-6 ">Add to
+                                            wishlist
+                                        </button>
+                                    </a>
                                 </div>
+                            </div>
+{% else %}                         <div>
+
+                                <div class="form-group">
+                                    <a href="{{ path('deletefromwishlist', { 'id': product.id }) }}">
+                                        <button type="button" class="btn btn-default btn-green col-xs-6 ">Delete from
+                                            wishlist
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+    {% endif %}
 
                         {% endif %}
                     {% endif %}

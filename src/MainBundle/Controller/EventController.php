@@ -84,6 +84,21 @@ class EventController extends Controller
             $event->setHostid($user);
             $em->flush();
 
+            $manager = $this->get('mgilet.notification');
+            $notif = $manager->createNotification($event->getId());
+            $notif->setMessage($event->getHostid()->getUsername().' added a new event.');
+            $notif->setLink('http://symfony.com/');
+            // or the one-line method :
+            // $manager->createNotification('Notification subject','Some random text','http://google.fr');
+
+            // you can add a notification to a list of entities
+            // the third parameter ``$flush`` allows you to directly flush the entities
+            $manager->addNotification(array($this->getUser()), $notif, true);
+
+
+
+
+
 
 
             return $this->redirectToRoute('event_show', array('id' => $event->getId()));
@@ -132,6 +147,8 @@ class EventController extends Controller
 $thiseventreservation=$em->getRepository('MainBundle:Reservation')->findBy(['eventid' => $event->getId()]);
         $commentaries = $em->getRepository('MainBundle:Commentary')->findBy(['commentedevent'=>$event]);
 $participationnumber=count($thiseventreservation);
+        $images = $em->getRepository('MainBundle:Image')->findBy(['event'=>$event]);
+$nbimages=count($images);
 
 $securityContext = $this->container->get('security.authorization_checker');
         if ($securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
@@ -184,6 +201,8 @@ $securityContext = $this->container->get('security.authorization_checker');
                     'form' => $form->createView(),
                     'commentaries' => $commentaries,
                     'numbercommentaries'=>$numbercommentaries,
+                    'nbimages'=>$nbimages,
+                    'images'=>$images
 
 
                 )));
@@ -216,9 +235,7 @@ $securityContext = $this->container->get('security.authorization_checker');
             // updates the 'brochure' property to store the PDF file name
             // instead of its contents
             $image->setImagename($fileName);
-
             $em = $this->getDoctrine()->getManager();
-
             $em->persist($image);
             $image->setEvent($event);
             $em->flush();
@@ -236,7 +253,9 @@ $securityContext = $this->container->get('security.authorization_checker');
             'commentaries' => $commentaries,
             'form' => $form->createView(),
             'numbercommentaries'=>$numbercommentaries,
-'formimage'=>$formimage->createView()
+'formimage'=>$formimage->createView(),
+                'nbimages'=>$nbimages,
+                    'images'=>$images
 
         ));
     }
@@ -365,16 +384,13 @@ $securityContext = $this->container->get('security.authorization_checker');
     }
     public function galleryAction()
     {   $em=$this->getDoctrine()->getManager();
-        $image = $em->getRepository('MainBundle:Image')->findAll();
+        $images = $em->getRepository('MainBundle:Image')->findAll();
 
+        return $this->render('event\gallery.html.twig'
+            , array(
+                'images'=>$images
 
-        return $this->render(
-            "event\gallery.html.twig",
-            array(
-                'images'        => $image,
-
-            )
-        );
+            ));
     }
 
 }

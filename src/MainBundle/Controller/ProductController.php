@@ -48,6 +48,7 @@ class ProductController extends Controller
         return $this->render('product/new.html.twig', array(
             'product' => $product,
             'form' => $form->createView(),
+
         ));
     }
 
@@ -58,10 +59,16 @@ class ProductController extends Controller
     public function showAction(Product $product)
     {
         $deleteForm = $this->createDeleteForm($product);
+        $em = $this->getDoctrine()->getManager();
+        $user=$this->getUser();
+        $wishlist = $em->getRepository('MainBundle:wishlist')->findOneBy(['user' => $user,'product'=>$product]);
+        if($wishlist){$test=0;}
+        else{$test=1;}
 
         return $this->render('product/show.html.twig', array(
             'product' => $product,
             'delete_form' => $deleteForm->createView(),
+            'test' => $test
         ));
     }
 

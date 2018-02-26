@@ -13,7 +13,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 centered">
-                    <h3><span>Give your pet his best moments</span></h3>
+                    <h3><span>Give your pet his best moments </span></h3>
                     <p>There are so many fun ways to get involved and help save lives. Find information about pet events hosted by Best Friends Animal Society near you and around the country.</p>
                 </div>
             </div>
@@ -22,7 +22,7 @@
             <div class="row">
 
 
-                <div class="col-xs-6 col3">
+                <div class="col-md-4 col3">
                     <a href="{{ path('event_new') }}"  title="Care advice" class="roundal" id="advice"></a>
                     <h3>Host a new event</h3>
                     <p>Interested in starting your own online fundraiser to help animals? Celebrate a birthday, wedding, athletic event, or other occasion with your own personal fundraising page to support Best Friends.</p>
@@ -30,12 +30,20 @@
                         <a  href="{{ path('event_new') }}">  <button type="button" class="btn btn-default btn-green">Learn more</button></a>
                     </form>
                 </div>
-                <div class="col-xs-6 col3">
+                <div class="col-md-4 col3">
                     <a href="{{ path('event_index') }}" title="Pet Events" class="roundal" id="play"></a>
                     <h3>Check pet Events</h3>
                     <p>We’ll help you meet fellow animal lovers from across the country and benefit from being a part of the community.</p>
                     <form>
                       <a  href="{{ path('event_index') }}">  <button type="button" class="btn btn-default btn-green">Learn more</button></a>
+                    </form>
+                </div>
+                <div class="col-md-4 col3">
+                    <a href="{{ path('gallery') }}" title="Pet Events" class="roundal" id="play"></a>
+                    <h3>Check Gallery</h3>
+                    <p>Check some photos of our events.</p>
+                    <form>
+                        <a  href="{{ path('gallery') }}">  <button type="button" class="btn btn-default btn-green">Learn more</button></a>
                     </form>
                 </div>
             </div>
