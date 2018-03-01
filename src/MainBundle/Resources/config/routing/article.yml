@@ -6,7 +6,7 @@ article_index:
 article_show:
     path:     /{id}/show
     defaults: { _controller: "MainBundle:Article:show" }
-    methods:  GET
+    methods:  [GET, POST]
 
 article_new:
     path:     /new

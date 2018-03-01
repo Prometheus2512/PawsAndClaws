@@ -19,7 +19,7 @@ class ArticleType extends AbstractType
     {
         $builder->add('title')
             ->add('summary',TextareaType::class, array(
-                'attr' => array('style' => 'width: 400px;height:100px') ,
+                'attr' => array('style' => 'width: 250px;height:100px') ,
             ))
             ->add('subtitle')
             ->add('brochure', FileType::class, array('label' => 'Image','data_class' => null))
@@ -31,7 +31,7 @@ class ArticleType extends AbstractType
 
                 )))
             ->add('content',TextareaType::class, array(
-                'attr' => array('style' => 'width: 400px;height:400px') ,
+                'attr' => array('style' => 'width: 250px;height:400px') ,
             ));
     }/**
      * {@inheritdoc}

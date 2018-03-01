@@ -6,7 +6,7 @@ product_index:
 product_show:
     path:     /{id}/show
     defaults: { _controller: "MainBundle:Product:show" }
-    methods:  GET
+    methods:  [GET, POST]
 
 product_new:
     path:     /new

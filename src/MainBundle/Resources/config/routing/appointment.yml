@@ -1,0 +1,24 @@
+appointment_index:
+    path:     /
+    defaults: { _controller: "MainBundle:Appointment:index" }
+    methods:  GET
+
+appointment_show:
+    path:     /{id}/show
+    defaults: { _controller: "MainBundle:Appointment:show" }
+    methods:  GET
+
+appointment_new:
+    path:     /new
+    defaults: { _controller: "MainBundle:Appointment:new" }
+    methods:  [GET, POST]
+
+appointment_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "MainBundle:Appointment:edit" }
+    methods:  [GET, POST]
+
+appointment_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "MainBundle:Appointment:delete" }
+    methods:  DELETE

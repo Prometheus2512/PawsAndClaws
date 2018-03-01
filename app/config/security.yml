@@ -7,6 +7,7 @@ security:
     role_hierarchy:
             ROLE_ADMIN:       ROLE_USER
             ROLE_SUPER_ADMIN: ROLE_ADMIN
+            ROLE_VETERINARY:  ROLE_VETERINARY
     # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
         in_memory:
@@ -45,4 +46,6 @@ security:
             - { path: ^/event/new, role: ROLE_USER }
             - { path: ^/pet/new, role: ROLE_USER }
             - { path: ^/article/new, role: ROLE_USER }
+            - { path: ^/product/new, role: ROLE_USER }
+            - { path: ^/office/new, role: ROLE_USER }
             - { path: ^/admin/, role: ROLE_ADMIN }

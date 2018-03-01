@@ -35,6 +35,34 @@ class Review
      */
     private $rating;
 
+    /**
+
+     * @ORM\ManyToOne(targetEntity="MainBundle\Entity\User", cascade={"persist"})
+
+     * @ORM\JoinColumn(nullable=false)
+
+     */
+
+    protected $user;
+
+
+    /**
+
+     * @ORM\ManyToOne(targetEntity="MainBundle\Entity\Article", cascade={"persist"})
+
+     * @ORM\JoinColumn(nullable=false)
+
+     */
+
+    protected $article;
+
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime")
+     */
+    private $date;
 
     /**
      * Get id
@@ -93,5 +121,58 @@ class Review
     {
         return $this->rating;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getArticle()
+    {
+        return $this->article;
+    }
+
+    /**
+     * @param mixed $article
+     */
+    public function setArticle($article)
+    {
+        $this->article = $article;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * @param \DateTime $date
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+    }
+
+
+
+
+
 }
 

@@ -1,0 +1,122 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+    <div style="
+    padding-top: 50px;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    padding-left: 80px;
+">
+
+
+
+        <link rel="stylesheet" href="css/profil.css">
+        <div class="container centered">
+            <div class="col-md-12 centered">
+
+                <h3><span>Your appointments</span></h3>
+            </div>
+{#**********************rendez vous*******************************************#}
+
+
+            <body>
+
+            <table class="table table-striped table-hover ">
+                <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Pet</th>
+                    <th>Office's mail</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for appointment in appointments %}
+                    {% if appointment.validated==0%}
+                        <tr>
+                            <td>{{ appointment.date|date('Y-m-d')  }}</td>
+                            <td>{{ appointment.pet.name }}</td>
+                            <td>{{ appointment.office.email }}</td>
+                            <td>{{ appointment.description }}</td>
+                            <td><a class="btn btn-success btn-sm" disabled="">NOT VALIDATED YET</a></td>
+
+
+                        </tr>
+                    {% elseif  appointment.validated==1 %}
+                        <tr>
+                            <td>{{ appointment.date|date('Y-m-d')  }}</td>
+                            <td>{{ appointment.pet.name }}</td>
+                            <td>{{ appointment.office.email }}</td>
+                            <td>{{ appointment.description }}</td>
+                            <td><a  class="btn btn-success btn-sm" disabled="">VALIDATED</a></td>
+<td>                            <a href="{{ path('pdfrdv',{'id':appointment.id}) }}">Download pdf appointment.</a>
+</td>
+                        </tr>
+
+
+                    {% endif %}
+                {% endfor %}
+                </tbody>
+            </table>
+
+
+
+
+
+            </body>
+
+
+            {#**********************rendez vous*******************************************#}
+
+            <div class="form-group pull-right">
+                <input type="text" class="search form-control" placeholder="What you looking for?">
+            </div>
+            <span class="counter pull-right"></span>
+            <table class="table table-hover table-bordered results">
+                <td>
+                    <tbody>
+
+                   {% for office in offices %}
+                    <tr>
+                        <td>
+                            <figure class="snip0041">
+                                <img  src="{{ asset('images/dog-7.png') }}" alt="sample5"/>
+                                <div class="icons">
+
+                                    <a href="{{ path('afficheoffice',{'id':office.id}) }}"><i class="ion-ios-email-outline"></i></a>
+
+                                </div>
+                                <figcaption>
+
+
+                                    <h2>Dr {{office.owner.firstname }} <span>{{ office.owner.lastname }} </span></h2>
+
+                                    <p><br>{{ office.address }}<br>{{ office.email }}
+                                      <br>{{ office.phone }}</p>
+
+
+                                </figcaption>
+                            </figure>
+                        </td>
+                    </tr>
+                 {% endfor %}
+
+                    </tbody>
+
+
+
+                    <tr class="warning no-result">
+                        <td colspan="4"><i class="fa fa-warning"></i> No result</td>
+
+                    </tr>
+
+
+            </table>
+
+
+</div>
+        <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+        <script src="js/profil.js"></script>
+
+    </div>
+{% endblock %}

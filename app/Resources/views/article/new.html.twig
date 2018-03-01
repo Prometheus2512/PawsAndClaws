@@ -19,9 +19,13 @@
 -----------#}
 {% extends 'base.html.twig' %}
 
-
-
 {% block content %}
+
+    <style>
+textarea{
+    resize: none;
+}
+    </style>
 
 
 
@@ -31,7 +35,7 @@
 
 
     <!-- progressbar -->
-    <div style="padding-bottom: 40%;padding-top: 5% ; margin-top: 2%;">
+    <div style="padding-bottom: 40%;padding-top: 5% ; margin-top: 2%; margin-bottom: 10%">
 
         {{ form_start(form, {'attr': {'id': 'msform'}})  }}
         <ul id="progressbar">

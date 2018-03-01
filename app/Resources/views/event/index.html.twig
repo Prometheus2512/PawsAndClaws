@@ -2,7 +2,9 @@
 
 {% block content %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script>
+    <link href="{{ asset('css/blogdisplay.css') }}" rel="stylesheet">
+
+    {#<script>
         $(document).ready(function(){
             $("#myInput").on("keyup", function() {
                 var value = $(this).val().toLowerCase();
@@ -11,7 +13,7 @@
                 });
             });
         });
-    </script>
+    </script>#}
 
    {# <table class="table">
         <tr>
@@ -27,17 +29,22 @@
         {% endfor %}
     </table>#}
     <br><br><br>
+{#
     {% include  'event/tablemap.html.twig'%}
-
-    <link href="{{ asset('css/table.css') }}" rel="stylesheet">
-
-    <div style="padding-top: 0%; padding-bottom: 5%; text-align: center;  ">
-
-        <h3 class="subtitle">Nom Evenement <input id="eve" class="form-control" type="text" placeholder="Chercher .."></h3>
+#}
 
 {#
-        <input id="myInput" type="text" >
+    <link href="{{ asset('css/table.css') }}" rel="stylesheet">
 #}
+
+  {#  <div style="padding-top: 0%; padding-bottom: 5%; text-align: center;  " >
+
+        <h3 class="subtitle">EVENT's lists <input id="nom" name="nom" class="form-control" type="text" placeholder="Chercher .."></h3>
+
+#}{#
+        <input id="myInput" type="text" >
+#}{#
+
 
 
 
@@ -59,7 +66,7 @@
 
             </tr>
             </thead>
-            <tbody>
+            <tbody id="res">
             {% for event in events %}
                 {% if event.validated==1 %}
 
@@ -112,6 +119,106 @@
         {% endif %}
         <a  class="btn btn-default btn-green" href="{{ path('myevents') }}">Check my events</a>
 
+
+
+
     </div>
+#}<br>
+    <br>
+<br>
+    <br>
+<br>
+    <strong style="margin-left: 45%; margin-top: 10%">Paws and claws EVENTS</strong>
+    <!--PEN CODE-->
+    <h3 class="subtitle"> <input id="nom" name="nom" class="form-control" type="text" placeholder="Chercher .."></h3>
+
+    <div style="margin-top: 5%" id="res">
+        {% if events is empty %}
+            <strong style="margin-left: 43%"> No Available Events.</strong><br>
+
+        {% endif %}
+
+        {% for event in  events %}
+        {% if event.validated==1 %}
+            <div class="blog-card">
+                <div class="photo "><img  src="https://maps.googleapis.com/maps/api/staticmap?center={{ event.posy }},{{ event.posx }}&zoom=13&size=300x300&maptype=roadmap&markers=color:red%7Clabel:S%7C{{ event.posy }},{{ event.posx }}
+&key=AIzaSyAcsrLEjp-oYNRVFr10K9tNbaKSVzdsj_M"
+                    ></div>
+                <ul class="details">
+                    <li class="author"><a href="#">{{ event.hostid.username }}</a></li>
+                    <li class="date">{{ event.address }}           </li>
+                {#    <li class="tags">
+                        <ul>
+                            <li>{{ event.address }}</li>
+                        </ul>
+                    </li>#}
+                </ul>
+                <div class="description" >
+                    <h1>{{ event.address }}</h1>
+                    <h2>{{event.beginningDate| date('F') }} {{ event.beginningDate| date('d') }},{{ event.beginningDate | date('Y') }}
+               at         {{ event.beginningDate|date('H:i:s') }}</h2>
+                    <p class="summary">{{ event.description }}</p>
+                    <a href="{{ path('event_show', { 'id': event.id }) }}">Read More</a>
+                </div>
+            </div >
+        {% endif %}
+        {% endfor %}
+
+    </div >
+  {#  <div style="margin-left: 35%; margin-bottom: 5%" >
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            <a     class="btn btn-default btn-green" href="{{ path('article_new') }}">Write a new Article </a>
+
+            <a  class="btn btn-default btn-green"  href="{{ path('myarticles') }}">Check my articles</a>
+        {% endif %}</div>#}
+    {#<div class="blog-card alt">
+        <div class="photo photo2"></div>
+        <ul class="details">
+            <li class="author"><a href="#">Jane Doe</a></li>
+            <li class="date">July. 15, 2015</li>
+            <li class="tags">
+                <ul>
+                    <li><a href="#">Learn</a></li>
+                    <li><a href="#">Code</a></li>
+                    <li><a href="#">JavaScript</a></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="description">
+            <h1>Mastering the Language</h1>
+            <h2>Java is not the same as JavaScript</h2>
+            <p class="summary">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eum dolorum architecto obcaecati enim dicta praesentium, quam nobis! Neque ad aliquam facilis numquam. Veritatis, sit.</p>
+            <a href="#">Read More</a>
+        </div>
+    </div>#}
+    <!--END PEN CODE-->
+
+
+
+
+<script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script>
+
+        $('#nom').keyup(function(){
+            var input= $("#nom").val();
+            $.ajax({
+                type: "POST",
+                url: "{{ path('event_recherche_ajax') }}",
+                data: {'nom': input},
+                success: function (data) {
+
+                    console.log(data);
+
+                    $("#res").html(data);
+
+
+                }
+            });
+
+        });
+
+
+    </script>
 {% endblock %}
 

@@ -1,0 +1,146 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,200,300,800);
+@import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
+figure.snip0041 {
+    font-family: 'Raleway', Arial, sans-serif;
+    position: relative;
+    float: left;
+    overflow: hidden;
+    margin: 10px 1%;
+    min-width: 475px;
+    max-width: 480px;
+    max-height: 240px;
+    width: 100%;
+    background: #000000;
+}
+figure.snip0041 * {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all 0.35s;
+    transition: all 0.35s;
+}
+figure.snip0041 > img {
+    margin-right: 50%;
+    width: 50%;
+    filter: blur(0px);
+}
+figure.snip0041 figcaption {
+    right: 0;
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background: #ffffff;
+}
+figure.snip0041 figcaption h2,
+figure.snip0041 figcaption p {
+    margin: 0;
+    color: #000000;
+    text-align: right;
+    position: absolute;
+    padding: 10px 0 10px 0px;
+    margin: 0 40px 0 20px;
+}
+figure.snip0041 figcaption h2 {
+    font-size: 1.3em;
+    bottom: 50%;
+    right: 0;
+    font-weight: 300;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+figure.snip0041 figcaption h2 span {
+    font-weight: 800;
+}
+figure.snip0041 figcaption p {
+    top: 50%;
+    font-size: 0.9em;
+    opacity: 0.8;
+}
+figure.snip0041 .icons {
+    padding: 5px;
+    position: absolute;
+    right: 50%;
+    top: 50%;
+    padding-right: 30px;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+figure.snip0041 .icons i {
+    font-size: 32px;
+    padding: 10px;
+    color: #ffffff;
+    opacity: 0;
+    top: 50%;
+    display: inline-block;
+    -webkit-transform: translateX(-50px);
+    transform: translateX(-50px);
+}
+figure.snip0041 .icons a:first-child i {
+    -webkit-transition-delay: 0s;
+    transition-delay: 0s;
+}
+figure.snip0041 .icons a:nth-child(2) i {
+    -webkit-transition-delay: 0.1s;
+    transition-delay: 0.1s;
+}
+figure.snip0041 .icons a:nth-child(3) i {
+    -webkit-transition-delay: 0.2s;
+    transition-delay: 0.2s;
+}
+figure.snip0041:after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 35px;
+    width: 35px;
+    background-color: #000000;
+    content: '';
+    -webkit-transform: rotate(45deg) translate(-50%, -50%);
+    transform: rotate(45deg) translate(-50%, -50%);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+}
+figure.snip0041:hover > img,
+figure.snip0041.hover > img {
+    opacity: 0.5;
+    filter: blur(5px);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+figure.snip0041:hover i,
+figure.snip0041.hover i {
+    opacity: 0.8;
+    -webkit-transform: translate(0);
+    transform: translate(0);
+}
+figure.snip0041:hover a:first-child i,
+figure.snip0041.hover a:first-child i {
+    -webkit-transition-delay: 0.2s;
+    transition-delay: 0.2s;
+}
+figure.snip0041:hover a:nth-child(2) i,
+figure.snip0041.hover a:nth-child(2) i {
+    -webkit-transition-delay: 0.1s;
+    transition-delay: 0.1s;
+}
+figure.snip0041:hover a:nth-child(3) i,
+figure.snip0041.hover a:nth-child(3) i {
+    -webkit-transition-delay: 0s;
+    transition-delay: 0s;
+}
+
+
+.results tr[visible='false'],
+.no-result{
+    display:none;
+}
+
+.results tr[visible='true']{
+    display:table-row;
+}
+
+.counter{
+    padding:8px;
+    color:#ccc;
+}
+

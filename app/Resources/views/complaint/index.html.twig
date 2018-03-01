@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Complaints list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Content</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for complaint in complaints %}
+            <tr>
+                <td><a href="{{ path('complaint_show', { 'id': complaint.id }) }}">{{ complaint.id }}</a></td>
+                <td>{% if complaint.date %}{{ complaint.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ complaint.content }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('complaint_show', { 'id': complaint.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('complaint_edit', { 'id': complaint.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('complaint_new') }}">Create a new complaint</a>
+        </li>
+    </ul>
+{% endblock %}

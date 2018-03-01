@@ -1,0 +1,24 @@
+review_index:
+    path:     /
+    defaults: { _controller: "MainBundle:Review:index" }
+    methods:  GET
+
+review_show:
+    path:     /{id}/show
+    defaults: { _controller: "MainBundle:Review:show" }
+    methods:  GET
+
+review_new:
+    path:     /new
+    defaults: { _controller: "MainBundle:Review:new" }
+    methods:  [GET, POST]
+
+review_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "MainBundle:Review:edit" }
+    methods:  [GET, POST]
+
+review_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "MainBundle:Review:delete" }
+    methods:  DELETE

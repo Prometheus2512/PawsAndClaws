@@ -91,7 +91,38 @@ deletefromwishlist:
 mgilet_notifications:
     resource: "@MgiletNotificationBundle/Controller/"
     prefix: /notifications
-
-
+main_office:
+    resource: "@MainBundle/Resources/config/routing/office.yml"
+    prefix:   /office
+main_appointment:
+        resource: "@MainBundle/Resources/config/routing/appointment.yml"
+        prefix:   /appointment
+mesrendezvous:
+     path:     /mesrendezvous
+     defaults: { _controller: MainBundle:Appointment:mesrendezvous}
+afficheoffice:
+     path:     /afficheoffice
+     defaults: { _controller: MainBundle:Appointment:afficheoffice}
+ajoutrdv:
+     path:     /ajoutrdv
+     defaults: { _controller: MainBundle:Appointment:ajoutrdv}
+SupprimerRdv:
+     path:     /SupprimerRdv
+     defaults: { _controller: MainBundle:Appointment:SupprimerRdv}
+myofficeappointment:
+     path:     /myofficeappointment
+     defaults: { _controller: MainBundle:Appointment:myofficeappointment}
+pdfrdv:
+     path:     /pdfrdv/{id}
+     defaults: { _controller: MainBundle:Appointment:pdfrdv}
+mywishlist:
+     path:     /mywishlist
+     defaults: { _controller: MainBundle:wishlist:mywishlist}
+mycomplaints:
+     path:     /mycomplaints
+     defaults: { _controller: MainBundle:Complaint:mycomplaints}
+event_recherche_ajax:
+     path:     /event_recherche_ajax
+     defaults: { _controller: MainBundle:Event:chercher}
 
 

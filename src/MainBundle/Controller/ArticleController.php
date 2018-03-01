@@ -4,6 +4,7 @@ namespace MainBundle\Controller;
 
 use MainBundle\Entity\Appreciation;
 use MainBundle\Entity\Article;
+use MainBundle\Entity\Review;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -82,10 +83,31 @@ class ArticleController extends Controller
      * Finds and displays a article entity.
      *
      */
-    public function showAction(Article $article)
-    {   $user=$this->getUser();
+    public function showAction(Article $article,Request $request)
+    {
+
+        $review = new Review();
+        $form = $this->createForm('MainBundle\Form\ReviewType', $review);
+        $form->handleRequest($request);
+        $user=$this->getUser();
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($review);
+            $review->setArticle($article);
+            $review->setUser($user);
+            $date = new \DateTime();
+            $review->setDate($date);
+
+            $em->flush();
+
+        }
+
+
+        $user=$this->getUser();
     $test=0;
         $em = $this->getDoctrine()->getManager();
+        $reviews= $em->getRepository('MainBundle:Review')->findBy(['article'=>$article]);
+
         $likes= $em->getRepository('MainBundle:Appreciation')->findBy(['eventappreciated'=>$article,'type'=>1]);
         $dislikes= $em->getRepository('MainBundle:Appreciation')->findBy(['eventappreciated'=>$article,'type'=>2]);
         $nlikes=count($likes);
@@ -108,7 +130,9 @@ class ArticleController extends Controller
             'delete_form' => $deleteForm->createView(),
             'test'=>$test,
             'likes'=>$nlikes,
-            'dislikes'=>$ndislikes
+            'dislikes'=>$ndislikes,
+            'form'=>$form->createView(),
+            'reviews'=>$reviews
         ));
     }
 

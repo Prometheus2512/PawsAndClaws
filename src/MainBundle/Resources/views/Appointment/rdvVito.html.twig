@@ -1,0 +1,109 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+
+    <div style="
+    padding-top: 50px;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    padding-left: 80px;
+">
+    <div class="container centered">
+        <link rel="stylesheet" href="css/photo.css">
+
+        <div class="col-md-12 centered">
+
+            <h3><span>Suggestion pour prendre Rendez-Vous !</span></h3>
+
+        </div>
+
+
+
+    <body>
+
+    <table class="table table-striped table-hover ">
+        <thead>
+        <tr>
+            <th>date</th>
+            <th>animal</th>
+
+            <th>adresse mail</th>
+            <th>description</th>
+        </tr>
+        </thead>
+        <tbody>
+       {% for rdv in appointments%}
+       {% if rdv.validated==0 and (rdv.date > date('now')) %}
+           <tr>
+            <td>{{ rdv.date|date('Y-m-d')  }}</td>
+            <td>{{ rdv.pet.name }}</td>
+            <td>{{ rdv.office.email }}</td>
+            <td>{{ rdv.description }}</td>
+            <td><a href="{{ path('office_validate',{'id':rdv.id})  }}" class="btn btn-success btn-sm">Valide RDV!</a></td>
+        </tr>
+       {% elseif  rdv.validated==0 %}
+           <tr>
+               <td>{{ rdv.date|date('Y-m-d')  }}</td>
+               <td>{{ rdv.pet.name }}</td>
+               <td>{{ rdv.office.email }}</td>
+               <td>{{ rdv.description }}</td>
+               <td><a {#href="{{ path('office_unvalidate',{'id':appointment.id}) }}" #}class="btn btn-success btn-sm" disabled="">Appointment out of date</a></td>
+           </tr>
+
+
+           {% endif %}
+{% endfor %}
+        </tbody>
+    </table>
+
+
+
+
+
+    </body>
+
+
+        <div class="col-md-12 centered">
+            <h3><span>Votre Rendez-Vous !</span></h3>
+        </div>
+
+        <body>
+
+        <table class="table table-striped table-hover ">
+            <thead>
+            <tr>
+                <th>date</th>
+                <th>animal</th>
+
+                <th>adresse mail</th>
+                <th>description</th>
+            </tr>
+            </thead>
+            <tbody>
+ {% for rdv in appointments %}
+       {% if rdv.validated==1 and (rdv.date > date('now'))  %}
+
+        <tr>
+            <td>{{ rdv.date|date('Y-m-d')  }}</td>
+            <td>{{ rdv.pet.name }}</td>
+            <td>{{ rdv.office.email }}</td>
+            <td>{{ rdv.description }}</td>
+            <td><a  href="{{ path('office_unvalidate',{'id':rdv.id  })}}" class="btn btn-success btn-sm">Undo Validation</a></td>
+        </tr>
+{% elseif  rdv.validated==1 %}
+    <tr>
+        <td>{{ rdv.date|date('Y-m-d')  }}</td>
+        <td>{{ rdv.pet.name }}</td>
+        <td>{{ rdv.office.email }}</td>
+        <td>{{ rdv.description }}</td>
+        <td><a  class="btn btn-success btn-sm" disabled="">Appointment done</a></td>
+    </tr>
+
+       {% endif %}
+ {% endfor %}
+            </tbody>
+        </table>
+
+
+
+    </div></div>
+{% endblock %}

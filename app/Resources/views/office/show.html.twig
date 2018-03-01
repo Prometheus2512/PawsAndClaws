@@ -1,0 +1,365 @@
+{#
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Office</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ office.id }}</td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td>{{ office.address }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ office.email }}</td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td>{{ office.phone }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ office.type }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('office_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('office_edit', { 'id': office.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
+#}
+
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <link href="{{ asset('css/table.css') }}" rel="stylesheet">
+
+    <style>
+
+        .group:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .landing-page {
+            width: 882px;
+            margin: 100px auto 0;
+        }
+
+        .landing-page *,
+        .landing-page *:before,
+        .landing-page *:after {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        .landing-page .module {
+            border: 1px solid rgb(219, 219, 219);
+            border-radius: 4px;
+            float: left;
+            padding: 2em;
+            width: 48%;
+        }
+
+        .landing-page .module > *:last-child,
+        .landing-page .module > *:last-child > *:last-child,
+        .landing-page .module > *:last-child > *:last-child > *:last-child {
+            margin: 0;
+            padding: 0;
+        }
+
+        .landing-page .note {
+            background-color: rgb(236, 248, 236);
+            border: 1px dashed;
+            border-radius: 4px;
+            color: rgb(115, 136, 96);
+            font-family: georgia;
+            font-size: .9em;
+            font-style: italic;
+            margin: 20px auto;
+            padding: 2em;
+        }
+
+        .form-appointment {
+            padding: 2em;
+            background-color: rgb(239, 252, 239);
+            border-radius: 4px;
+            border: 1px solid rgb(130, 228, 130);
+            box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.1);
+            font-family: 'PT Sans', Arial, sans-serif;
+            margin: 20px auto;
+        }
+
+        .form-appointment input[type=text],
+        .form-appointment input[type=email],
+        .form-appointment input[type=tel],
+        .form-appointment textarea {
+            border: 1px solid rgb(153, 202, 129);
+            border-radius: .2em;
+            font-family: 'PT Sans', Arial, sans-serif;
+            font-size: 1.1em;
+            padding: .4em 1em;
+            margin: 0 0 .8em;
+            width: 100%;
+            box-shadow: 0 0 8px rgba(0,0,0,.08) inset;
+        }
+
+        .form-appointment input[type=text],
+        .form-appointment input[type=email],
+        .form-appointment input[type=tel],
+        .form-appointment input[type=submit],
+        .form-appointment textarea {
+            -webkit-transition: all .2s ease-in-out;
+            -moz-transition: all .2s ease-in-out;
+            transition: all .2s ease-in-out;
+        }
+
+        .form-appointment input[type=text]:active,
+        .form-appointment input[type=text]:focus,
+        .form-appointment input[type=email]:active,
+        .form-appointment input[type=email]:focus,
+        .form-appointment input[type=tel]:active,
+        .form-appointment input[type=tel]:focus,
+        .form-appointment textarea:active,
+        .form-appointment textarea:focus {
+            outline: 0;
+            box-shadow: 0 0 6px rgb(176, 226, 188);
+        }
+
+        .form-appointment textarea {
+            height: 160px;
+        }
+
+        .form-appointment input[type=submit] {
+            background-color: rgb(118, 207, 118);
+            border: 1px solid rgb(134, 189, 134);
+            border-radius: 4px;
+            color: rgb(255, 255, 255);
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 1.4em;
+            padding: 10px 18px;
+        }
+
+        .form-appointment input[type=submit]:hover {
+            background-color: white;
+            color: rgb(118, 207, 118);
+        }
+
+        .form-appointment .wpcf7-list-item-label {
+            color: rgb(130, 178, 136);
+        }
+
+        span.wpcf7-list-item {
+            display: block;
+            margin-left: -.02em;
+        }
+
+    </style>
+<link href="{{ asset('css/myformulaire.css') }}" rel="stylesheet">
+
+
+<link href="{{ asset('css/myprofile.css') }}" rel="stylesheet">
+<script src="{{ asset('js/jquery.min.js') }}"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<div class="container">
+    <div class="row">
+
+
+
+        <ul style="margin-top: 10%" id="accordion" class="accordion">
+            <li>
+                <div class="col col_4 iamgurdeep-pic">
+                    <img class="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg">
+
+                    <div class="username">
+                        <h2>Dr. {{ office.owner.firstname }}  {{ office.owner.lastname }} <br>
+                            {{ office.type }} <small><i class="fa fa-map-marker"></i> {{ office.address }}</small></h2>
+                    {% if app.user %}
+                       {% if office.owner==app.user %}
+                           {{ form_start(delete_form) }}
+                           <input  class="btn-o" type="submit" value="Delete this office">
+                           {{ form_end(delete_form) }}
+                           <a href="{{ path('mycomplaints') }}"  class="btn-o"> <i class="fa fa-cog"></i> Check complaints </a>
+
+                           <a href="{{ path('myofficeappointment') }}"  class="btn-o"> <i class="fa fa-cog"></i> Check appointments </a>
+
+                        <a href="{{ path('office_edit', { 'id': office.id }) }}"  class="btn-o"> <i class="fa fa-cog"></i> Edit my office </a>
+                        {% else %}
+                            <a href="{{ path('office_edit', { 'id': office.id }) }}"  class="btn-o"> Request an appointment </a>
+                       {% endif %}
+                        {% endif %}
+
+                        {# <ul class="nav navbar-nav">
+                             <li class="dropdown">
+                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-ellipsis-v pull-right"></span></a>
+                                 <ul class="dropdown-menu pull-right">
+                                     <li><a href="#">Video Call <i class="fa fa-video-camera"></i></a></li>
+                                     <li><a href="#">Poke <i class="fa fa-hand-o-right"></i></a></li>
+                                     <li><a href="#">Report <i class="fa fa-bug"></i></a></li>
+                                     <li><a href="#">Block <i class="fa fa-lock"></i></a></li>
+                                 </ul>
+                             </li>
+                         </ul>#}
+
+                    </div>
+
+                </div>
+
+            </li>
+            <li>
+                <div class="link"><i class="fa fa-globe"></i>Contact<i class="fa fa-chevron-down"></i></div>
+                <ul class="submenu">
+                    {#
+                                        <li><a href="#"><i class="fa fa-calendar left-none"></i> Date of Birth : 03/09/1994</a></li>
+                    #}
+                    <li><a {#href="#"#}>Address :{{ office.address }}</a></li>
+                    <li><a {#href="mailto:{{ user.email }}"#}>Email : {{ office.email }}</a></li>
+                    <li><a {#href="#"#}>Phone :  {{ office.phone }}</a></li>
+                </ul>
+            </li>
+            {# <li class="default open">
+                 <div class="link"><i class="fa fa-code"></i>Professional Skills<i class="fa fa-chevron-down"></i></div>
+                 <ul class="submenu">
+                     <li><a href="#"><span class="tags">Adobe Photoshop</span> <span class="tags">Corel Draw</span> <span class="tags">CSS</span> <span class="tags">Css 3</span>
+                             <span class="tags">Graphic Design</span> <span class="tags">HTML</span> <span class="tags">HTML5</span> <span class="tags">JavaScript</span>
+                             <span class="tags">Twitter bootstrap</span> <span class="tags">bootstrap</span> <span class="tags">User Interface Design</span> <span class="tags">Wordpress</span></a>
+                 </ul>
+             </li>#}
+
+        </ul>
+    </div>
+
+
+
+</div>
+<script>$(function() {
+        var Accordion = function(el, multiple) {
+            this.el = el || {};
+            this.multiple = multiple || false;
+
+            // Variables privadas
+            var links = this.el.find('.link');
+            // Evento
+            links.on('click', {el: this.el, multiple: this.multiple}, this.dropdown)
+        }
+
+        Accordion.prototype.dropdown = function(e) {
+            var $el = e.data.el;
+            $this = $(this),
+                $next = $this.next();
+
+            $next.slideToggle();
+            $this.parent().toggleClass('open');
+
+            if (!e.data.multiple) {
+                $el.find('.submenu').not($next).slideUp().parent().removeClass('open');
+            };
+        }
+
+        var accordion = new Accordion($('#accordion'), false);
+    });
+
+
+
+
+
+
+
+
+
+</script></div>
+
+<style>
+    textarea
+    {
+        resize: none;
+    }
+
+</style>
+    {% if app.user!=office.owner %}
+    <div class="landing-page"><div class="form-appointment"><div class="wpcf7" id="wpcf7-f560-p590-o1">
+                    {{ form_start(form) }}
+        <div class="group">
+                        <div style="width: 48%; float: left;">
+                            <h4>Say more about your appointment:</h4>
+
+                            {{ form_widget(form.description) }}</div>
+
+                        <div style="width: 48%; float: right;">
+                            <h4>Best time of day for your appointment:</h4>
+                            <p>{{ form_widget(form.date) }}</p>
+                            <h4>Choose your pet:</h4>
+                            <p>{{ form_widget(form.pet) }}</p>
+                        </div>
+                    </div>
+
+
+                    <div style="text-align: center; padding-top: 2em; border-top: 1px solid rgb(153, 202, 129); margin-top: 1em;"><input type="submit" value="Request My Appointment" class="wpcf7-form-control wpcf7-submit"><img class="ajax-loader" src="http://www.professionalaudiologicalservices.com/wp-content/plugins/contact-form-7/images/ajax-loader.gif" alt="Sending ..." style="visibility: hidden;"></div>
+                    <div class="wpcf7-response-output wpcf7-display-none"></div></div></div></div>
+
+        {{ form_end(form) }}
+        {% else %}
+            <table>
+              {#  <thead>
+                <tr>
+
+                    <th>Name</th>
+                    <th>Host</th>
+                    <th>Description</th>
+                    <th>Beginning</th>
+                    <th>Ending</th>
+                    <th>Address</th>
+                    <th>Capacity</th>
+                    <th>Cost</th>
+                    <th>Ongoing</th>
+                    <th></th>
+                    <th></th>
+
+                </tr>
+                </thead>#}
+
+                <tbody>
+                {% for appointment in appointments %}
+
+
+                        <tr class="event-thumb">
+                           <td>                <a href="{{ path('pet_show', { 'id': appointment.pet.id }) }}"> {{ appointment.pet.name }}</a></td>
+                            <td>{{ appointment.description }}</td>
+
+                            <td>{{appointment.date| date('F') }} {{appointment.date| date('d') }},{{ appointment.date | date('Y') }}</td>
+                            <td>
+                                {% if appointment.validated==0 %}
+                                <a href="{{ path('office_validate', { 'id': appointment.id }) }}">Validate </a>
+                                {% endif %}
+                                {% if appointment.validated==1 %}
+                                    <a href="{{ path('office_validate', { 'id': appointment.id }) }}">Delete </a>
+                                {% endif %}
+                            </td>
+                        </tr>
+{% endfor %}
+
+                </tbody>
+            </table>
+
+    {% endif %}
+
+{% endblock %}

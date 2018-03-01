@@ -1,0 +1,38 @@
+office_index:
+    path:     /
+    defaults: { _controller: "MainBundle:Office:index" }
+    methods:  GET
+
+office_show:
+    path:     /{id}/show
+    defaults: { _controller: "MainBundle:Office:show" }
+    methods:  [GET, POST]
+
+office_new:
+    path:     /new
+    defaults: { _controller: "MainBundle:Office:new" }
+    methods:  [GET, POST]
+
+office_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "MainBundle:Office:edit" }
+    methods:  [GET, POST]
+office_validate:
+    path:     /{id}/validate
+    defaults: { _controller: "MainBundle:Office:validate" }
+    methods:  [GET, POST]
+office_unvalidate:
+    path:     /{id}/unvalidate
+    defaults: { _controller: "MainBundle:Office:unvalidate" }
+    methods:  [GET, POST]
+myoffice:
+    path:     /myoffice
+    defaults: { _controller: "MainBundle:Office:myoffice" }
+    methods:  [GET, POST]
+
+
+
+office_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "MainBundle:Office:delete" }
+    methods:  DELETE

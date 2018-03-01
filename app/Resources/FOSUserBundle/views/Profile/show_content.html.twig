@@ -24,6 +24,14 @@
 
                             {% endfor %}</p>
 
+                        {% if is_granted("ROLE_VETERINARY") %}
+
+
+                        {% else %}
+
+                        <a href="{{ path('office_new') }}"  class="btn-o"> <i class="fa fa-cog"></i> I have an office </a>
+                        {% endif %}
+
                         <a href="{{ path('fos_user_profile_edit') }}"  class="btn-o"> <i class="fa fa-cog"></i> Edit </a>
 
 

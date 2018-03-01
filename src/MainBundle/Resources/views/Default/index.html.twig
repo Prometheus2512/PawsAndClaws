@@ -19,11 +19,10 @@
                 <img src="images/2.png" alt=""/>
                 <div class="carousel-caption">
                     <h2>Put a smile on your pet's face </h2>
-                    <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est
-                        notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum.</p>
-                    <form method="get" action="index.html">
+                    <p> Find information about pet events hosted by Best Friends Animal Society near you and around the country.</p>
+                    <a href="{{ path('leisure') }}" >
                         <button type="submit" class="btn btn-lg btn-default">Learn more</button>
-                    </form>
+                    </a>
                 </div>
             </div>
             <div class="item">
@@ -32,9 +31,10 @@
                     <h2>Be a savior and give a shelter to a pet</h2>
                     <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est
                         notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum.</p>
-                    <form method="get" action="index.html">
+                    <a href="{{ path('pets_multi') }}" >
                         <button type="submit" class="btn btn-lg btn-default">Learn more</button>
-                    </form>
+                    </a>
+
                 </div>
             </div>
         </div>
@@ -95,7 +95,7 @@
         </div>
 
 
-
+{%  if event %}
         <div style="float: left;width: 50%">
 
             <article class="card" style="background: #65c178;text-align: center">
@@ -114,6 +114,7 @@
                 </div>
             </article>
         </div>
+        {% endif %}
     </div>
 
     <!-- Services -->
@@ -225,6 +226,18 @@
                         <img src="images/dog-3.png" alt="Dog"/>
                     </a>
                 </div>
+                <div>
+                    <a href="images/dog-3.png" title="Dog" data-hover="Kyla the bull terrier" data-toggle="lightbox"
+                       class="lightbox">
+                        <img src="images/dog-3.png" alt="Dog"/>
+                    </a>
+                </div>
+                <div>
+                    <a href="images/dog-3.png" title="Dog" data-hover="Kyla the bull terrier" data-toggle="lightbox"
+                       class="lightbox">
+                        <img src="images/dog-3.png" alt="Dog"/>
+                    </a>
+                </div>
             </div>
             <div id="pager" class="pager"></div>
         </div>
@@ -238,7 +251,7 @@
                     <p><a href="#" title="Dougie" class="roundal"></a></p>
                     <h4>Could you give <a href="adoption-single.html"
                                           title="Could you give Dougie a new home?">Dougie</a> a new home?</h4>
-                    <p>If you're into adding a new memeber to your family, Dougie is the one. A funny cute dog that will
+                    <p>If you're into adding a new member to your family, Dougie is the one. A funny cute dog that will
                         add joy to your lives and will never stop making you laugh .</p>
                     <form method="get" action="adoption-single.html">
                         <button type="submit" class="btn btn-default btn-green">Learn more</button>
@@ -266,24 +279,19 @@
                         <!-- Wrapper for slides -->
                         <div class="carousel-inner">
                             <div class="item active">
-                                <p>"Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium
-                                    lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram,
-                                    anteposuerit litterarum."</p>
+                                <p>"This website is a discovery. it helped me finding my best friend , Bill , a german
+                                    shepherd found in the ruins of a burned house."</p>
                             </div>
                             <div class="item">
-                                <p>"Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie
-                                    consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et
-                                    iusto odio dignissim qui."</p>
+                                <p>"Thanks to this website I can be sure to share good time with my friend Roger."</p>
                             </div>
                             <div class="item">
-                                <p>"Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium
-                                    lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram,
-                                    anteposuerit litterarum."</p>
+                                <p>" Thanks to the daily articles , i feel now smarter and i know more about this huge
+                                    universe."</p>
                             </div>
                             <div class="item">
-                                <p>"Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie
-                                    consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et
-                                    iusto odio dignissim qui."</p>
+                                <p>"Back in time i was struggling finding good food for Gill and Toto but now thanks
+                                    to this website i can find interesting products."</p>
                             </div>
                         </div>
                     </div>

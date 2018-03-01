@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -23,7 +24,7 @@ class EventController extends Controller
      * Lists all event entities.
      *
      * @Route("/", name="event_index")
-     * @Method("GET")
+     * @Method({"GET", "POST"})
      */
     public function indexAction()
     {
@@ -391,6 +392,24 @@ $securityContext = $this->container->get('security.authorization_checker');
                 'images'=>$images
 
             ));
+    }
+
+
+    public function chercherAction (Request $request)
+    {
+        if ($request->isXmlHttpRequest() && $request->isMethod('post')) {
+
+            $libelle = $request->get('nom');
+            $em = $this->getDoctrine()->getManager();
+            $query = $em->getRepository('MainBundle:Event')->createQueryBuilder('u');
+            $name = $query->where($query->expr()->like('u.name', ':p'))
+                ->setParameter('p', '%' . $libelle . '%')
+                ->getQuery()->getResult();
+
+            $response = $this->renderView('event\search.html.twig', array('all' => $name));
+            return new JsonResponse($response);
+        }
+        return new JsonResponse(array("status" => true));
     }
 
 }

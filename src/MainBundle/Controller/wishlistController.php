@@ -165,4 +165,16 @@ class wishlistController extends Controller
             ->getForm()
         ;
     }
+
+    public function mywishlistAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+$user=$this->getUser();
+        $wishlists = $em->getRepository('MainBundle:wishlist')->findBy(['user'=>$user]);
+
+
+        return $this->render('wishlist/mywishlist.html.twig', array(
+            'wishlists' => $wishlists,
+        ));
+    }
 }

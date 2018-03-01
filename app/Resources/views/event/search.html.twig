@@ -1,0 +1,76 @@
+{#
+
+    {% for event in all %}
+        {% if event.validated==1 %}
+
+#}
+{#
+            <script>    addMarker({{ event.posx }}, {{ event.posy }});</script>
+#}{#
+
+
+            <tr class="event-thumb">
+                <td><a href="{{ path('event_show', { 'id': event.id }) }}">{{ event.name }}</a></td>
+                <td>{{ event.hostid.username }}</td>
+                <td>{{ event.description }}</td>
+                <td>{% if event.beginningDate %}{{ event.beginningDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if event.endingDate %}{{ event.endingDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ event.address }}</td>
+                <td>{{ event.capacity }}</td>
+                <td>{{ event.cost }}</td>
+                <td>{% if (event.beginningDate|date('Y-m-d') <= 'now'|date('Y-m-d')) and (event.endingDate|date('Y-m-d') >= 'now'|date('Y-m-d')) %}
+                        <div style="font-size:1em; color:green"><i class="fa fa-check" style="size: 25px"> </i>
+                        </div>
+                    {% else %}
+                        <div style="font-size:1em; color:red"> <i class="fa fa-close" style="size: 25px"> </i>
+
+                        </div>
+                    {% endif %}
+                </td>
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+                    {% if event.hostid.id==app.user.id %}
+                        <td>
+
+                            <a href="{{ path('event_edit', { 'id': event.id }) }}">  <div style="font-size:1em; color:gray"> <i class="fa fa-cog" style="size: 25px">  </i>
+                                </div></a>
+
+
+
+                        </td>
+                        <td>
+                            <a href="{{ path('event_delete', { 'id': event.id }) }}"> <div style="font-size:1em; color:gray"> <i class="fa fa-trash" style="size: 25px"> </i>
+                                </div></a>
+                        </td>
+                    {% endif %}
+                {% endif %}
+            </tr>
+        {% endif %}
+    {% endfor %}
+#}
+
+  {% for event in  all %}
+      {% if event.validated==1 %}
+      <div class="blog-card">
+          <div class="photo "><img  src="https://maps.googleapis.com/maps/api/staticmap?center={{ event.posy }},{{ event.posx }}&zoom=13&size=300x300&maptype=roadmap&markers=color:red%7Clabel:S%7C{{ event.posy }},{{ event.posx }}
+&key=AIzaSyAcsrLEjp-oYNRVFr10K9tNbaKSVzdsj_M"
+              ></div>
+          <ul class="details">
+              <li class="author"><a href="#">{{ event.hostid.username }}</a></li>
+              <li class="date">{{ event.address }}           </li>
+              {#    <li class="tags">
+                      <ul>
+                          <li>{{ event.address }}</li>
+                      </ul>
+                  </li>#}
+          </ul>
+          <div class="description" >
+              <h1>{{ event.address }}</h1>
+              <h2>{{event.beginningDate| date('F') }} {{ event.beginningDate| date('d') }},{{ event.beginningDate | date('Y') }}
+                  at         {{ event.beginningDate|date('H:i:s') }}</h2>
+              <p class="summary">{{ event.description }}</p>
+              <a href="{{ path('event_show', { 'id': event.id }) }}">Read More</a>
+          </div>
+      </div >
+          {% endif %}
+  {% endfor %}

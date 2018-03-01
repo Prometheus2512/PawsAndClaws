@@ -34,6 +34,13 @@ class Product
      * @ORM\Column(name="price", type="float")
      */
     private $price;
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="discount", type="float")
+     */
+    private $discount;
+
 
     /**
      * @var string
@@ -197,6 +204,22 @@ class Product
     public function setAimedpets($aimedpets)
     {
         $this->aimedpets = $aimedpets;
+    }
+
+    /**
+     * @return float
+     */
+    public function getDiscount()
+    {
+        return $this->discount;
+    }
+
+    /**
+     * @param float $discount
+     */
+    public function setDiscount($discount)
+    {
+        $this->discount = $discount;
     }
 
 

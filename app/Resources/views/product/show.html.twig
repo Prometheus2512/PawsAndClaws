@@ -107,6 +107,14 @@
             {{ form_end(delete_form) }}
         </li>
     </ul>#}
+    <style>
+        textarea
+        {
+            resize: none;
+        }
+        
+        
+    </style>
 
     <div style="
     padding-top: 40px;
@@ -164,7 +172,15 @@
                         <li><span>Name</span> {{ product.name }} years</li>
                         <li><span>Category</span> {{ product.category }}</li>
                         <li><span>Aimed for </span>{{ product.aimedpets }}</li>
+
+                        {% if product.discount==0 %}
                         <li><span>Price</span>{{ product.price }} DT</li>
+                        {% else %}
+                            <li><span> Old Price</span>   <strike style="color: red;"> {{ product.price }}</strike> DT</li>
+
+                            <li><span> New Price</span>    {{ product.price-(product.price*product.discount/100) }} DT</li>
+
+                        {% endif %}
                         <li><span>Owner</span>{{ product.owner.username }}</li>
 
                     </ol>
@@ -218,23 +234,35 @@
                         {% endif %}
                     {% endif %}
                 </div>
+
+
+          {#      {{ form_start(form)}}
+                {{ form_widget(form.content)}}
+                <input type="submit" value="send complaint">
+
+                {{ form_end(form)}}
+#}
+
+
                 <div class="container content">
                     <div class="row">
                         <div class="col-md-9">
-                            <form role="form" id="contact_form">
+                            <form  id="contact_form">
 
                                 <div class="form-group">
+                                    <strong>Make a complaint</strong>
+                                </div>
 
-                                </div>
                                 <div class="form-group">
-                                    <strong style="font-size: 20px;"> Or notice a friend : </strong>
-                                    <div class="form-group">
-                                        <label for="InputEmail">Your friend's email</label>
-                                        <input type="email" class="form-control" id="InputEmail"
-                                               placeholder="Your email">
-                                    </div>
+                                    {{ form_start(form)}}
+                                    {{ form_widget(form.content)}}
+                                    <br>
+
+
+
+                                    <button type="submit" class="btn btn-default btn-green">Send complaint</button>
+                                    {{ form_end(form)}}
                                 </div>
-                                <button type="submit" class="btn btn-default btn-green">Send message</button>
                             </form>
                         </div>
 

@@ -45,6 +45,7 @@
 
     }
 
+    
     .active {
         color: #62c28d;
     }
@@ -117,6 +118,21 @@
         </div>
 
     </div>
+
+{% for review in reviews %}
+{{ review.user.username }} ,{{ review.content }},{{ review.rating }},
+    {{review.date| date('F') }} {{review.date| date('d') }},{{ review.date| date('Y') }}
+
+{% endfor %}
+
+    {{ form_start(form) }}
+
+    {{ form_row(form.content) }}
+    {{ form_row(form.rating) }}
+    <input type="submit" value="clic me ">
+
+    {{ form_end(form) }}
+
 
 
 

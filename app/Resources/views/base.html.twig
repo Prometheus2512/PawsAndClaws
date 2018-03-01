@@ -102,18 +102,27 @@
                                         <a  href="{{ path('mypets') }}">
                                             My pets
                                         </a>
+                                        <a  href="{{ path('mywishlist') }}">
+                                            My wishlist
+                                        </a>
+                                        {% if is_granted("ROLE_VETERINARY") %}
+
+                                        <a  href="{{ path('myoffice') }}">
+                                            My office
+                                        </a>
+                                        {% endif %}
                                         <a  href="{{ path('fos_user_security_logout') }}">
                                             {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
                                         </a>
                                     </div>
                                 </div>
-                                <div class="dropdown2">
+                             {#   <div class="dropdown2">
 
-                                    <a  href="{{ path('main_homepage') }}"  title="Home"><button  class="dropbtn btn btn-default {#btn-green#}"> {#My account#}  <img src="{{ asset('images/notif.png')}}" style="width:15px;height: 15px;">
+                                    <a  href="{{ path('main_homepage') }}"  title="Home"><button  class="dropbtn btn btn-default #}{#btn-green#}{#"> #}{#My account#}{#  <img src="{{ asset('images/notif.png')}}" style="width:15px;height: 15px;">
                                         </button></a>
 
                                 </div>
-
+#}
                                 {% else %}
                                     <li>
                                     <a  href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>

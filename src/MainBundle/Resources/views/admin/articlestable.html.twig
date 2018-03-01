@@ -43,7 +43,7 @@
                     </div>
                     <div class="col-sm-9 col-lg-7 widget-right">
                         <div class="large">{{ ndislikes }}</div>
-                        <div class="text-muted">Disliked Events</div>
+                        <div class="text-muted">Disliked Articles</div>
                     </div>
                 </div>
             </div>
@@ -88,7 +88,7 @@
                     <td>{{ article.title }}</td>
                     <td>{{ article.subtitle }}</td>
                     <td>{{article.creationDate| date('F') }} {{ article.creationDate| date('d') }},{{ article.creationDate | date('Y') }}</td>
-                    <td><a href="{{ path('event_show', { 'id': article.id }) }}">Show Article</a></td>
+                    <td><a href="{{ path('article_show', { 'id': article.id }) }}">Show Article</a></td>
 
                 </tr>
             {% endfor %}

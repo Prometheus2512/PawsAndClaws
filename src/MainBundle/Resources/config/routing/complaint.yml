@@ -1,0 +1,24 @@
+complaint_index:
+    path:     /
+    defaults: { _controller: "MainBundle:Complaint:index" }
+    methods:  GET
+
+complaint_show:
+    path:     /{id}/show
+    defaults: { _controller: "MainBundle:Complaint:show" }
+    methods:  GET
+
+complaint_new:
+    path:     /new
+    defaults: { _controller: "MainBundle:Complaint:new" }
+    methods:  [GET, POST]
+
+complaint_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "MainBundle:Complaint:edit" }
+    methods:  [GET, POST]
+
+complaint_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "MainBundle:Complaint:delete" }
+    methods:  DELETE

@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $(".event-thumb").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+
+    {# <table class="table">
+         <tr>
+             <th style="color: goldenrod">Nom Destinataire</th>
+             <th style="color: goldenrod">Contenu</th>
+             <th style="color: goldenrod">Supprimer</th>
+         </tr>
+         {% for event in events %}
+             <tr class="product-thumb">
+                 <td>{{ event.name }}</td>
+                 <td>{{ event.description }}</td>
+             </tr>
+         {% endfor %}
+     </table>#}
+    <br><br><br>
+
+    <link href="{{ asset('css/table.css') }}" rel="stylesheet">
+
+    <div style="padding-top: 0%; padding-bottom: 5%; text-align: center; margin-top: 10% ">
+
+        <h3 class="subtitle">My wishlist </h3>
+
+        {#
+                <input id="myInput" type="text" >
+        #}
+
+
+
+
+        <table>
+            <thead>
+            <tr>
+
+                <th>Product name</th>
+                <th>Product owner</th>
+                <th>Product description</th>
+                <th>price</th>
+
+                <th></th>
+                <th></th>
+
+            </tr>
+            </thead>
+            <tbody>
+            {% for wishlist in wishlists %}
+
+
+
+                    <tr class="event-thumb">
+                        <td><a href="{{ path('product_show', { 'id': wishlist.product.id }) }}">{{wishlist.product.name }}</a></td>
+                        <td>{{ wishlist.product.owner.username }}</td>
+                        <td>{{ wishlist.product.description }}</td>
+                        <td>{% if wishlist.product.discount==0 %}{{ wishlist.product.price }}{% else %}<strike style="color: red;"> {{ wishlist.product.price }}</strike> DT |  {{ wishlist.product.price-(wishlist.product.price*wishlist.product.discount/100) }} DT{% endif %}</td>
+
+
+
+                    </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+
+      {#  {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            <a  class="btn btn-default btn-green" href="{{ path('event_new') }}">Host a new Event </a>
+        {% endif %}
+        <a  class="btn btn-default btn-green" href="{{ path('myevents') }}">Check my events</a>#}
+
+    </div>
+{% endblock %}
+

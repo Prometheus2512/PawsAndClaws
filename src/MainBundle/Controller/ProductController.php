@@ -2,6 +2,7 @@
 
 namespace MainBundle\Controller;
 
+use MainBundle\Entity\Complaint;
 use MainBundle\Entity\Product;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -36,10 +37,12 @@ class ProductController extends Controller
         $product = new Product();
         $form = $this->createForm('MainBundle\Form\ProductType', $product);
         $form->handleRequest($request);
-
+        $user=$this->getUser();
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($product);
+            $product->setOwner($user);
+
             $em->flush();
 
             return $this->redirectToRoute('product_show', array('id' => $product->getId()));
@@ -56,8 +59,27 @@ class ProductController extends Controller
      * Finds and displays a product entity.
      *
      */
-    public function showAction(Product $product)
+    public function showAction(Product $product,Request $request)
     {
+
+        $complaint = new Complaint();
+        $form = $this->createForm('MainBundle\Form\ComplaintType', $complaint);
+        $form->handleRequest($request);
+        $user=$this->getUser();
+        $date = new \DateTime();
+
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($complaint);
+            $complaint->setProduct($product);
+            $complaint->setUser($user);
+            $complaint->setDate($date);
+
+            $em->flush();
+        }
+
+
         $deleteForm = $this->createDeleteForm($product);
         $em = $this->getDoctrine()->getManager();
         $user=$this->getUser();
@@ -68,7 +90,8 @@ class ProductController extends Controller
         return $this->render('product/show.html.twig', array(
             'product' => $product,
             'delete_form' => $deleteForm->createView(),
-            'test' => $test
+            'test' => $test,
+            'form'=>$form->createView(),
         ));
     }
 

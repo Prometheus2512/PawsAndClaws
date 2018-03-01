@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <link href="{{ asset('css/table.css') }}" rel="stylesheet">
+
+    <h1 style="margin-top: 10%">Offices list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Type of office</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for office in offices %}
+            <tr>
+                <td><a href="{{ path('office_show', { 'id': office.id }) }}">Dr. {{ office.owner.firstname }} {{ office.owner.lastname }}</a></td>
+                <td>{{ office.address }}</td>
+                <td>{{ office.email }}</td>
+                <td>{{ office.phone }}</td>
+                <td>{{ office.type }}</td>
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

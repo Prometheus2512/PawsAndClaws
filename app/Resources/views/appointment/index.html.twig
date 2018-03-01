@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Appointments list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for appointment in appointments %}
+            <tr>
+                <td><a href="{{ path('appointment_show', { 'id': appointment.id }) }}">{{ appointment.id }}</a></td>
+                <td>{% if appointment.date %}{{ appointment.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ appointment.description }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('appointment_show', { 'id': appointment.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('appointment_edit', { 'id': appointment.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('appointment_new') }}">Create a new appointment</a>
+        </li>
+    </ul>
+{% endblock %}
