@@ -3,6 +3,8 @@
 namespace MainBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * Product
@@ -72,6 +74,28 @@ class Product
      * @ORM\Column(name="aimedpets", type="string", length=255)
      */
     private $aimedpets;
+
+    /**
+     * @ORM\Column(type="string")
+     *
+     * @Assert\NotBlank(message="Please, upload the image.")
+     * @Assert\File(mimeTypes={ "image/jpeg" })
+     */
+    private $brochure;
+
+    public function getBrochure()
+    {
+        return $this->brochure;
+    }
+
+    public function setBrochure($brochure)
+    {
+        $this->brochure = $brochure;
+
+        return $this;
+    }
+
+
 
     /**
      * Get id

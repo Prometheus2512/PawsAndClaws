@@ -20,16 +20,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 centered">
-                    <h3><span>The adoption centre</span></h3>
+                    <h3><span>The adoption center</span></h3>
                     <h3><span>Find your perfect companion</span></h3>
-                    <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.</p>
                 </div>
             </div>
             <div class="row adoption">
                 {% for pet in pets %}
 
                     <div class="col-md-4">
-                        <a href="{{ path('pet_show', { 'id': pet.id }) }}" title="{{ pet.name }}"><img src="{{ asset('images/dog-4.png') }}" alt="Saint Bernard" /></a>
+                        <a href="{{ path('pet_show', { 'id': pet.id }) }}" title="{{ pet.name }}"><img  style="width: 360px; height: 360px" src="{{ asset('bundles/uploads/brochures/'~(pet.brochure) ) }}" alt="Saint Bernard" /></a>
                         <div class="title">
                             <h5>
                                 <span data-hover="{{ pet.breed }}">{{ pet.name }}</span>

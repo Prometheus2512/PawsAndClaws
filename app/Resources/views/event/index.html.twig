@@ -130,7 +130,7 @@
 <br>
     <strong style="margin-left: 45%; margin-top: 10%">Paws and claws EVENTS</strong>
     <!--PEN CODE-->
-    <h3 class="subtitle"> <input id="nom" name="nom" class="form-control" type="text" placeholder="Chercher .."></h3>
+    <h3 class="subtitle"> <input id="nom" name="nom" class="form-control" type="text" placeholder="Search ..."></h3>
 
     <div style="margin-top: 5%" id="res">
         {% if events is empty %}
@@ -154,7 +154,7 @@
                     </li>#}
                 </ul>
                 <div class="description" >
-                    <h1>{{ event.address }}</h1>
+                    <h1>{{ event.name }}</h1>
                     <h2>{{event.beginningDate| date('F') }} {{ event.beginningDate| date('d') }},{{ event.beginningDate | date('Y') }}
                at         {{ event.beginningDate|date('H:i:s') }}</h2>
                     <p class="summary">{{ event.description }}</p>

@@ -51,26 +51,26 @@
 
   {% for event in  all %}
       {% if event.validated==1 %}
-      <div class="blog-card">
-          <div class="photo "><img  src="https://maps.googleapis.com/maps/api/staticmap?center={{ event.posy }},{{ event.posx }}&zoom=13&size=300x300&maptype=roadmap&markers=color:red%7Clabel:S%7C{{ event.posy }},{{ event.posx }}
+          <div class="blog-card">
+              <div class="photo "><img  src="https://maps.googleapis.com/maps/api/staticmap?center={{ event.posy }},{{ event.posx }}&zoom=13&size=300x300&maptype=roadmap&markers=color:red%7Clabel:S%7C{{ event.posy }},{{ event.posx }}
 &key=AIzaSyAcsrLEjp-oYNRVFr10K9tNbaKSVzdsj_M"
-              ></div>
-          <ul class="details">
-              <li class="author"><a href="#">{{ event.hostid.username }}</a></li>
-              <li class="date">{{ event.address }}           </li>
-              {#    <li class="tags">
-                      <ul>
-                          <li>{{ event.address }}</li>
-                      </ul>
-                  </li>#}
-          </ul>
-          <div class="description" >
-              <h1>{{ event.address }}</h1>
-              <h2>{{event.beginningDate| date('F') }} {{ event.beginningDate| date('d') }},{{ event.beginningDate | date('Y') }}
-                  at         {{ event.beginningDate|date('H:i:s') }}</h2>
-              <p class="summary">{{ event.description }}</p>
-              <a href="{{ path('event_show', { 'id': event.id }) }}">Read More</a>
-          </div>
-      </div >
-          {% endif %}
+                  ></div>
+              <ul class="details">
+                  <li class="author"><a href="#">{{ event.hostid.username }}</a></li>
+                  <li class="date">{{ event.address }}           </li>
+                  {#    <li class="tags">
+                          <ul>
+                              <li>{{ event.address }}</li>
+                          </ul>
+                      </li>#}
+              </ul>
+              <div class="description" >
+                  <h1>{{ event.name }}</h1>
+                  <h2>{{event.beginningDate| date('F') }} {{ event.beginningDate| date('d') }},{{ event.beginningDate | date('Y') }}
+                      at         {{ event.beginningDate|date('H:i:s') }}</h2>
+                  <p class="summary">{{ event.description }}</p>
+                  <a href="{{ path('event_show', { 'id': event.id }) }}">Read More</a>
+              </div>
+          </div >
+      {% endif %}
   {% endfor %}

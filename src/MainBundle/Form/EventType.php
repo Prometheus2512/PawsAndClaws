@@ -27,7 +27,7 @@ class EventType extends AbstractType
             ->add('validated', HiddenType::class, array(
                 'data' => '0',
             ))
-            ->add('brochure', FileType::class, array('label' => 'Brochure (PDF file)','data_class' => null));
+            ->add('brochure', FileType::class, array('label' => 'image','data_class' => null));
                 ;
     }/**
      * {@inheritdoc}

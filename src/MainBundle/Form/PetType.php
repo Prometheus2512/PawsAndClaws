@@ -4,6 +4,7 @@ namespace MainBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -45,7 +46,9 @@ class PetType extends AbstractType
                 'choices' => array(
                     'yes he can' => true,
                     'no he can not' => false,
-                )));
+                )))
+            ->add('brochure', FileType::class, array('label' => 'image ','data_class' => null));
+        ;
     }
 
     /**

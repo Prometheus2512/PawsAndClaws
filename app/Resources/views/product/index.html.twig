@@ -75,7 +75,7 @@
                 {% for product in products %}
 
                     <div class="col-md-4">
-                        <a href="{{ path('product_show', { 'id': product.id }) }}" title="{{ product.name }}"><img src="{{ asset('images/dog-4.png') }}" alt="Saint Bernard" /></a>
+                        <a href="{{ path('product_show', { 'id': product.id }) }}" title="{{ product.name }}"><img  style="width: 360px; height: 360px" src="{{ asset('bundles/uploads/brochures/'~(product.brochure) ) }}" alt="Saint Bernard" /></a>
                         <div class="title">
                             <h5>
                                 <span data-hover="{{ product.price }} DT">{{ product.name }}</span>

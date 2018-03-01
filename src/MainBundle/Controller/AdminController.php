@@ -32,7 +32,8 @@ class AdminController extends Controller
     }
     public function eventstableAction() {
         //access user manager services
-
+        $notif = $this->get('mgilet.notification')->getAll();
+        $count= count($notif);
         $em = $this->getDoctrine()->getManager();
         $events = $em->getRepository('MainBundle:Event')->findBy(['Validated' => 0]);
         $unvalidatedevents=count($events);
@@ -54,7 +55,8 @@ class AdminController extends Controller
             'nviews' =>$nviews,
             'vale'=>$validatedevents,
             'unvale'=>$unvalidatedevents,
-            'ncom'=>$ncomments
+            'ncom'=>$ncomments,
+            'notif'=>$notif,'count'=>$count
         ));}
     public function articlestableAction() {
         //access user manager services

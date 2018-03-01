@@ -55,7 +55,7 @@ a[href]:hover::after {
 
 article.card {
     position: absolute;
-    right:33%;
+    right:15%;
     top: 145%;
     width: 500px;
     height: 350px;

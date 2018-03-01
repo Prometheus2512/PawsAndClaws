@@ -74,14 +74,14 @@
 
 
                     </td>
-                    <td>
+             {#       <td>
 
                         <a href="#">
                             <svg class="glyph stroked lock" style="color: red; height: 30px; width: 30px;">
                                 <use xlink:href="#stroked-lock"/>
                             </svg>
                         </a>
-                    </td>
+                    </td>#}
                 </tr>
 
             {% endfor %}
@@ -89,11 +89,7 @@
             </tbody>
         </table>
 
-        <ul>
-            <li>
-                <a href="{{ path('event_new') }}">Create a new event</a>
-            </li>
-        </ul>
+
     </div>
 {% endblock %}
 

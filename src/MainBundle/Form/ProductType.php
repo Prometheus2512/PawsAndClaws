@@ -3,6 +3,7 @@
 namespace MainBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -38,7 +39,9 @@ class ProductType extends AbstractType
                         '70' => 70,
                         '80' => 80,
                     )))
-                ->add('category');
+                ->add('category')
+         ->add('brochure', FileType::class, array('label' => 'image ','data_class' => null));
+        ;
     }
     /**
      * {@inheritdoc}

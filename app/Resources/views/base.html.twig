@@ -40,7 +40,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <h1><a class="navbar-brand" href="index.html"><strong>Pet</strong>Care<br />
+                    <h1><a class="navbar-brand" href="{{ path('main_homepage') }}"><strong>Pet</strong>Care<br />
                             <span data-hover="Kennels">Kennels</span>
                         </a></h1>
                 </div>
@@ -65,12 +65,12 @@
                             <a  href="{{ path('article_index') }}" title="Blog"><span data-hover="Blog">Blog</span></a>
                         </li>
 
-                        <li>
+                       {# <li>
                             <a  href="{{ path('contact') }}"  title="Contact"><span data-hover="Contact">Contact</span></a>
-                        </li>
+                        </li>#}
                        {% if is_granted("ROLE_ADMIN") %}
                         <li>
-                            <a  href="{{ path('admin-index') }}">
+                            <a  href="{{ path('admin-user-table') }}">
                                 DASHBOARD
                             </a>
 
@@ -116,13 +116,12 @@
                                         </a>
                                     </div>
                                 </div>
-                             {#   <div class="dropdown2">
+                                <div class="dropdown2">
 
-                                    <a  href="{{ path('main_homepage') }}"  title="Home"><button  class="dropbtn btn btn-default #}{#btn-green#}{#"> #}{#My account#}{#  <img src="{{ asset('images/notif.png')}}" style="width:15px;height: 15px;">
+                                    <a  href="{{ path('main_homepage') }}"  title="Home"><button  class="dropbtn btn btn-default btn-green"> <img src="http://brandmark.io/intro/home.png" style="width:15px;height: 15px;">
                                         </button></a>
 
                                 </div>
-#}
                                 {% else %}
                                     <li>
                                     <a  href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
